@@ -1,0 +1,169 @@
+<!-- Page Wrapper -->
+<div id="wrapper">
+  <!-- Sidebar -->
+
+  <app-side-bar></app-side-bar>
+  <!-- End of Sidebar -->
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+      <!-- Topbar -->
+      <app-sidebar-menubuttons></app-sidebar-menubuttons>
+
+      <div class="container">
+        <div class="card">
+          <div class="card-body">
+            <h2 style="margin-left: 400px; color: #2f0c81; font-size: 40px">
+              Edit Avatar
+            </h2>
+            <form (ngSubmit)="submitAvatarForm()" #avatarForm="ngForm">
+              <div class="form-group">
+                <label
+                  for="avatarImage"
+                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
+                  >Avatar Image</label
+                >
+                <input
+                  type="file"
+                  id="avatarImage"
+                  name="avatarImage"
+                  accept="image/*"
+                  onchange="previewImage(event)"
+                />
+                <div class="image-preview">
+                  <img
+                    id="imagePreview"
+                    src="../../../assets/img/avatar.png"
+                    alt="Image Preview"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label
+                  for="avatarName"
+                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
+                  >Avatar Name</label
+                >
+                <input
+                  type="text"
+                  value="keranis"
+                  id="avatarName"
+                  name="avatarName"
+                  [(ngModel)]="avatarData.avatarName"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  for="avatarDescription"
+                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
+                  >Avatar Description</label
+                >
+                <textarea
+                  _ngcontent-ng-c4249565815=""
+                  id="avatarDescription"
+                  name="avatarDescription"
+                  rows="4"
+                  ng-reflect-name="avatarDescription"
+                  class="ng-untouched ng-pristine ng-valid"
+                >
+this is a description of keranis</textarea
+                >
+              </div>
+              <div class="form-group">
+                <label
+                  for="avatarURL"
+                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
+                  >Avatar URL</label
+                >
+                <input
+                  type="text"
+                  value="http://readyplayerme/keranis"
+                  id="avatarURL"
+                  name="avatarURL"
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  for="avatarNPC"
+                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
+                  >Avatar Non Player Character</label
+                >
+                <div class="radio-buttons">
+                  <label class="radio-button-label">
+                    <input
+                      type="radio"
+                      [(ngModel)]="avatarData.avatarNPC"
+                      id="avatarNPCyes"
+                      name="avatarNPC"
+                      value="yes"
+                      checked
+                    />
+                    <span class="radio-button-text">Yes</span>
+                  </label>
+                  <label class="radio-button-label">
+                    <input
+                      type="radio"
+                      [(ngModel)]="avatarData.avatarNPC"
+                      id="avatarNPCno"
+                      name="avatarNPC"
+                      value="no"
+                    />
+                    <span class="radio-button-text">No</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label
+                  for="avatarExisting"
+                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
+                  >Avatar Existing</label
+                >
+                <div class="radio-buttons">
+                  <label class="radio-button-label">
+                    <input
+                      type="radio"
+                      [(ngModel)]="avatarData.avatarExisting"
+                      id="avatarExistingyes"
+                      name="avatarExisting"
+                      value="yes"
+                      checked
+                    />
+                    <span class="radio-button-text">Yes</span>
+                  </label>
+                  <label class="radio-button-label">
+                    <input
+                      type="radio"
+                      [(ngModel)]="avatarData.avatarExisting"
+                      id="avatarExistingno"
+                      name="avatarExisting"
+                      value="no"
+                    />
+                    <span class="radio-button-text">No</span>
+                  </label>
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="avatarForm.invalid"
+                style="font-size: 23px; margin-left: 400px"
+              >
+                Save Changes
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- end create avatar-->
+      <!-- Logout Modal-->
+      <app-logoutmodel></app-logoutmodel>
+
+      <!-- Bootstrap core JavaScript-->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,378 @@
+<!-- Page Wrapper -->
+<div id="wrapper">
+  <!-- Sidebar -->
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+      <!-- Topbar -->
+      <app-testgameheader></app-testgameheader>
+
+      <main id="main" class="main">
+        <div class="pagetitle">
+          <h1
+            style="
+              background-color: white;
+              color: rgb(107, 45, 179);
+              margin-left: 42px;
+            "
+          >
+            Profile
+          </h1>
+        </div>
+        <!-- End Page Title -->
+
+        <section class="section profile" style="width: 1700px">
+          <div class="row">
+            <div class="col-xl-4">
+              <div class="card">
+                <div
+                  class="card-body profile-card pt-4 d-flex flex-column align-items-center"
+                >
+                  <img
+                    style="width: 350px"
+                    src="../../assets/img/undraw_profile.svg"
+                    alt="Profile"
+                    class="rounded-circle"
+                  />
+                  <h2>Syrine Hentati</h2>
+                  <h3>Student</h3>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-8" style="width: 7200px; font-size: 24px">
+              <div class="card">
+                <div class="card-body pt-3">
+                  <!-- Bordered Tabs -->
+                  <ul class="nav nav-tabs nav-tabs-bordered">
+                    <li class="nav-item">
+                      <button
+                        class="nav-link active"
+                        data-bs-toggle="tab"
+                        data-bs-target="#profile-overview"
+                        style="color: rgb(107, 45, 179)"
+                      >
+                        Overview
+                      </button>
+                    </li>
+
+                    <li class="nav-item">
+                      <button
+                        class="nav-link"
+                        data-bs-toggle="tab"
+                        data-bs-target="#profile-edit"
+                        style="color: rgb(107, 45, 179)"
+                      >
+                        Edit Profile
+                      </button>
+                    </li>
+
+                    <li class="nav-item">
+                      <button
+                        class="nav-link"
+                        data-bs-toggle="tab"
+                        data-bs-target="#profile-change-password"
+                        style="color: rgb(107, 45, 179)"
+                      >
+                        Change Password
+                      </button>
+                    </li>
+                  </ul>
+                  <div class="tab-content pt-2">
+                    <div
+                      class="tab-pane fade show active profile-overview"
+                      id="profile-overview"
+                    >
+                      <br />
+                      <h3 class="card-title">Profile Details</h3>
+                      <br />
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">first Name</div>
+                        <div class="col-lg-9 col-md-8">Syrine</div>
+                      </div>
+
+                      <br />
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">last Name</div>
+                        <div class="col-lg-9 col-md-8">Hentati</div>
+                      </div>
+                      <br />
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Email</div>
+                        <div class="col-lg-9 col-md-8">
+                          sirinehentati2084&#64;gmail.com
+                        </div>
+                      </div>
+                      <br />
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Profession</div>
+                        <div class="col-lg-9 col-md-8">Student</div>
+                      </div>
+                      <br />
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Birthday</div>
+                        <div class="col-lg-9 col-md-8">2001-06-09</div>
+                      </div>
+                      <br />
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Avatar URL</div>
+                        <div class="col-lg-9 col-md-8">
+                          https://readyplayerme
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      class="tab-pane fade profile-edit pt-3"
+                      id="profile-edit"
+                    >
+                      <!-- Profile Edit Form -->
+                      <form>
+                        <div class="row mb-3">
+                          <label
+                            for="profileImage"
+                            class="col-md-4 col-lg-3 col-form-label"
+                            >Avatar Image</label
+                          >
+                          <div class="col-md-8 col-lg-9">
+                            <img
+                              style="width: 90px"
+                              src="../../assets/img/undraw_profile.svg"
+                              alt="Profile"
+                            />
+                            <div class="pt-2">
+                              <a
+                                href="#"
+                                class="btn btn-primary btn-sm"
+                                title="Upload new profile image"
+                                ><i class="bi bi-upload"></i
+                              ></a>
+                              <a
+                                href="#"
+                                class="btn btn-danger btn-sm"
+                                title="Remove my profile image"
+                                ><i class="bi bi-trash"></i
+                              ></a>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row mb-3">
+                          <label
+                            for="firstName"
+                            class="col-md-4 col-lg-3 col-form-label"
+                            >First Name</label
+                          >
+                          <div class="col-md-8 col-lg-9">
+                            <input
+                              name="firstName"
+                              type="text"
+                              class="form-control"
+                              id="firstName"
+                              value="syrine"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="row mb-3">
+                          <label
+                            for="lastName"
+                            class="col-md-4 col-lg-3 col-form-label"
+                            >lastName</label
+                          >
+                          <div class="col-md-8 col-lg-9">
+                            <input
+                              name="lastName"
+                              class="form-control"
+                              id="lastName"
+                              style="height: 100px"
+                              value="hentati"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="row mb-3">
+                          <label
+                            for="email"
+                            class="col-md-4 col-lg-3 col-form-label"
+                            >Email</label
+                          >
+                          <div class="col-md-8 col-lg-9">
+                            <input
+                              name="email"
+                              type="text"
+                              class="form-control"
+                              id="email"
+                              value="sirinehentati@gmail.com"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="row mb-3">
+                          <label
+                            for="AvatarURL"
+                            class="col-md-4 col-lg-3 col-form-label"
+                            >AvatarURL</label
+                          >
+                          <div class="col-md-8 col-lg-9">
+                            <input
+                              name="AvatarURL"
+                              type="text"
+                              class="form-control"
+                              id="AvatarURL"
+                              value="http://readyplayerme"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="row mb-3">
+                          <label
+                            for="Birthday"
+                            class="col-md-4 col-lg-3 col-form-label"
+                            >Birthday</label
+                          >
+                          <div class="col-md-8 col-lg-9">
+                            <input
+                              name="Birthday"
+                              type="date"
+                              class="form-control"
+                              id="Birthday"
+                              value="2001-06-09"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="row mb-3">
+                          <label
+                            for="profession"
+                            class="col-md-4 col-lg-3 col-form-label"
+                            >profession</label
+                          >
+                          <div class="col-md-8 col-lg-9">
+                            <input
+                              name="profession"
+                              type="text"
+                              class="form-control"
+                              id="profession"
+                              value="Student"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="text-center">
+                          <button type="submit" class="btn btn-primary">
+                            Save Changes
+                          </button>
+                        </div>
+                      </form>
+                      <!-- End Profile Edit Form -->
+                    </div>
+
+                    <div class="tab-pane fade pt-3" id="profile-settings"></div>
+
+                    <div
+                      class="tab-pane fade pt-3"
+                      id="profile-change-password"
+                    >
+                      <!-- Change Password Form -->
+                      <form>
+                        <div class="row mb-3">
+                          <label
+                            for="currentPassword"
+                            class="col-md-4 col-lg-3 col-form-label"
+                            >Current Password</label
+                          >
+                          <div class="col-md-8 col-lg-9">
+                            <input
+                              name="password"
+                              type="password"
+                              class="form-control"
+                              id="currentPassword"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="row mb-3">
+                          <label
+                            for="newPassword"
+                            class="col-md-4 col-lg-3 col-form-label"
+                            >New Password</label
+                          >
+                          <div class="col-md-8 col-lg-9">
+                            <input
+                              name="newpassword"
+                              type="password"
+                              class="form-control"
+                              id="newPassword"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="row mb-3">
+                          <label
+                            for="renewPassword"
+                            class="col-md-4 col-lg-3 col-form-label"
+                            >Re-enter New Password</label
+                          >
+                          <div class="col-md-8 col-lg-9">
+                            <input
+                              name="renewpassword"
+                              type="password"
+                              class="form-control"
+                              id="renewPassword"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="text-center">
+                          <button type="submit" class="btn btn-primary">
+                            Change Password
+                          </button>
+                        </div>
+                      </form>
+                      <!-- End Change Password Form -->
+                    </div>
+                  </div>
+                  <!-- End Bordered Tabs -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <!-- End #main -->
+
+      <!-- ======= Footer ======= -->
+      <footer id="footer" class="footer" style="margin-top: 6%"></footer>
+      <!-- End Footer -->
+
+      <!-- Vendor JS Files -->
+      <script src="../../src/assets/vendor/apexcharts/apexcharts.min.js"></script>
+      <script src="../../src/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="../../src/assets/vendor/chart.js/chart.umd.js"></script>
+      <script src="../../src/assets/vendor/echarts/echarts.min.js"></script>
+      <script src="../../src/assets/vendor/quill/quill.min.js"></script>
+      <script src="../../src/assets/vendor/simple-datatables/simple-datatables.js"></script>
+      <script src="../../src/assets/vendor/tinymce/tinymce.min.js"></script>
+      <script src="../../src/assets/vendor/php-email-form/validate.js"></script>
+
+      <!-- Template Main JS File -->
+      <script src="../../src/assets/js/main.js"></script>
+      <script src="../../../src/vendor/jquery/jquery.min.js"></script>
+      <script src="../../../src/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+      <!-- Core plugin JavaScript-->
+      <script src="../../../src/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+      <!-- Custom scripts for all pages-->
+      <script src="../../../src/sb-admin-2.min.js"></script>
+
+      <!-- Logout Modal-->
+      <app-logoutmodel></app-logoutmodel>
+
+      <!-- Bootstrap core JavaScript-->
+    </div>
+  </div>
+</div>

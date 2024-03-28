@@ -1,0 +1,141 @@
+<div
+  class="card shadow mb-4"
+  style="font-size: 22px; width: 1700px; margin-left: 17px"
+>
+  <div style="align-items: center; margin-left: 700px; margin-top: 10px">
+    <button
+      (click)="navigateToCreateplayer()"
+      style="
+        background-color: #1d0cb3; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 21px;
+        margin-top: 5px;
+        margin: auto; /* This centers the button horizontally */
+        cursor: pointer;
+        border-radius: 8px; /* Optional: adds rounded corners */
+        transition: background-color 0.3s;
+      "
+    >
+      Add Player
+    </button>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table
+        class="table table-bordered"
+        id="dataTable"
+        width="100%"
+        cellspacing="0"
+      >
+        <thead>
+          <tr>
+            <th>player Name</th>
+            <th>Profession</th>
+
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tfoot></tfoot>
+        <tbody>
+          <tr *ngFor="let row of tableData">
+            <td>{{ row.PlayerName }}</td>
+            <td>{{ row.Profession }}</td>
+            <td class="action-icons">
+              <ng-container *ngFor="let action of row.Action">
+                <a
+                  *ngIf="
+                    action.link !== 'editplayer' &&
+                    action.link !== 'overviewplayer'
+                  "
+                  (click)="handleAction(action)"
+                >
+                  <img
+                    style="width: 40px"
+                    [src]="action.icon"
+                    alt="Action Icon"
+                    class="action-icon"
+                  />
+                </a>
+                <a
+                  *ngIf="
+                    action.link === 'editplayer' ||
+                    action.link === 'overviewplayer'
+                  "
+                  [href]="action.link"
+                >
+                  <img
+                    style="width: 40px"
+                    [src]="action.icon"
+                    alt="Action Icon"
+                    class="action-icon"
+                  />
+                </a>
+              </ng-container>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="deleteModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          class="close"
+          type="button"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body" style="font-size: 26px">
+        Select "Delete" below if you are sure you want to delete the player Fedi
+        Bahloul.
+      </div>
+      <div class="modal-footer">
+        <button
+          class="btn btn-secondary"
+          type="button"
+          data-dismiss="modal"
+          style="font-size: 24px"
+        >
+          Cancel
+        </button>
+
+        <button
+          class="btn btn-secondary"
+          type="button"
+          style="font-size: 24px; background-color: #1d0cb3"
+          (click)="delete()"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../../../vendor/jquery/jquery.min.js"></script>
+<script src="../../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="../../../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="../../../sb-admin-2.min.js"></script>

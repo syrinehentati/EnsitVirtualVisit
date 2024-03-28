@@ -1,0 +1,109 @@
+<!-- Page Wrapper -->
+<div id="wrapper">
+  <!-- Sidebar -->
+
+  <app-side-bar></app-side-bar>
+  <!-- End of Sidebar -->
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+      <!-- Topbar -->
+      <app-sidebar-menubuttons></app-sidebar-menubuttons>
+
+      <!--overview  player-->
+      <div class="container">
+        <div class="card">
+          <div class="card-body">
+            <h2 style="margin-left: 400px; color: #2f0c81; font-size: 40px">
+              Player Details
+            </h2>
+            <form #playerForm="ngForm">
+              <div class="form-group">
+                <label
+                  for="playerName"
+                  style="font-size: 27px; margin-top: 20px; margin-bottom: 10px"
+                  >Player Name:</label
+                >
+                <p
+                  style="font-size: 22px; margin-top: 20px; margin-bottom: 10px"
+                >
+                  {{ playerData.playerName }}
+                </p>
+              </div>
+              <div class="form-group">
+                <label
+                  for="AvatarEmail"
+                  style="font-size: 27px; margin-top: 20px; margin-bottom: 10px"
+                  >Avatar Email:</label
+                >
+                <p>
+                  <a
+                    [href]="playerData.AvatarEmail"
+                    style="
+                      font-size: 22px;
+                      margin-top: 20px;
+                      margin-bottom: 10px;
+                    "
+                    >{{ playerData.AvatarEmail }}</a
+                  >
+                </p>
+              </div>
+              <div class="form-group">
+                <label
+                  for="AvatarURL"
+                  style="font-size: 27px; margin-top: 20px; margin-bottom: 10px"
+                  >Avatar URL:</label
+                >
+                <p>
+                  <a
+                    [href]="playerData.AvatarURL"
+                    style="
+                      font-size: 22px;
+                      margin-top: 20px;
+                      margin-bottom: 10px;
+                    "
+                    >{{ playerData.AvatarURL }}</a
+                  >
+                </p>
+              </div>
+              <div class="form-group">
+                <label
+                  for="playerProfession"
+                  style="font-size: 25px; margin-top: 20px; margin-bottom: 10px"
+                  >player Profession:</label
+                >
+                <p
+                  style="font-size: 22px; margin-top: 20px; margin-bottom: 10px"
+                >
+                  {{ playerData.playerProfession }}
+                </p>
+              </div>
+
+              <div class="form-group">
+                <label
+                  for="playerBirthday"
+                  style="font-size: 25px; margin-top: 20px; margin-bottom: 10px"
+                  >player Birthday:</label
+                >
+                <p
+                  style="font-size: 22px; margin-top: 22px; margin-bottom: 10px"
+                >
+                  {{ playerData.playerBirthday }}
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- end overview player-->
+      <!-- Logout Modal-->
+
+      <app-logoutmodel></app-logoutmodel>
+
+      <!-- Bootstrap core JavaScript-->
+    </div>
+  </div>
+</div>

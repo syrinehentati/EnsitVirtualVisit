@@ -1,0 +1,140 @@
+<nav
+  class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+>
+  <!-- Sidebar Toggle (Topbar) -->
+
+  <!-- Topbar Search -->
+  <form
+    class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+  >
+    <div class="input-group">
+      <div class="input-group-append">
+        <h1 class="btn-primary" style="background-color: white; color: black">
+          Admin Dasboard
+        </h1>
+      </div>
+    </div>
+  </form>
+  <!-- Topbar Navbar -->
+
+  <div class="topbar-divider d-none d-sm-block"></div>
+
+  <!-- Nav Item - User Information -->
+  <!-- Nav Item - User Information -->
+
+  <span
+    class="mr-2 d-none d-lg-inline text-gray-600 small"
+    style="font-size: 18px"
+    >syrine hentati</span
+  ><a
+    href="#"
+    data-toggle="modal"
+    data-target="#logoutModal"
+    (click)="logout()"
+    style="color: blue"
+  >
+    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+    Logout
+  </a>
+  <!-- Dropdown - User Information -->
+</nav>
+<!-- End of Topbar -->
+<!-- Begin Page Content -->
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800" style="margin-left: 10px">Dasboard</h1>
+</div>
+
+<!-- Content Row -->
+<div class="row" style="margin-left: 5px; margin-right: 25px">
+  <!-- Earnings (Monthly) Card Example -->
+  <div class="col-xl-3 col-md-6 mb-4" style="width: 2500px">
+    <div class="card border-left-primary shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2" style="font-size: 40px">
+            <a routerLink="/mainpageavatar">
+              <div
+                class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                style="font-size: 25px"
+              >
+                Avatars
+              </div>
+            </a>
+            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Earnings (Monthly) Card Example -->
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-success shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <a routerLink="/mainpageplayer">
+              <div
+                class="text-xs font-weight-bold text-success text-uppercase mb-1"
+                style="font-size: 25px"
+              >
+                Players
+              </div></a
+            >
+            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-md-6 mb-4" style="width: 2500px">
+    <div class="card border-left-primary shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2" style="font-size: 40px">
+            <a routerLink="/mainpageposter">
+              <div
+                class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                style="font-size: 25px"
+              >
+                Posters
+              </div>
+            </a>
+            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Earnings (Monthly) Card Example -->
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-success shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <a routerLink="/mainpagestand">
+              <div
+                class="text-xs font-weight-bold text-success text-uppercase mb-1"
+                style="font-size: 25px"
+              >
+                Stands
+              </div></a
+            >
+            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../../../src/vendor/jquery/jquery.min.js"></script>
+<script src="../../../src/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="../../../src/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="../../../src/sb-admin-2.min.js"></script>
