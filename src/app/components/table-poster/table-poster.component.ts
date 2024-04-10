@@ -51,18 +51,7 @@ export class TablePosterComponent {
     this.router.navigate(['createposter']);
   }
 
-  handleAction(action: any) {
-    if (action.modalId === '#deleteModal') { 
-      this.openLogoutModal(); 
-    }
-  }
-
-  openLogoutModal() {
-    ($('#deleteModal') as any).modal('show');
-  }
-  delete(){
-    ($('#deleteModal') as any).modal('hide');
-  }
+  
 }
 
 

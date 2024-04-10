@@ -43,6 +43,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ChooseAvatarComponent } from './components/choose-avatar/choose-avatar.component';
 import { AuthService } from './services/auth.service';
 import { AvatarService } from './services/avatar.service';
+import { DeleteComponent } from './delete/delete.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { AvatarService } from './services/avatar.service';
     VideoSectionComponent,
     TableAvatarComponent,
     TestgameheaderComponent,
-    ChooseAvatarComponent
+    ChooseAvatarComponent,
+    DeleteComponent
 
     
   ],

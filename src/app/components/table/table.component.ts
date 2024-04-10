@@ -48,17 +48,5 @@ export class TableComponent {
     this.router.navigate(['createavatar']);
   }
 
-  handleAction(action: any) {
-    if (action.modalId === '#deleteModal') { // Check if action is to show logout modal
-      this.openLogoutModal(); // Call method to open logout modal
-    }
-  }
-
-  openLogoutModal() {
-    ($('#deleteModal') as any).modal('show');
-  }
   
-  delete(){
-    ($('#deleteModal') as any).modal('hide');
-  }
 }
