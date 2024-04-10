@@ -1,0 +1,85 @@
+<app-testgameheader></app-testgameheader>
+<div class="col-xl-3 col-md-6 mb-4" style="width: 2500px"></div>
+
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <h2 style="margin-left: 400px; color: #2f0c81; font-size: 40px">
+        Choose Player
+      </h2>
+      <form (ngSubmit)="submitplayerForm()" #playerForm="ngForm">
+        <div class="form-group">
+          <label
+            for="playerName"
+            style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
+            >Player username</label
+          >
+          <input
+            type="text"
+            id="playerEmail"
+            name="playerEmail"
+            style="font-size: 19px"
+            [(ngModel)]="playerData.playerEmail"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label
+            for="playerEmail"
+            style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
+            >Avatar Name</label
+          >
+          <select
+            id="avatar"
+            name="avatar"
+            [(ngModel)]="playerData.AvatarName"
+            class="form-control"
+            style="font-size: 19px"
+          >
+            <option value="Student">Student</option>
+            <option value="Teacher">Professor</option>
+            <option value="Other">Other</option>
+            <!-- Add more options here if needed -->
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            for="AvatarURL"
+            style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
+            >Avatar URL</label
+          >
+          <input
+            type="text"
+            id="AvatarURL"
+            name="AvatarURL"
+            style="font-size: 19px"
+          />
+        </div>
+        <input
+          type="file"
+          id="avatarImage"
+          name="avatarImage"
+          accept="image/*"
+          onchange="previewImage(event)"
+        />
+        <div class="image-preview">
+          <img
+            id="imagePreview"
+            src="../../../assets/img/avatar.png"
+            alt="Image Preview"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="playerForm.invalid"
+          style="font-size: 23px; margin-left: 400px"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

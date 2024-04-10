@@ -4,4 +4,5 @@ export interface Player{
         playerProfession: string;
         playerBirthday: Date;
         AvatarURL: string;
+        AvatarName: string;
       };

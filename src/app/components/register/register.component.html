@@ -13,28 +13,38 @@
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
               </div>
-              <form class="user" (ngSubmit)="register()">
+              <form #form="ngForm" (submit)="register(form)">
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <label>First Name:</label>
                     <input
                       type="text"
-                      class="form-control form-control-user"
+                      class="form-control form-control-admin"
                       id="exampleFirstName"
-                      [(ngModel)]="firstName"
-                      name="firstName"
-                      style="font-size: 18px"
+                      [(ngModel)]="admin.firstName"
+                      name="adminname"
+                      placeholder="Nom Utilisateur"
+                      [ngClass]="
+                        admin.firstName.length > 3 ? 'is-valid' : 'is-invalid'
+                      "
+                      required
+                      ngModel
                     />
                   </div>
                   <div class="col-sm-6">
                     <label>Last Name:</label>
                     <input
                       type="text"
-                      class="form-control form-control-user"
+                      class="form-control form-control-admin"
                       id="exampleLastName"
-                      [(ngModel)]="lastName"
-                      name="lastName"
-                      style="font-size: 18px"
+                      [(ngModel)]="admin.lastName"
+                      name="adminname"
+                      placeholder="Nom Utilisateur"
+                      [ngClass]="
+                        admin.lastName.length > 3 ? 'is-valid' : 'is-invalid'
+                      "
+                      required
+                      ngModel
                     />
                   </div>
                 </div>
@@ -42,11 +52,18 @@
                   <label>Email:</label>
                   <input
                     type="email"
-                    class="form-control form-control-user"
+                    class="form-control form-control-admin"
                     id="exampleInputEmail"
-                    [(ngModel)]="email"
+                    [(ngModel)]="admin.email"
                     name="email"
-                    style="font-size: 18px"
+                    placeholder="Mail Utilisateur"
+                    [ngClass]="{
+                      'is-valid': rightmail,
+                      'is-invalid': !rightmail
+                    }"
+                    (ngModelChange)="mailing(admin.email)"
+                    required
+                    ngModel
                   />
                 </div>
                 <div class="form-group row">
@@ -54,30 +71,48 @@
                     <label>Password:</label>
                     <input
                       type="password"
-                      class="form-control form-control-user"
+                      class="form-control form-control-admin"
                       id="exampleInputPassword"
-                      [(ngModel)]="password"
+                      [(ngModel)]="admin.password"
                       name="password"
-                      style="font-size: 18px"
+                      placeholder="Mot de passe"
+                      [ngClass]="
+                        admin.password.length > 0 ? 'is-valid' : 'is-invalid'
+                      "
+                      required
+                      ngModel
                     />
                   </div>
                   <div class="col-sm-6">
                     <label>Repeat Password:</label>
                     <input
                       type="password"
-                      class="form-control form-control-user"
+                      class="form-control form-control-admin"
                       id="exampleRepeatPassword"
                       [(ngModel)]="repeatPassword"
                       name="repeatPassword"
-                      style="font-size: 18px"
+                      placeholder="Confirmer Mot de passe"
+                      [ngClass]="
+                        this.admin.password === repeatPassword
+                          ? 'is-valid'
+                          : 'is-invalid'
+                      "
+                      (ngModelChange)="samePass(repeatPassword)"
+                      required
+                      ngModel
                     />
                   </div>
                 </div>
-                <a routerLink="/header">
+                <a routerLink="">
                   <button
+                    style="background-color: rgb(76, 63, 197); font-size: 20px"
                     type="submit"
-                    style="font-size: 22px"
-                    class="btn btn-primary btn-user btn-block"
+                    [disabled]="
+                      this.admin.password !== repeatPassword ||
+                      !this.rightmail ||
+                      admin.firstName.length < 4
+                    "
+                    class="btn btn-success btn-admin btn-block"
                   >
                     Register Account
                   </button></a

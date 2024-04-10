@@ -12,13 +12,16 @@
       <!-- Topbar -->
       <app-sidebar-menubuttons></app-sidebar-menubuttons>
 
-      <div class="container" >
+      <div class="container">
         <div class="card">
           <div class="card-body">
             <h2 style="margin-left: 400px; color: #2f0c81; font-size: 40px">
               Create Avatar
             </h2>
-            <form (ngSubmit)="submitAvatarForm()" #avatarForm="ngForm">
+            <form
+              (ngSubmit)="submitAvatarForm(avatarForm)"
+              #avatarForm="ngForm"
+            >
               <div class="form-group">
                 <label
                   for="avatarImage"

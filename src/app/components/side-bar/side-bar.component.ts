@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+declare var $: any;
+import { Router } from '@angular/router'; // Import Router from @angular/router
 
 @Component({
   selector: 'app-side-bar',
@@ -7,4 +9,7 @@ import { Component } from '@angular/core';
 })
 export class SideBarComponent {
 
+  logout() {
+    ($('#LogoutModal') as any).modal('show');
+  }
 }

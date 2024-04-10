@@ -1,9 +1,13 @@
 <ul
+  style="height: 600px"
   class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
   id="accordionSidebar"
 >
   <!-- Sidebar - Brand -->
-  <div class="sidebar-brand d-flex align-items-center justify-content-center">
+  <div
+    class="sidebar-brand d-flex align-items-center justify-content-center"
+    style="width: 260px"
+  >
     <div class="sidebar-brand-icon rotate-n-15">
       <i class="fas fa-laugh-wink"></i>
     </div>
@@ -21,5 +25,15 @@
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span style="font-size: 22px">Test the Game</span></a
     >
+    <a
+      href="#"
+      data-toggle="modal"
+      data-target="#logoutModal"
+      (click)="logout()"
+      style="color: rgb(241, 241, 255); font-size: 22px; margin-left: 11px"
+    >
+      <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+      Logout
+    </a>
   </li>
 </ul>

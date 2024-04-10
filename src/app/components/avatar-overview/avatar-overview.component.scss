@@ -3900,7 +3900,7 @@ input[type="submit"].btn-block {
   background: 50%/100% 100% no-repeat;
 }
 .navbar-nav-scroll {
-  max-height: 75vh;
+  max-height: 100vh;
   overflow-y: auto;
 }
 @media (max-width: 575.98px) {
@@ -9112,7 +9112,7 @@ a:focus {
 }
 .bg-gradient-primary {
   background-color: #3d1b8b;
-  background-size: cover;
+  background-size: 8000px;
 }
 .bg-gradient-secondary {
   background-color: #858796;

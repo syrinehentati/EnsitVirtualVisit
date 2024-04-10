@@ -1,4 +1,4 @@
-<body style="font-size: 20px">
+<body class="body" style="font-size: 20px">
   <div
     class="container d-flex justify-content-center align-items-center"
     style="min-height: 100vh"
@@ -22,19 +22,19 @@
                     class="form-control form-control-user"
                     id="exampleInputEmail"
                     aria-describedby="emailHelp"
+                    style="font-size: 18px"
                     placeholder="Enter Email Address..."
                     ng-model="email"
-                    style="font-size: 18px"
                   />
                 </div>
                 <div class="form-group">
                   <label>Password:</label>
                   <input
                     type="password"
+                    style="font-size: 18px"
                     class="form-control form-control-user"
                     id="exampleInputPassword"
                     ng-model="password"
-                    style="font-size: 18px"
                   />
                 </div>
                 <div class="form-group">
@@ -50,13 +50,13 @@
                   <button
                     type="button"
                     class="btn btn-primary btn-user btn-block"
-                    style="font-size: 22px"
                     (click)="onSubmit(form)"
                     [disabled]="form.invalid"
+                    style="font-size: 22px"
                   >
                     Login
-                  </button></a
-                >
+                  </button>
+                </a>
               </form>
               <p
                 class="text-danger text-center"
@@ -72,7 +72,6 @@
               >
                 Mot de passe incorrect!
               </p>
-
               <hr />
               <div class="text-center">
                 <a

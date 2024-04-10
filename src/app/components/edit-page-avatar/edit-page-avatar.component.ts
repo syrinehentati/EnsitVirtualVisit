@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+import {Form, NgForm} from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Avatar } from '../../Model/Avatar';
 import { AvatarService } from '../../services/avatar.service';
 
 @Component({
@@ -9,16 +12,15 @@ import { AvatarService } from '../../services/avatar.service';
 })
 export class EditPageAvatarComponent {
   avatarData: any = {};
+  avatar!: Avatar;
 
 
   constructor(private avatarService: AvatarService) { }
 
-  submitAvatarForm() {
-    // Store the form data using the service
-    this.avatarService.setAvatarData(this.avatarData);
+  submitAvatarForm(Form:Form) {
+    this.avatarService.updateAvatar(this.avatarData);
   }
   previewImage(event: any) {
-    // Handle image preview logic here
     const reader = new FileReader();
     reader.onload = () => {
       const preview = document.getElementById('imagePreview') as HTMLImageElement;
@@ -26,7 +28,9 @@ export class EditPageAvatarComponent {
     };
     reader.readAsDataURL(event.target.files[0]);
 
-    // Store image data
-    this.avatarData.avatarImage = event.target.files[0];
   }
 }
+
+
+
+

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+/*import { MdbModalRef } from 'mdb-angular-ui-kit/modal';*/
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -37,7 +38,11 @@ import { ProfileComponent } from './components/profile/profile.component';
 
 import { VideoSectionComponent } from './components/video-section/video-section.component';
 import { TableAvatarComponent } from './table-avatar/table-avatar.component';
-import { TestgameheaderComponent } from './testgameheader/testgameheader.component';
+import { TestgameheaderComponent } from './components/testgameheader/testgameheader.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ChooseAvatarComponent } from './components/choose-avatar/choose-avatar.component';
+import { AuthService } from './services/auth.service';
+import { AvatarService } from './services/avatar.service';
 
 @NgModule({
   declarations: [
@@ -72,7 +77,8 @@ import { TestgameheaderComponent } from './testgameheader/testgameheader.compone
     ProfileComponent,
     VideoSectionComponent,
     TableAvatarComponent,
-    TestgameheaderComponent
+    TestgameheaderComponent,
+    ChooseAvatarComponent
 
     
   ],
@@ -80,10 +86,14 @@ import { TestgameheaderComponent } from './testgameheader/testgameheader.compone
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+   /* MdbModalRef,*/
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    AvatarService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,17 +1,35 @@
 import { Injectable } from '@angular/core';
-
-import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Avatar } from '../Model/Avatar';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AvatarService {
-  private avatarDataSubject = new BehaviorSubject<any>({});
-  avatarData$ = this.avatarDataSubject.asObservable();
 
-  constructor() { }
+  private apiBaseUrl = environment.apiBaseUrl;
 
-  setAvatarData(data: any) {
-    this.avatarDataSubject.next(data);
+  constructor(private http: HttpClient) { }
+
+  public getAvatars(): Observable<Avatar[]> {
+    return this.http.get<Avatar[]>(`${this.apiBaseUrl}/Avatar/all`);
+  }
+
+  public getAvatarByURL(url: string): Observable<Avatar> {
+    return this.http.get<Avatar>(`${this.apiBaseUrl}/Avatar/find/${url}`);
+  }
+
+  public addAvatar(avatar: Avatar): Observable<Avatar> {
+    return this.http.post<Avatar>(`${this.apiBaseUrl}/Avatar/add`, avatar);
+  }
+
+  public updateAvatar(avatar: Avatar): Observable<Avatar> {
+    return this.http.put<Avatar>(`${this.apiBaseUrl}/Avatar/update`, avatar);
+  }
+
+  public deleteAvatar(url: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiBaseUrl}/Avatar/delete/${url}`);
   }
 }

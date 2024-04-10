@@ -10,7 +10,5 @@ import { Router } from '@angular/router'; // Import Router from @angular/router
 })
 export class SidebarMenubuttonsComponent {
 
-  logout() {
-    ($('#LogoutModal') as any).modal('show');
-  }
+ 
 }

@@ -22,10 +22,12 @@ import  {MainPagePlayerComponent}  from './components/main-page-player/main-page
 import { MainPageStandComponent } from './components/main-page-stand/main-page-stand.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { TableAvatarComponent } from './table-avatar/table-avatar.component';
+import { ChooseAvatarComponent } from './components/choose-avatar/choose-avatar.component';
 
 
 const routes: Routes = [{ path: '', component: LoginComponent },
 { path: 'register', component: RegisterComponent },
+{ path: 'chooseAvatar', component: ChooseAvatarComponent },
 { path: 'forgetpassword', component: ForgetPasswordComponent },
 { path: 'createavatar', component: CreateAvatarComponent },
 { path: 'mainpageavatar', component: MainPageAvatarComponent },
