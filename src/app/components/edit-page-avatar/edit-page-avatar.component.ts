@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import {Form, NgForm} from '@angular/forms';
+import { NgForm} from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Avatar } from '../../Model/Avatar';
 import { AvatarService } from '../../services/avatar.service';
@@ -11,13 +11,30 @@ import { AvatarService } from '../../services/avatar.service';
   styleUrl: './edit-page-avatar.component.scss'
 })
 export class EditPageAvatarComponent {
-  avatarData: any = {};
+  avatarData: Avatar = {
+    avatarName: 'keranis',
+    avatarGender:'Female',
+    avatarDescription: 'This is a description about keranis',
+    avatarURL: 'http://readyplayerme',
+    avatarExisting: 'yes',
+    avatarNPC:'no'
+  };
+  
+  
+  playerData: any = {
+    playerName: 'keranis',
+    playerEmail: 'sirinehentati@gmail.com',
+    playerProfession: 'Student',
+    playerBirthday: '2001-06-09',
+    AvatarURL:'https://redayplayerme',
+    playerJoke:'Why don t skeletons fight each other? They don t have the guts!'
+  };
   avatar!: Avatar;
 
 
   constructor(private avatarService: AvatarService) { }
 
-  submitAvatarForm(Form:Form) {
+  submitavatarForm(Form:NgForm) {
     this.avatarService.updateAvatar(this.avatarData);
   }
   previewImage(event: any) {

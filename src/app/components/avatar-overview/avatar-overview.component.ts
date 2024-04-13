@@ -14,10 +14,19 @@ export class AvatarOverviewComponent implements OnInit {
 
   avatarData: Avatar = {
     avatarName: 'keranis',
+    avatarGender:'Male',
     avatarDescription: 'This is a description about keranis',
     avatarURL: 'http://readyplayerme',
     avatarExisting: 'yes',
-    avatarNPC:'yes'
+    avatarNPC:'no'
+  };
+  playerData: any = {
+    playerName: 'keranis',
+    playerJoke:'Why was the JavaScript developer sad? Because he didn t know how to  null his feelings!',
+    playerEmail: 'sirinehentati@gmail.com',
+    playerProfession: 'Student',
+    playerBirthday: '2001-06-09',
+    AvatarURL:'https://redayplayerme'
   };
   
 
@@ -27,7 +36,10 @@ export class AvatarOverviewComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.fetchAvatarData();
+    this.avatarService.getAvatars2().subscribe(avatar2=> {
+      console.log(avatar2);
+    })
+    //this.fetchAvatarData();
   }
 
   fetchAvatarData(): void {
@@ -42,3 +54,7 @@ export class AvatarOverviewComponent implements OnInit {
     });
   }
 }
+function avatar2(avatar2: any) {
+  throw new Error('Function not implemented.');
+}
+

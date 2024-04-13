@@ -1,39 +1,60 @@
-<ul
-  style="height: 600px"
-  class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
-  id="accordionSidebar"
->
-  <!-- Sidebar - Brand -->
-  <div
-    class="sidebar-brand d-flex align-items-center justify-content-center"
-    style="width: 260px"
-  >
-    <div class="sidebar-brand-icon rotate-n-15">
-      <i class="fas fa-laugh-wink"></i>
-    </div>
-    <div class="sidebar-brand-text mx-3" style="font-size: 12px">
-      logged in as sirinehentati&#64;gmail.com
-    </div>
-  </div>
-
-  <!-- Divider -->
-  <hr class="sidebar-divider my-0" />
-
-  <!-- Nav Item - Dashboard -->
-  <li class="nav-item active">
-    <a class="nav-link" routerLink="/testgame">
+<ul style="background-color: rgb(25, 22, 187)">
+  <li class="nav-item active" style="padding-top: 30px; padding-left: 5%">
+    <a>
       <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span style="font-size: 22px">Test the Game</span></a
-    >
+      <span
+        class="user-email"
+        style="color: rgb(255, 255, 255); font-weight: bold; font-size: 0.9rem"
+        >Logged in as sirinehentati2086&#64;gmail.com</span
+      >
+    </a>
+  </li>
+  <hr
+    class="sidebar-divider"
+    style="background-color: rgb(255, 255, 255); font-weight: bold"
+  />
+  <li class="nav-item" style="padding-top: 30px">
+    <a href="/testgame" class="nav-link collapsed" target="_blank">
+      <i class="fas fa-home"></i>
+      <span style="margin-left: 8px; font-size: 1vw">Test the game</span>
+    </a>
+  </li>
+  <hr
+    class="sidebar-divider"
+    style="background-color: rgb(255, 255, 255); font-weight: bold"
+  />
+  <li class="nav-item">
+    <a href="/adminprofile" class="nav-link collapsed">
+      <i class="fas fa-user"></i>
+      <span style="margin-left: 8px; font-size: 1vw">Profile</span>
+    </a>
+  </li>
+  <hr
+    class="sidebar-divider"
+    style="background-color: rgb(255, 255, 255); font-weight: bold"
+  />
+  <li class="nav-item">
     <a
       href="#"
       data-toggle="modal"
       data-target="#logoutModal"
-      (click)="logout()"
-      style="color: rgb(241, 241, 255); font-size: 22px; margin-left: 11px"
+      class="nav-link collapsed"
     >
-      <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-      Logout
+      <i class="fas fa-sign-out-alt"></i>
+      <span style="margin-left: 8px; font-size: 1vw">Logout</span>
     </a>
   </li>
+  <hr
+    class="sidebar-divider"
+    style="background-color: rgb(255, 255, 255); font-weight: bold"
+  />
+  <li class="nav-item">
+    <span style="margin-left: 8px; color: azure; font-size: 1vw"
+      >Syrine Hentati</span
+    >
+  </li>
+  <hr
+    class="sidebar-divider"
+    style="background-color: rgb(255, 255, 255); font-weight: bold"
+  />
 </ul>

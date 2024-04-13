@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Admin } from '../Model/Admin'; 
+import { User } from '../Model/User'; 
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -13,15 +13,15 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  public getAdmins(): Observable<Admin[]> {
-    return this.http.get<Admin[]>(`${this.apiServerUrl}/User/all`);
+  public getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiServerUrl}/User/all`);
   }
 
-  public getAdminsByMail(mail: string): Observable<Admin> {
-    return this.http.get<Admin>(`${this.apiServerUrl}/User/find/${mail}`);
+  public getUsersByMail(mail: string): Observable<User> {
+    return this.http.get<User>(`${this.apiServerUrl}/User/find/${mail}`);
   }
 
-  public addAdmin(admin: Admin): Observable<Admin> {
-    return this.http.post<Admin>(`${this.apiServerUrl}/User/add`, admin);
+  public addUser(User: User): Observable<User> {
+    return this.http.post<User>(`${this.apiServerUrl}/User/add`, User);
   }
 }

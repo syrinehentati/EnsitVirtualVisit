@@ -4,9 +4,9 @@ import { Observable } from 'rxjs';
 import { AuthService } from './auth.service'; // Import your user service here
 
 import {MdbModalService} from 'mdb-angular-ui-kit/modal';
-import { Admin } from './Model/Admin';
+import { Admin } from '../Model/Admin';
 
-import {LoginComponent} from './components/login/login.component';
+import {LoginComponent} from '../components/login/login.component';
 
 
 @Injectable({

@@ -1,95 +1,108 @@
-<body class="body" style="font-size: 20px">
+<body class="body justify-content-center align-items-center">
   <div
     class="container d-flex justify-content-center align-items-center"
     style="min-height: 100vh"
   >
-    <div class="card o-hidden border-0 shadow-lg" style="width: 600px">
-      <div class="card-body p-0" style="width: 650px">
+    <div class="card o-hidden border-0 shadow-lg">
+      <div class="card-body" style="padding-right: 50%">
         <!-- Nested Row within Card Body -->
-        <div class="row" style="width: 1000px; font-size: 20px">
-          <div class="col-lg-6">
-            <div class="p-5" style="width: 560px">
-              <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4" style="font-size: 28px">
-                  Welcome Back!
-                </h1>
-              </div>
-              <form #form="ngForm" (submit)="onSubmit(form)">
-                <div class="form-group">
-                  <label>Email:</label>
-                  <input
-                    type="email"
-                    class="form-control form-control-user"
-                    id="exampleInputEmail"
-                    aria-describedby="emailHelp"
-                    style="font-size: 18px"
-                    placeholder="Enter Email Address..."
-                    ng-model="email"
-                  />
-                </div>
-                <div class="form-group">
-                  <label>Password:</label>
-                  <input
-                    type="password"
-                    style="font-size: 18px"
-                    class="form-control form-control-user"
-                    id="exampleInputPassword"
-                    ng-model="password"
-                  />
-                </div>
-                <div class="form-group">
-                  <div class="custom-control custom-checkbox small">
-                    <input
-                      type="checkbox"
-                      class="custom-control-input"
-                      id="customCheck"
-                    />
-                  </div>
-                </div>
-                <a routerLink="/mainpageavatar">
-                  <button
-                    type="button"
-                    class="btn btn-primary btn-user btn-block"
-                    (click)="onSubmit(form)"
-                    [disabled]="form.invalid"
-                    style="font-size: 22px"
-                  >
-                    Login
-                  </button>
-                </a>
-              </form>
-              <p
-                class="text-danger text-center"
-                *ngIf="!correcte"
-                style="margin-top: 5%; margin-bottom: -5%"
-              >
-                Compte non trouvé!
-              </p>
-              <p
-                class="text-danger text-center"
-                *ngIf="IncorrectPass"
-                style="margin-top: 5%; margin-bottom: -5%"
-              >
-                Mot de passe incorrect!
-              </p>
-              <hr />
-              <div class="text-center">
-                <a
-                  class="small"
-                  routerLink="/forgetpassword"
-                  style="font-size: 16px"
-                  >Forgot Password?</a
-                >
-              </div>
-              <div class="text-center">
-                <a class="small" routerLink="/register" style="font-size: 16px"
-                  >Create an Account!</a
-                >
-              </div>
+
+        <div class="text-center">
+          <h1
+            class="h4 mb-4"
+            style="
+              font-family: Georgia, 'Times New Roman', Times, serif;
+              font-size: 2vw;
+              color: rgb(48, 9, 138);
+            "
+          >
+            Welcome Back!
+          </h1>
+        </div>
+        <form #form="ngForm" (submit)="onSubmit(form)">
+          <div class="form-group">
+            <label
+              style="
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                color: rgb(48, 9, 138);
+              "
+              >Email:</label
+            >
+            <input
+              type="email"
+              class="form-control form-control-user"
+              id="exampleInputEmail"
+              aria-describedby="emailHelp"
+              placeholder="Enter Email Address..."
+              ng-model="email"
+            />
+          </div>
+          <div class="form-group">
+            <label
+              style="
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                color: rgb(48, 9, 138);
+              "
+              >Password:</label
+            >
+            <input
+              type="password"
+              class="form-control form-control-user"
+              id="exampleInputPassword"
+              ng-model="password"
+            />
+          </div>
+          <div class="form-group">
+            <div class="custom-control custom-checkbox small">
+              <input
+                type="checkbox"
+                class="custom-control-input"
+                id="customCheck"
+              />
             </div>
           </div>
+          <a routerLink="/mainpageavatar">
+            <button
+              type="button"
+              class="btn btn-primary btn-user btn-block"
+              (click)="onSubmit(form)"
+              [disabled]="form.invalid"
+              style="background-color: rgb(48, 9, 138)"
+            >
+              Login
+            </button>
+          </a>
+        </form>
+        <p class="text-danger text-center" *ngIf="!correcte">
+          Compte non trouvé!
+        </p>
+        <p class="text-danger text-center" *ngIf="IncorrectPass">
+          Mot de passe incorrect!
+        </p>
+        <hr />
+        <div class="text-center">
+          <a
+            class="small"
+            routerLink="/forgetpassword"
+            style="font-size: 0.8em; color: rgb(48, 9, 138)"
+          >
+            Forgot Password?
+          </a>
+        </div>
+        <div class="text-center">
+          <a
+            class="small"
+            routerLink="/register"
+            style="font-size: 0.8em; color: rgb(48, 9, 138)"
+          >
+            Create an Account!
+          </a>
         </div>
       </div>
     </div>
   </div>
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>

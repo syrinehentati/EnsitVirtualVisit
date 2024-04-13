@@ -12,7 +12,8 @@ export class PlayerOverviewComponent {
     playerEmail: 'sirinehentati@gmail.com',
     playerProfession: 'Student',
     playerBirthday: '2001-06-09',
-    AvatarURL:'https://redayplayerme'
+    AvatarURL:'https://redayplayerme',
+    playerJoke:'Why don t skeletons fight each other? They don t have the guts!'
   };
 
 }

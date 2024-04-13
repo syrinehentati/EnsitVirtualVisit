@@ -1,138 +1,139 @@
-<body style="font-size: 20px">
-  <div class="container" style="width: 1500px">
-    <div
-      class="card o-hidden border-0 shadow-lg my-5"
-      style="width: 800px; margin-left: 200px"
-    >
+<body>
+  <div class="container my-5">
+    <div class="card o-hidden border-0 shadow-lg">
       <div class="card-body p-0">
-        <!-- Nested Row within Card Body -->
         <div>
-          <div class="d-none d-lg-block"></div>
-          <div>
-            <div class="p-5">
-              <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
-              </div>
-              <form #form="ngForm" (submit)="register(form)">
-                <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label>First Name:</label>
-                    <input
-                      type="text"
-                      class="form-control form-control-admin"
-                      id="exampleFirstName"
-                      [(ngModel)]="admin.firstName"
-                      name="adminname"
-                      placeholder="Nom Utilisateur"
-                      [ngClass]="
-                        admin.firstName.length > 3 ? 'is-valid' : 'is-invalid'
-                      "
-                      required
-                      ngModel
-                    />
-                  </div>
-                  <div class="col-sm-6">
-                    <label>Last Name:</label>
-                    <input
-                      type="text"
-                      class="form-control form-control-admin"
-                      id="exampleLastName"
-                      [(ngModel)]="admin.lastName"
-                      name="adminname"
-                      placeholder="Nom Utilisateur"
-                      [ngClass]="
-                        admin.lastName.length > 3 ? 'is-valid' : 'is-invalid'
-                      "
-                      required
-                      ngModel
-                    />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label>Email:</label>
+          <div class="p-5">
+            <div class="text-center">
+              <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+            </div>
+            <form #form="ngForm" (submit)="register(form)">
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <label>First Name:</label>
                   <input
-                    type="email"
-                    class="form-control form-control-admin"
-                    id="exampleInputEmail"
-                    [(ngModel)]="admin.email"
-                    name="email"
-                    placeholder="Mail Utilisateur"
-                    [ngClass]="{
-                      'is-valid': rightmail,
-                      'is-invalid': !rightmail
-                    }"
-                    (ngModelChange)="mailing(admin.email)"
+                    type="text"
+                    class="form-control form-control-User"
+                    id="exampleFirstName"
+                    [(ngModel)]="User.firstName"
+                    name="UserfirstName"
+                    placeholder="Nom Utilisateur"
+                    [ngClass]="
+                      User.firstName.length > 3 ? 'is-valid' : 'is-invalid'
+                    "
                     required
                     ngModel
                   />
                 </div>
-                <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label>Password:</label>
-                    <input
-                      type="password"
-                      class="form-control form-control-admin"
-                      id="exampleInputPassword"
-                      [(ngModel)]="admin.password"
-                      name="password"
-                      placeholder="Mot de passe"
-                      [ngClass]="
-                        admin.password.length > 0 ? 'is-valid' : 'is-invalid'
-                      "
-                      required
-                      ngModel
-                    />
-                  </div>
-                  <div class="col-sm-6">
-                    <label>Repeat Password:</label>
-                    <input
-                      type="password"
-                      class="form-control form-control-admin"
-                      id="exampleRepeatPassword"
-                      [(ngModel)]="repeatPassword"
-                      name="repeatPassword"
-                      placeholder="Confirmer Mot de passe"
-                      [ngClass]="
-                        this.admin.password === repeatPassword
-                          ? 'is-valid'
-                          : 'is-invalid'
-                      "
-                      (ngModelChange)="samePass(repeatPassword)"
-                      required
-                      ngModel
-                    />
-                  </div>
-                </div>
-                <a routerLink="">
-                  <button
-                    style="background-color: rgb(76, 63, 197); font-size: 20px"
-                    type="submit"
-                    [disabled]="
-                      this.admin.password !== repeatPassword ||
-                      !this.rightmail ||
-                      admin.firstName.length < 4
+                <div class="col-sm-6">
+                  <label>Last Name:</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-User"
+                    id="exampleLastName"
+                    [(ngModel)]="User.lastName"
+                    name="Username"
+                    placeholder="Nom Utilisateur"
+                    [ngClass]="
+                      User.lastName.length > 3 ? 'is-valid' : 'is-invalid'
                     "
-                    class="btn btn-success btn-admin btn-block"
-                  >
-                    Register Account
-                  </button></a
-                >
-              </form>
-              <hr />
-              <div class="text-center" style="font-size: 21px">
-                <a class="small" routerLink="/forgetpassword"
-                  >Forgot Password?</a
-                >
+                    required
+                    ngModel
+                  />
+                </div>
               </div>
-              <div class="text-center" style="font-size: 21px">
-                <a class="small" routerLink=""
-                  >Already have an account? Login!</a
-                >
+              <div class="form-group">
+                <label>Email:</label>
+                <input
+                  type="email"
+                  class="form-control form-control-User"
+                  id="exampleInputEmail"
+                  [(ngModel)]="User.email"
+                  name="email"
+                  placeholder="Mail Utilisateur"
+                  [ngClass]="{
+                    'is-valid': rightmail,
+                    'is-invalid': !rightmail
+                  }"
+                  (ngModelChange)="mailing(User.email)"
+                  required
+                  ngModel
+                />
               </div>
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <label>Password:</label>
+                  <input
+                    type="password"
+                    class="form-control form-control-User"
+                    id="exampleInputPassword"
+                    [(ngModel)]="User.password"
+                    name="password"
+                    placeholder="Mot de passe"
+                    [ngClass]="
+                      User.password.length > 0 ? 'is-valid' : 'is-invalid'
+                    "
+                    required
+                    ngModel
+                  />
+                </div>
+                <div class="col-sm-6">
+                  <label>Repeat Password:</label>
+                  <input
+                    type="password"
+                    class="form-control form-control-User"
+                    id="exampleRepeatPassword"
+                    [(ngModel)]="repeatPassword"
+                    name="repeatPassword"
+                    placeholder="Confirmer Mot de passe"
+                    [ngClass]="
+                      this.User.password === repeatPassword
+                        ? 'is-valid'
+                        : 'is-invalid'
+                    "
+                    (ngModelChange)="samePass(repeatPassword)"
+                    required
+                    ngModel
+                  />
+                </div>
+              </div>
+              <button
+                type="submit"
+                [disabled]="
+                  this.User.password !== repeatPassword ||
+                  !this.rightmail ||
+                  User.firstName.length < 4
+                "
+                class="btn btn-success btn-User btn-block"
+                style="background-color: rgb(48, 9, 138)"
+              >
+                Register Account
+              </button>
+            </form>
+            <hr />
+            <div class="text-center">
+              <a
+                class="small"
+                routerLink="/forgetpassword"
+                style="font-size: 0.8em; color: rgb(48, 9, 138)"
+                >Forgot Password?</a
+              >
+            </div>
+            <div class="text-center">
+              <a
+                class="small"
+                routerLink=""
+                style="font-size: 0.8em; color: rgb(48, 9, 138)"
+                >Already have an account? Login!</a
+              >
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>

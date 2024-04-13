@@ -9,7 +9,10 @@
   >
     <div class="input-group">
       <div class="input-group-append">
-        <h1 class="btn-primary" style="background-color: white; color: black">
+        <h1
+          class="btn-primary"
+          style="background-color: white; color: black; font-size: 35px"
+        >
           Admin Dasboard
         </h1>
       </div>
@@ -17,103 +20,109 @@
   </form>
   <!-- Topbar Navbar -->
 
-  <div class="topbar-divider d-none d-sm-block"></div>
-
   <!-- Nav Item - User Information -->
   <!-- Nav Item - User Information -->
 
-  <span
-    class="mr-2 d-none d-lg-inline text-gray-600 small"
-    style="font-size: 18px"
-    >syrine hentati</span
-  >
   <!-- Dropdown - User Information -->
 </nav>
 <!-- End of Topbar -->
 <!-- Begin Page Content -->
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-  <h1 class="h3 mb-0 text-gray-800" style="margin-left: 10px">Dasboard</h1>
+  <h2 class="h3 mb-0 text-gray-800" style="margin-left: 10px">Dasboard</h2>
 </div>
-
 <!-- Content Row -->
-<div class="row" style="margin-left: 5px; margin-right: 25px">
-  <!-- Earnings (Monthly) Card Example -->
-  <div class="col-xl-3 col-md-6 mb-4" style="width: 2500px">
-    <div class="card border-left-primary shadow h-100 py-2">
-      <div class="card-body">
+<div class="row" style="margin-left: 5px; margin-right: 18px">
+  <!-- Avatars Card -->
+  <div class="col-xl-3 col-md-6 mb-4 avatars-card" style="width: 200px">
+    <div class="card border-left-primary shadow h-100 py-3">
+      <div class="card-body py-2">
         <div class="row no-gutters align-items-center">
-          <div class="col mr-2" style="font-size: 40px">
+          <div class="col mr-2">
             <a routerLink="/mainpageavatar">
               <div
                 class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-                style="font-size: 25px"
+                style="font-size: 18px"
               >
                 Avatars
               </div>
             </a>
             <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Earnings (Monthly) Card Example -->
-  <div class="col-xl-3 col-md-6 mb-4">
-    <div class="card border-left-success shadow h-100 py-2">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <a routerLink="/mainpageplayer">
-              <div
-                class="text-xs font-weight-bold text-success text-uppercase mb-1"
-                style="font-size: 25px"
-              >
-                Players
-              </div></a
-            >
-            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+          <div class="col-auto">
+            <i class="fas fa-user fa-2x avatars-icon"></i>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-xl-3 col-md-6 mb-4" style="width: 2500px">
-    <div class="card border-left-primary shadow h-100 py-2">
-      <div class="card-body">
+
+  <!-- Players Card -->
+  <div class="col-xl-3 col-md-6 mb-4 players-card">
+    <div class="card border-left-success shadow h-100 py-3">
+      <div class="card-body py-2">
         <div class="row no-gutters align-items-center">
-          <div class="col mr-2" style="font-size: 40px">
+          <div class="col mr-2">
+            <a routerLink="/mainpageplayer">
+              <div
+                class="text-xs font-weight-bold text-success text-uppercase mb-1"
+                style="font-size: 18px"
+              >
+                Players
+              </div>
+            </a>
+            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-users fa-2x players-icon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Posters Card -->
+  <div class="col-xl-3 col-md-6 mb-4 posters-card" style="width: 180px">
+    <div class="card border-left-info shadow h-100 py-3">
+      <div class="card-body py-2">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
             <a routerLink="/mainpageposter">
               <div
-                class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-                style="font-size: 25px"
+                class="text-xs font-weight-bold text-info text-uppercase mb-1"
+                style="font-size: 18px"
               >
                 Posters
               </div>
             </a>
             <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
           </div>
+          <div class="col-auto">
+            <i class="fas fa-image fa-2x posters-icon"></i>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Earnings (Monthly) Card Example -->
-  <div class="col-xl-3 col-md-6 mb-4">
-    <div class="card border-left-success shadow h-100 py-2">
-      <div class="card-body">
+  <!-- Stands Card -->
+  <div class="col-xl-3 col-md-6 mb-4 stands-card">
+    <div class="card border-left-warning shadow h-100 py-3">
+      <div class="card-body py-2">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <a routerLink="/mainpagestand">
               <div
-                class="text-xs font-weight-bold text-success text-uppercase mb-1"
-                style="font-size: 25px"
+                class="text-xs font-weight-bold text-warning text-uppercase mb-1"
+                style="font-size: 18px"
               >
                 Stands
-              </div></a
-            >
+              </div>
+            </a>
             <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-store-alt fa-2x stands-icon"></i>
           </div>
         </div>
       </div>
@@ -129,3 +138,5 @@
 
 <!-- Custom scripts for all pages-->
 <script src="../../../sb-admin-2.min.js"></script>
+<script src="../../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../../vendor/jquery/jquery.min.js"></script>

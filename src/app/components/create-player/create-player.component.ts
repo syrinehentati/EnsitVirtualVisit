@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-create-player',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
 })
 export class CreatePlayerComponent {
   playerData: any = {};
-  submitplayerForm(){}
+  submitplayerForm(form:NgForm){}
 }

@@ -1,8 +1,10 @@
 export interface Stand {
         standName: string;
         standDescription:  string;
+        standSubject : string;
+        standImage:string;
         standURL: string;
-        standLocalisation: string;
+        standType: string;
         standPrice: Number;
         standExisting:  string;
        

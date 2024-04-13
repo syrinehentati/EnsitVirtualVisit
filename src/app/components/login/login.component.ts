@@ -1,7 +1,7 @@
 import { Component , OnInit} from '@angular/core';
 import{Router} from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import {Admin} from '../../Model/Admin';
+import {User} from '../../Model/User';
 
 import { HttpErrorResponse } from '@angular/common/http';
 import {NgForm} from '@angular/forms';
@@ -14,7 +14,7 @@ import {NgForm} from '@angular/forms';
 export class LoginComponent {
 
 
-  Admin: Admin = {
+  User: User = {
     email: '',
     password: '',
     firstName: '',
@@ -35,9 +35,9 @@ ngOnInit(): void {
 
 
 onSubmit(form: NgForm) {
-    this.authService.getAdminsByMail(this.Admin.email).subscribe(
-        (result: Admin) => {
-            if (this.Admin.password === result.password) {
+    this.authService.getUsersByMail(this.User.email).subscribe(
+        (result: User) => {
+            if (this.User.password === result.password) {
                 
                 sessionStorage.setItem('currentUser', JSON.stringify(result));
                 this.router.navigate(['dashboard']);

@@ -1,54 +1,66 @@
 <div
   class="card shadow mb-4"
-  style="font-size: 22px; width: 1700px; margin-left: 17px"
+  style="font-size: 1.2vw; width: 90%; margin: 0 auto"
 >
-  <div style="align-items: center; margin-left: 700px; margin-top: 10px">
+  <div style="text-align: center; margin-top: 0.5vw">
     <button
       (click)="navigateToCreateposter()"
       style="
-        background-color: #1d0cb3; /* Green */
+        background-color: #1d0cb3;
         border: none;
         color: white;
-        padding: 15px 32px;
+        padding: 0.8vw 2vw;
         text-align: center;
         text-decoration: none;
         display: inline-block;
-        font-size: 21px;
-        margin-top: 5px;
-        margin: auto; /* This centers the button horizontally */
+        font-size: 1vw;
+        margin-top: 0.5vw;
         cursor: pointer;
-        border-radius: 8px; /* Optional: adds rounded corners */
+        border-radius: 1vw;
         transition: background-color 0.3s;
+        font-family: 'Amasis MT Pro Medium';
       "
+      onmouseover="this.style.transform = 'scale(1.05)'"
+      onmouseout="this.style.transform = 'scale(1)'"
     >
       Add Poster
     </button>
   </div>
-  <div class="card-body" style="margin: auto">
-    <div class="table-responsive">
-      <table
-        class="table table-bordered"
-        id="dataTable"
-        width="1400px"
-        cellspacing="0"
-      >
-        <thead>
+
+  <div class="card-body d-flex justify-content-center">
+    <div class="table-responsive" style="font-size: 1.2vw">
+      <table class="table table-bordered table-striped" id="dataTable">
+        <thead style="text-align: center">
           <tr>
-            <th>Poster Title</th>
-            <th>Localisation</th>
-            <th>Existing</th>
-            <th>Price</th>
-            <th style="width: 150px">Action</th>
+            <th style="font-family: 'Amasis MT Pro Medium'; width: 15%">
+              Poster Title
+            </th>
+            <th style="font-family: 'Amasis MT Pro Medium'; width: 30%">
+              Subject
+            </th>
+            <th style="font-family: 'Amasis MT Pro Medium'; width: 15%">
+              Type
+            </th>
+            <th style="font-family: 'Amasis MT Pro Medium'; width: 15%">
+              Existing
+            </th>
+            <th style="font-family: 'Amasis MT Pro Medium'; width: 15%">
+              Price
+            </th>
+            <th style="font-family: 'Amasis MT Pro Medium'; width: 15%">
+              Action
+            </th>
           </tr>
         </thead>
         <tfoot></tfoot>
-        <tbody>
+        <tbody style="text-align: center">
           <tr *ngFor="let row of tableData">
             <td>{{ row.Title }}</td>
-            <td>{{ row.Localisation }}</td>
+            <td>{{ row.Subject }}</td>
+            <td>{{ row.Type }}</td>
             <td>{{ row.Existing }}</td>
             <td>{{ row.Price }}dt</td>
-            <td class="action-icons">
+            <td class="action-icons col-lg-3">
               <ng-container *ngFor="let action of row.Action">
                 <a
                   *ngIf="
@@ -57,12 +69,22 @@
                   "
                   (click)="handleAction(action)"
                 >
-                  <img
-                    style="width: 40px"
-                    [src]="action.icon"
-                    alt="Action Icon"
+                  <span
                     class="action-icon"
-                  />
+                    [ngClass]="{
+                      'text-danger':
+                        action.icon === '../../../assets/img/delete.jpeg',
+                      'text-primary':
+                        action.icon === '../../../assets/img/view.jpg',
+                      'text-warning':
+                        action.icon === '../../../assets/img/edit.png'
+                    }"
+                  >
+                    <i
+                      class="bi bi-{{ action.iconClass }}"
+                      (click)="handleAction(action)"
+                    ></i>
+                  </span>
                 </a>
                 <a
                   *ngIf="
@@ -71,12 +93,22 @@
                   "
                   [href]="action.link"
                 >
-                  <img
-                    style="width: 40px"
-                    [src]="action.icon"
-                    alt="Action Icon"
+                  <span
                     class="action-icon"
-                  />
+                    [ngClass]="{
+                      'text-danger':
+                        action.icon === '../../../assets/img/delete.jpeg',
+                      'text-primary':
+                        action.icon === '../../../assets/img/view.jpg',
+                      'text-warning':
+                        action.icon === '../../../assets/img/edit.png'
+                    }"
+                  >
+                    <i
+                      class="bi bi-{{ action.iconClass }}"
+                      (click)="handleAction(action)"
+                    ></i>
+                  </span>
                 </a>
               </ng-container>
             </td>
@@ -86,7 +118,6 @@
     </div>
   </div>
 </div>
-
 <app-delete></app-delete>
 
 <script src="../../../vendor/jquery/jquery.min.js"></script>

@@ -12,40 +12,41 @@ export class TablePlayerComponent {
   tableData: any[] = [
     { 
       PlayerName: 'fedi Bahloul',
+      Email:'fediBahloul@gmail.com',
       Profession: 'Professor',
-      
+      Birthday: "21-09-2001",
       Action: [
-        { link: 'overviewplayer', icon: '../../../assets/img/view.jpg' },
-        { link: 'editplayer', icon: '../../../assets/img/edit.png' },
-        { modalId: '#deleteModal', icon: '../../../assets/img/delete.jpeg' },
+        { link: 'overviewplayer', icon: '../../../assets/img/view.jpg',iconClass: 'eye' },
+        { link: 'editplayer', icon: '../../../assets/img/edit.png' ,iconClass: 'pencil' },
+        { modalId: '#deleteModal', icon: '../../../assets/img/delete.jpeg',iconClass: 'trash' },
       ]
     },
     { 
       PlayerName: 'Syrine hentati',
+      Email:'sirinehentati@gmail.com',
       Profession: 'Student',
+      Birthday: "21-09-2001",
       Action: [
-        { link: 'overviewplayer', icon: '../../../assets/img/view.jpg' },
-        { link: 'editplayer', icon: '../../../assets/img/edit.png' },
-        { modalId: '#deleteModal', icon: '../../../assets/img/delete.jpeg' },
+        { link: 'overviewplayer', icon: '../../../assets/img/view.jpg' ,iconClass: 'eye'},
+        { link: 'editplayer', icon: '../../../assets/img/edit.png' ,iconClass: 'pencil'},
+        { modalId: '#deleteModal', icon: '../../../assets/img/delete.jpeg' ,iconClass: 'trash'},
       ]
     },
     { 
       PlayerName: 'Mahdi hadj sassi',
       Profession: 'Student',
+      Email:'Mahdihadjsassi@gmail.com',
+      Birthday: "21-09-2001",
       Action: [
-        { link: 'overviewplayer', icon: '../../../assets/img/view.jpg' },
-        { link: 'editplayer', icon: '../../../assets/img/edit.png' },
-        { modalId: '#deleteModal', icon: '../../../assets/img/delete.jpeg' },
+        { link: 'overviewplayer', icon: '../../../assets/img/view.jpg',iconClass: 'eye' },
+        { link: 'editplayer', icon: '../../../assets/img/edit.png',iconClass: 'pencil' },
+        { modalId: '#deleteModal', icon: '../../../assets/img/delete.jpeg' ,iconClass: 'trash' },
       ]
     }
   ];
 
   constructor(private router: Router) { } 
-
-  navigateToCreateplayer() {
-    this.router.navigate(['createplayer']);
-  }
-
+  
   handleAction(action: any) {
     if (action.modalId === '#deleteModal') { 
       this.openLogoutModal(); 
@@ -55,8 +56,9 @@ export class TablePlayerComponent {
   openLogoutModal() {
     ($('#deleteModal') as any).modal('show');
   }
-  delete(){
-    ($('#deleteModal') as any).modal('hide');
+  navigateToCreateplayer() {
+    this.router.navigate(['createplayer']);
   }
+
   
 }

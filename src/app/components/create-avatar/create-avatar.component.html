@@ -1,7 +1,6 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
   <!-- Sidebar -->
-
   <app-side-bar></app-side-bar>
   <!-- End of Sidebar -->
 
@@ -12,151 +11,216 @@
       <!-- Topbar -->
       <app-sidebar-menubuttons></app-sidebar-menubuttons>
 
-      <div class="container">
-        <div class="card">
-          <div class="card-body">
-            <h2 style="margin-left: 400px; color: #2f0c81; font-size: 40px">
-              Create Avatar
-            </h2>
-            <form
-              (ngSubmit)="submitAvatarForm(avatarForm)"
-              #avatarForm="ngForm"
-            >
-              <div class="form-group">
-                <label
-                  for="avatarImage"
-                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
-                  >Avatar Image</label
-                >
-                <input
-                  type="file"
-                  id="avatarImage"
-                  name="avatarImage"
-                  accept="image/*"
-                  onchange="previewImage(event)"
-                />
-                <div class="image-preview">
-                  <img
-                    id="imagePreview"
-                    src="../../../assets/img/avatar.png"
-                    alt="Image Preview"
-                  />
-                </div>
-              </div>
-              <div class="form-group">
-                <label
-                  for="avatarName"
-                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
-                  >Avatar Name</label
-                >
+      <div
+        class="container form-container"
+        style="background-color: white; padding: 30px; width: 50%"
+      >
+        <form
+          style="width: 100%"
+          (ngSubmit)="submitavatarForm(avatarForm)"
+          #avatarForm="ngForm"
+        >
+          <div class="row">
+            <div class="col-lg-12">
+              <h2>Create Avatar</h2>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 65px">Avatar Name</h3>
+              <div class="input-group input-group-icon">
                 <input
                   type="text"
-                  id="avatarName"
-                  name="avatarName"
-                  style="font-size: 19px"
+                  placeholder="Avatar Name"
                   [(ngModel)]="avatarData.avatarName"
                   required
                 />
+                <div class="input-icon">
+                  <i class="fas fa-user"></i>
+                </div>
               </div>
-              <div class="form-group">
-                <label
-                  for="avatarDescription"
-                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
-                  >Avatar Description</label
-                >
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 6px">Avatar Description</h3>
+              <div class="input-group input-group-icon">
                 <textarea
-                  id="avatarDescription"
-                  name="avatarDescription"
-                  style="font-size: 19px"
-                  rows="4"
                   [(ngModel)]="avatarData.avatarDescription"
+                  placeholder="Description"
+                  rows="4"
+                  required
                 ></textarea>
               </div>
-              <div class="form-group">
-                <label
-                  for="avatarURL"
-                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
-                  >Avatar URL</label
-                >
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 7px">Avatar URL</h3>
+              <div class="input-group input-group-icon">
                 <input
                   type="text"
-                  id="avatarURL"
-                  name="avatarURL"
-                  style="font-size: 19px"
+                  placeholder="Avatar URL"
+                  [(ngModel)]="avatarData.avatarURL"
+                  required
                 />
-              </div>
-              <div class="form-group">
-                <label
-                  for="avatarNPC"
-                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
-                  >Avatar Non Player Character</label
-                >
-                <div class="radio-buttons">
-                  <label class="radio-button-label">
-                    <input
-                      type="radio"
-                      [(ngModel)]="avatarData.avatarNPC"
-                      id="avatarNPCyes"
-                      name="avatarNPC"
-                      value="yes"
-                    />
-                    <span class="radio-button-text">Yes</span>
-                  </label>
-                  <label class="radio-button-label">
-                    <input
-                      type="radio"
-                      [(ngModel)]="avatarData.avatarNPC"
-                      id="avatarNPCno"
-                      name="avatarNPC"
-                      value="no"
-                    />
-                    <span class="radio-button-text">No</span>
-                  </label>
+                <div class="input-icon">
+                  <i class="fas fa-link"></i>
                 </div>
               </div>
+            </div>
+          </div>
 
-              <div class="form-group">
-                <label
-                  for="avatarExisting"
-                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
-                  >Avatar Existing</label
-                >
-                <div class="radio-buttons">
-                  <label class="radio-button-label">
-                    <input
-                      type="radio"
-                      [(ngModel)]="avatarData.avatarExisting"
-                      id="avatarExistingyes"
-                      name="avatarExisting"
-                      value="yes"
-                    />
-                    <span class="radio-button-text">Yes</span>
-                  </label>
-                  <label class="radio-button-label">
-                    <input
-                      type="radio"
-                      [(ngModel)]="avatarData.avatarExisting"
-                      id="avatarExistingno"
-                      name="avatarExisting"
-                      value="no"
-                    />
-                    <span class="radio-button-text">No</span>
-                  </label>
+          <div class="row">
+            <div class="col-lg-6">
+              <h3>Avatar Existing</h3>
+              <div class="input-group radio-container">
+                <input
+                  id="avatarExistingyes"
+                  type="radio"
+                  name="avatarExisting"
+                  value="yes"
+                  [(ngModel)]="avatarData.avatarExisting"
+                  required
+                />
+                <label for="avatarExistingyes">Yes</label>
+                <input
+                  id="avatarExistingNo"
+                  type="radio"
+                  name="avatarExisting"
+                  [(ngModel)]="avatarData.avatarExisting"
+                  value="no"
+                  required
+                />
+                <label for="avatarExistingNo">No</label>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <h3>Avatar Gender</h3>
+              <div class="input-group radio-container">
+                <input
+                  id="gender-male"
+                  type="radio"
+                  name="gender"
+                  value="male"
+                  [(ngModel)]="avatarData.avatarGender"
+                  required
+                />
+                <label for="gender-male">Male</label>
+                <input
+                  id="gender-female"
+                  type="radio"
+                  name="gender"
+                  [(ngModel)]="avatarData.avatarGender"
+                  value="female"
+                  required
+                />
+                <label for="gender-female">Female</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 5%">Avatar Non Player Character</h3>
+              <div class="input-group radio-container">
+                <input
+                  id="avatarNPCyes"
+                  type="radio"
+                  [(ngModel)]="avatarData.avatarNPC"
+                  name="avatarNPC"
+                  value="yes"
+                  required
+                />
+                <label for="avatarNPCyes">
+                  <span>Yes</span>
+                </label>
+                <input
+                  id="avatarNPCno"
+                  [(ngModel)]="avatarData.avatarNPC"
+                  type="radio"
+                  name="avatarNPC"
+                  value="no"
+                  required
+                />
+                <label for="avatarNPCno">
+                  <span>No</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" *ngIf="avatarData.avatarNPC === 'no'">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 7px">Player Email</h3>
+              <div class="input-group input-group-icon">
+                <input
+                  type="email"
+                  placeholder="Insert your Email Address here"
+                  required
+                />
+                <div class="input-icon">
+                  <i class="fas fa-envelope"></i>
                 </div>
               </div>
+            </div>
+          </div>
 
+          <div class="row" *ngIf="avatarData.avatarNPC === 'no'">
+            <div class="col-lg-4">
+              <h3 style="margin-top: 7px">Date of Birth</h3>
+              <div class="input-group">
+                <input type="text" placeholder="DD" required />
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <h3 style="margin-top: 7px">&nbsp;</h3>
+              <div class="input-group">
+                <input type="text" placeholder="MM" required />
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <h3 style="margin-top: 7px">&nbsp;</h3>
+              <div class="input-group">
+                <input type="text" placeholder="YYYY" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="row" *ngIf="avatarData.avatarNPC === 'no'">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 7px">Joke</h3>
+              <div class="input-group input-group-icon">
+                <input
+                  type="text"
+                  placeholder="Create your own joke!"
+                  required
+                />
+                <div class="input-icon">
+                  <i class="bi bi-pencil-fill"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="justify-content: center; text-align: center">
+            <!-- Button in the middle bottom -->
+            <div class="col-lg-12">
               <button
                 type="submit"
-                class="btn btn-primary"
-                [disabled]="avatarForm.invalid"
-                style="font-size: 23px; margin-left: 400px"
+                style="margin-top: 20px; width: 150px; height: 50px"
               >
-                Create Avatar
+                ADD
               </button>
-            </form>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
+
       <!-- end create avatar-->
       <!-- Logout Modal-->
       <app-logoutmodel></app-logoutmodel>

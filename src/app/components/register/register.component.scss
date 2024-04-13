@@ -8,6 +8,24 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+ .form-control-admin {
+  font-size: 1rem; /* Adjust font size as needed */
+}
+
+/* Responsive styles */
+@media (max-width: 576px) {
+  /* Small devices (phones) */
+  body {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 576px) {
+  /* Medium devices (tablets) */
+  body {
+    font-size: 1.25rem;
+  }
+}
 :root {
   --blue: #4e73df;
   --indigo: #6610f2;

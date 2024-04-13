@@ -1,7 +1,6 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
   <!-- Sidebar -->
-
   <app-side-bar></app-side-bar>
   <!-- End of Sidebar -->
 
@@ -12,95 +11,86 @@
       <!-- Topbar -->
       <app-sidebar-menubuttons></app-sidebar-menubuttons>
 
-      <!--overview  player-->
-      <div class="container">
-        <div class="card">
-          <div class="card-body">
-            <h2 style="margin-left: 400px; color: #2f0c81; font-size: 40px">
-              Player Details
-            </h2>
-            <form #playerForm="ngForm">
-              <div class="form-group">
-                <label
-                  for="playerName"
-                  style="font-size: 27px; margin-top: 20px; margin-bottom: 10px"
-                  >Player Name:</label
-                >
-                <p
-                  style="font-size: 22px; margin-top: 20px; margin-bottom: 10px"
-                >
+      <div
+        class="container form-container"
+        style="background-color: white; padding: 30px; width: 50%"
+      >
+        <form style="width: 100%">
+          <div class="row">
+            <div class="col-lg-12">
+              <h2>Player Details</h2>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 65px">Player Name</h3>
+              <div class="input-group input-group-icon">
+                <p class="form-text smaller-text">
                   {{ playerData.playerName }}
                 </p>
               </div>
-              <div class="form-group">
-                <label
-                  for="AvatarEmail"
-                  style="font-size: 27px; margin-top: 20px; margin-bottom: 10px"
-                  >Avatar Email:</label
-                >
-                <p>
-                  <a
-                    [href]="playerData.AvatarEmail"
-                    style="
-                      font-size: 22px;
-                      margin-top: 20px;
-                      margin-bottom: 10px;
-                    "
-                    >{{ playerData.AvatarEmail }}</a
-                  >
-                </p>
-              </div>
-              <div class="form-group">
-                <label
-                  for="AvatarURL"
-                  style="font-size: 27px; margin-top: 20px; margin-bottom: 10px"
-                  >Avatar URL:</label
-                >
-                <p>
-                  <a
-                    [href]="playerData.AvatarURL"
-                    style="
-                      font-size: 22px;
-                      margin-top: 20px;
-                      margin-bottom: 10px;
-                    "
-                    >{{ playerData.AvatarURL }}</a
-                  >
-                </p>
-              </div>
-              <div class="form-group">
-                <label
-                  for="playerProfession"
-                  style="font-size: 25px; margin-top: 20px; margin-bottom: 10px"
-                  >player Profession:</label
-                >
-                <p
-                  style="font-size: 22px; margin-top: 20px; margin-bottom: 10px"
-                >
-                  {{ playerData.playerProfession }}
-                </p>
-              </div>
-
-              <div class="form-group">
-                <label
-                  for="playerBirthday"
-                  style="font-size: 25px; margin-top: 20px; margin-bottom: 10px"
-                  >player Birthday:</label
-                >
-                <p
-                  style="font-size: 22px; margin-top: 22px; margin-bottom: 10px"
-                >
-                  {{ playerData.playerBirthday }}
-                </p>
-              </div>
-            </form>
+            </div>
           </div>
-        </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 7px">Player Email</h3>
+              <div class="input-group input-group-icon">
+                <p class="form-text smaller-text">
+                  {{ playerData.playerEmail }}
+                </p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-12">
+                <h3 style="margin-top: 7px">Avatar URL</h3>
+                <div class="input-group input-group-icon">
+                  <p class="form-text smaller-text">
+                    <a [href]="playerData.AvatarURL">{{
+                      playerData.AvatarURL
+                    }}</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6">
+                <h3 style="margin-top: 7px">Date of Birth</h3>
+                <div class="input-group">
+                  <p class="form-text smaller-text">
+                    {{ playerData.playerBirthday }}
+                  </p>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <h3 style="margin-top: 7px">Player profession</h3>
+                <div class="input-group">
+                  <p class="form-text smaller-text">
+                    {{ playerData.playerProfession }}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-12">
+                <h3 style="margin-top: 7px">Joke</h3>
+                <div class="input-group input-group-icon">
+                  <p class="form-text smaller-text">
+                    {{ playerData.playerJoke }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
 
-      <!-- end overview player-->
+      <!-- end create player-->
       <!-- Logout Modal-->
-
       <app-logoutmodel></app-logoutmodel>
 
       <!-- Bootstrap core JavaScript-->

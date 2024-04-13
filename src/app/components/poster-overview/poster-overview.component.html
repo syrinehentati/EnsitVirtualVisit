@@ -1,143 +1,119 @@
-<!-- Page Wrapper -->
-<div id="wrapper">
-  <!-- Sidebar -->
+<app-side-bar></app-side-bar>
 
-  <app-side-bar></app-side-bar>
-  <!-- End of Sidebar -->
+<div id="content-wrapper" class="d-flex flex-column">
+  <app-sidebar-menubuttons></app-sidebar-menubuttons>
 
-  <!-- Content Wrapper -->
-  <div id="content-wrapper" class="d-flex flex-column">
-    <!-- Main Content -->
-    <div id="content">
-      <!-- Topbar -->
-      <app-sidebar-menubuttons></app-sidebar-menubuttons>
+  <div
+    class="container form-container"
+    style="background-color: white; padding: 30px; width: 50%"
+  >
+    <form style="width: 100%">
+      <div class="row">
+        <div class="col-lg-12">
+          <h2>Poster Details</h2>
+        </div>
+      </div>
 
-      <!--overview  poster-->
-      <div class="container">
-        <div class="card">
-          <div class="card-body">
-            <h2 style="margin-left: 400px; color: #2f0c81; font-size: 40px">
-              Poster Details
-            </h2>
-            <form #posterForm="ngForm">
-              <div class="form-group">
-                <label
-                  for="posterImage"
-                  style="font-size: 27px; margin-top: 20px; margin-bottom: 10px"
-                  >poster Image</label
-                >
-
-                <img
-                  style="margin-left: 700px; width: 40px"
-                  id="imagePreview"
-                  src="../../../assets/img/avatar.png"
-                  alt="Image Preview"
-                />
-              </div>
-              <div class="form-group">
-                <label
-                  for="posterName"
-                  style="font-size: 27px; margin-top: 20px; margin-bottom: 10px"
-                  >poster Name:</label
-                >
-                <p
-                  style="font-size: 22px; margin-top: 20px; margin-bottom: 10px"
-                >
-                  {{ posterData.posterName }}
-                </p>
-              </div>
-
-              <div class="form-group">
-                <label
-                  for="posterSubject"
-                  style="font-size: 27px; margin-top: 20px; margin-bottom: 10px"
-                  >poster Subject:</label
-                >
-                <p
-                  style="font-size: 22px; margin-top: 20px; margin-bottom: 10px"
-                >
-                  {{ posterData.posterSubject }}
-                </p>
-              </div>
-
-              <div class="form-group">
-                <label
-                  for="posterDescription"
-                  style="font-size: 27px; margin-top: 20px; margin-bottom: 10px"
-                  >poster Description:</label
-                >
-                <p
-                  style="font-size: 22px; margin-top: 20px; margin-bottom: 10px"
-                >
-                  {{ posterData.posterDescription }}
-                </p>
-              </div>
-              <div class="form-group">
-                <label
-                  for="posterURL"
-                  style="font-size: 27px; margin-top: 20px; margin-bottom: 10px"
-                  >poster URL:</label
-                >
-                <p>
-                  <a
-                    [href]="posterData.posterURL"
-                    style="
-                      font-size: 22px;
-                      margin-top: 20px;
-                      margin-bottom: 10px;
-                    "
-                    >{{ posterData.posterURL }}</a
-                  >
-                </p>
-              </div>
-              <div class="form-group">
-                <label
-                  for="posterLocalisation"
-                  style="font-size: 25px; margin-top: 20px; margin-bottom: 10px"
-                  >Poster Localisation:</label
-                >
-                <p
-                  style="font-size: 22px; margin-top: 22px; margin-bottom: 10px"
-                >
-                  {{ posterData.posterLocalisation }}
-                </p>
-              </div>
-              <div class="form-group">
-                <label
-                  for="posterPrice"
-                  style="font-size: 27px; margin-top: 20px; margin-bottom: 10px"
-                  >poster Price:</label
-                >
-                <p
-                  style="font-size: 22px; margin-top: 20px; margin-bottom: 10px"
-                >
-                  {{ posterData.posterPrice }}dt
-                </p>
-              </div>
-
-              <div class="form-group">
-                <label
-                  for="posterExisting"
-                  style="font-size: 25px; margin-top: 20px; margin-bottom: 10px"
-                  >poster Existing:</label
-                >
-                <p
-                  style="font-size: 22px; margin-top: 20px; margin-bottom: 10px"
-                >
-                  {{ posterData.posterExisting }}
-                </p>
-              </div>
-            </form>
+      <div class="row">
+        <div class="col-lg-12">
+          <h3 style="margin-top: 65px">Poster Name</h3>
+          <div class="input-group input-group-icon">
+            <p class="form-text smaller-text">{{ posterData.posterName }}</p>
           </div>
         </div>
       </div>
 
-      <!-- end overview poster-->
-      <!-- Logout Modal-->
+      <div class="row">
+        <div class="col-lg-12">
+          <h3 style="margin-top: 65px">Poster Subject</h3>
+          <div class="input-group input-group-icon">
+            <p class="form-text smaller-text">{{ posterData.posterSubject }}</p>
+          </div>
+        </div>
+      </div>
 
-      <app-logoutmodel></app-logoutmodel>
+      <div class="row">
+        <div class="col-lg-12">
+          <h3 style="margin-top: 6px">Poster Description</h3>
+          <div class="input-group input-group-icon">
+            <p class="form-text smaller-text">
+              {{ posterData.posterDescription }}
+            </p>
+          </div>
+        </div>
+      </div>
 
-      <!-- Bootstrap core JavaScript-->
-    </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <h3 style="margin-top: 6px">Poster Preview Image</h3>
+          <div class="input-group input-group-icon">
+            <div class="image-preview">
+              <img
+                id="imagePreview"
+                [src]="posterData.posterPreviewImage"
+                alt="Image Preview"
+                style="max-width: 40%"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <h3 style="margin-top: 6px">Poster Detailed Image</h3>
+          <div class="input-group input-group-icon">
+            <div class="image-preview">
+              <img
+                id="imagePreview"
+                [src]="posterData.posterDetailedImage"
+                alt="Image Preview"
+                style="max-width: 40%"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <h3 style="margin-top: 7px">Poster URL</h3>
+          <div class="input-group input-group-icon">
+            <p class="form-text smaller-text">
+              <a [href]="posterData.posterURL">{{ posterData.posterURL }}</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <h3>Poster Existing</h3>
+          <div class="input-group radio-container">
+            <p class="form-text smaller-text">
+              {{ posterData.posterExisting }}
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <h3>Poster Type</h3>
+          <div class="input-group radio-container">
+            <p class="form-text smaller-text">{{ posterData.posterType }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <h3 style="margin-top: 7px">poster Price</h3>
+          <div class="input-group input-group-icon">
+            <p class="form-text smaller-text">{{ posterData.posterPrice }}</p>
+          </div>
+        </div>
+      </div>
+    </form>
   </div>
+
+  <app-logoutmodel></app-logoutmodel>
 </div>

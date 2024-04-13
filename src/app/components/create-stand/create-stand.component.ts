@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-create-stand',
@@ -7,5 +8,15 @@ import { Component } from '@angular/core';
 })
 export class CreateStandComponent {
   standData: any = {};
-  submitstandForm(){}
+  submitstandForm(form:NgForm){}
+  
+  previewImage(event: any) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const preview = document.getElementById('imagePreview') as HTMLImageElement;
+      preview.src = reader.result as string;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+
+  }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {  NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-create-poster',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
 })
 export class CreatePosterComponent {
   posterData: any = {};
-  submitposterForm(){}
+  submitposterForm(form: NgForm){}
 }

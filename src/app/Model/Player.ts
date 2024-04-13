@@ -5,4 +5,5 @@ export interface Player{
         playerBirthday: Date;
         AvatarURL: string;
         AvatarName: string;
+        playerJoke:string
       };

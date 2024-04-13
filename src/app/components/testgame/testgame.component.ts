@@ -1,24 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+declare var $: any;
 
 @Component({
   selector: 'app-testgame',
   templateUrl: './testgame.component.html',
-  styleUrl: './testgame.component.scss'
+  styleUrls: ['./testgame.component.scss']
 })
 export class TestgameComponent {
-
-
-  ngOnInit() {
-    //@ts-ignore
-    createUnityInstance(document.querySelector("#unity-canvas"), {
-      dataUrl: "/assets/EnsitVirtualVisit/Build/EnsitVirtualVisit.data",
-      frameworkUrl: "/assets/EnsitVirtualVisit/Build/EnsitVirtualVisit.framework.js",
-      codeUrl: "/assets/EnsitVirtualVisit/Build/EnsitVirtualVisit.wasm",
-      streamingAssetsUrl: "StreamingAssets",
-      productName: "EnsitVirtualVisit",
-      productVersion: "1.0"
-    });
-  }
   
-}
+  constructor(private router: Router) { }
+  
+  logout(): void {
+    $('#LogoutModal').modal('show');
+  }
 
+  profile(): void {
+    this.router.navigate(['profile']);
+  }
+}

@@ -3,86 +3,97 @@
 >
   <form
     class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
-  >
-    <div class="input-group">
-      <div class="input-group-append">
-        <button
-          (click)="return()"
-          style="
-            background-color: #1d0cb3;
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 21px;
-            margin-top: 5px;
-            margin: auto; /* This centers the button horizontally */
-            cursor: pointer;
-            border-radius: 8px; /* Optional: adds rounded corners */
-            transition: background-color 0.3s;
-          "
-        >
-          Return To Admin Dashboard
-        </button>
-      </div>
-    </div>
-  </form>
+  ></form>
   <div class="topbar-divider d-none d-sm-block"></div>
 
   <!-- Nav Item - User Information -->
   <!-- Nav Item - User Information -->
   <ul class="navbar-nav ml-auto">
     <li class="nav-item dropdown no-arrow">
-      <a
-        class="nav-link dropdown-toggle"
-        href="#"
-        id="userDropdown"
-        role="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false"
+      <span
+        class="mr-2 d-none d-lg-inline text-gray-600 small"
+        style="font-size: 1.125rem"
+        >syrine hentati</span
       >
-        <span
-          class="mr-2 d-none d-lg-inline text-gray-600 small"
-          style="font-size: 18px"
-          >syrine hentati</span
-        >
-        <img
-          class="img-profile rounded-circle"
-          src="../../assets/img/undraw_profile.svg"
-        />
-      </a>
-      <!-- Dropdown - User Information -->
-      <div
-        class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-        aria-labelledby="userDropdown"
-        style="font-size: 20px; width: 120px"
-      >
-        <a class="dropdown-item" style="color: black" (click)="profile()">
-          <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-          Profile
-        </a>
+      <img
+        style="width: 50px; height: auto"
+        class="img-profile rounded-circle"
+        src="../../assets/img/undraw_profile.svg"
+      />
 
-        <div class="dropdown-divider"></div>
-        <a
-          class="dropdown-item"
-          href="#"
-          (click)="logout()"
-          data-toggle="modal"
-          data-target="#logoutModal"
-          style="color: black"
-        >
-          <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-          Logout
-        </a>
-      </div>
+      <!-- Dropdown - User Information -->
     </li>
   </ul>
 </nav>
-<!-- End of Topbar -->
-<!-- Begin Page Content -->
-<!-- Page Heading -->
+<div class="row justify-content-center">
+  <!-- Choose Avatar Card -->
 
-<app-logoutmodel></app-logoutmodel>
+  <!-- Avatars Card -->
+  <div class="col-xl-3 col-md-6 mb-4 avatars-card" style="width: 200px">
+    <div class="card border-left-primary shadow h-100 py-3">
+      <div class="card-body py-2">
+        <div class="row no-gutters text-left-primary align-items-center">
+          <div class="col mr-2 font-weight-bold text-primary">
+            <a
+              routerLink="/chooseAvatar"
+              style="color: inherit; font-size: 1.5vw"
+              >Choose Avatar</a
+            >
+            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-user fa-2x avatars-icon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Players Card -->
+  <div class="col-xl-3 col-md-6 mb-4 players-card">
+    <div class="card border-left-success shadow h-100 py-3">
+      <div class="card-body py-2">
+        <div class="row no-gutters text-left-success align-items-center">
+          <div class="col mr-2 font-weight-bold text-success">
+            <a
+              (click)="profile()"
+              class="profile-link"
+              style="color: inherit; font-size: 1.5vw"
+              >Profile</a
+            >
+            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+          </div>
+          <div class="col-auto">
+            <i class="far fa-user-circle fa-2x players-icon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Posters Card -->
+  <div class="col-xl-3 col-md-6 mb-4 posters-card" style="width: 180px">
+    <div class="card border-left-info shadow h-100 py-3">
+      <div class="card-body py-2">
+        <div class="row no-gutters text-left-info align-items-center">
+          <div class="col mr-2 font-weight-bold text-info">
+            <a
+              href="#"
+              (click)="logout()"
+              data-toggle="modal"
+              data-target="#logoutModal"
+              style="color: inherit; font-size: 1.5vw"
+              >Logout</a
+            >
+            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-sign-out-alt fa-2x posters-icon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-logoutmodel></app-logoutmodel>
+</div>

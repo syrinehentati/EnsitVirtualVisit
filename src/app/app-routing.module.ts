@@ -23,9 +23,10 @@ import { MainPageStandComponent } from './components/main-page-stand/main-page-s
 import { ProfileComponent } from './components/profile/profile.component';
 import { TableAvatarComponent } from './table-avatar/table-avatar.component';
 import { ChooseAvatarComponent } from './components/choose-avatar/choose-avatar.component';
-
+import { AdminProfileComponent } from './components/admin-profile/admin-profile.component';
 
 const routes: Routes = [{ path: '', component: LoginComponent },
+{ path: 'adminprofile', component: AdminProfileComponent },
 { path: 'register', component: RegisterComponent },
 { path: 'chooseAvatar', component: ChooseAvatarComponent },
 { path: 'forgetpassword', component: ForgetPasswordComponent },

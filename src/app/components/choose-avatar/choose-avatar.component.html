@@ -1,85 +1,145 @@
-<app-testgameheader></app-testgameheader>
-<div class="col-xl-3 col-md-6 mb-4" style="width: 2500px"></div>
+<!-- Page Wrapper -->
+<div id="wrapper">
+  <!-- Sidebar -->
 
-<div class="container">
-  <div class="card">
-    <div class="card-body">
-      <h2 style="margin-left: 400px; color: #2f0c81; font-size: 40px">
-        Choose Player
-      </h2>
-      <form (ngSubmit)="submitplayerForm()" #playerForm="ngForm">
-        <div class="form-group">
-          <label
-            for="playerName"
-            style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
-            >Player username</label
-          >
-          <input
-            type="text"
-            id="playerEmail"
-            name="playerEmail"
-            style="font-size: 19px"
-            [(ngModel)]="playerData.playerEmail"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label
-            for="playerEmail"
-            style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
-            >Avatar Name</label
-          >
-          <select
-            id="avatar"
-            name="avatar"
-            [(ngModel)]="playerData.AvatarName"
-            class="form-control"
-            style="font-size: 19px"
-          >
-            <option value="Student">Student</option>
-            <option value="Teacher">Professor</option>
-            <option value="Other">Other</option>
-            <!-- Add more options here if needed -->
-          </select>
-        </div>
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+      <!-- Topbar -->
+      <app-testgameheader></app-testgameheader>
 
-        <div class="form-group">
-          <label
-            for="AvatarURL"
-            style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
-            >Avatar URL</label
-          >
-          <input
-            type="text"
-            id="AvatarURL"
-            name="AvatarURL"
-            style="font-size: 19px"
-          />
-        </div>
-        <input
-          type="file"
-          id="avatarImage"
-          name="avatarImage"
-          accept="image/*"
-          onchange="previewImage(event)"
-        />
-        <div class="image-preview">
-          <img
-            id="imagePreview"
-            src="../../../assets/img/avatar.png"
-            alt="Image Preview"
-          />
-        </div>
-
-        <button
-          type="submit"
-          class="btn btn-primary"
-          [disabled]="playerForm.invalid"
-          style="font-size: 23px; margin-left: 400px"
+      <div
+        class="container form-container"
+        style="background-color: white; padding: 30px; width: 50%"
+      >
+        <form
+          style="width: 100%"
+          (ngSubmit)="submitplayerForm(playerForm)"
+          #playerForm="ngForm"
         >
-          Submit
-        </button>
-      </form>
+          <div class="row">
+            <div class="col-lg-12">
+              <h2>Choose Avatar</h2>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 65px">Avatar Name</h3>
+              <div class="input-group input-group-icon">
+                <input
+                  type="text"
+                  placeholder="Avatar Name"
+                  [(ngModel)]="avatarData.avatarName"
+                  required
+                />
+                <div class="input-icon">
+                  <i class="fas fa-user"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 7px">Avatar URL</h3>
+              <div class="input-group input-group-icon">
+                <input
+                  type="text"
+                  placeholder="Avatar URL"
+                  [(ngModel)]="avatarData.avatarURL"
+                  required
+                />
+                <div class="input-icon">
+                  <i class="fas fa-link"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <h3>Avatar Gender</h3>
+              <div class="input-group radio-container">
+                <input
+                  id="gender-male"
+                  type="radio"
+                  name="gender"
+                  value="male"
+                  [(ngModel)]="avatarData.avatarGender"
+                  required
+                />
+                <label for="gender-male">Male</label>
+                <input
+                  id="gender-female"
+                  type="radio"
+                  name="gender"
+                  [(ngModel)]="avatarData.avatarGender"
+                  value="female"
+                  required
+                />
+                <label for="gender-female">Female</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-4">
+              <h3 style="margin-top: 7px">Date of Birth</h3>
+              <div class="input-group">
+                <input type="text" placeholder="DD" required />
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <h3 style="margin-top: 7px">&nbsp;</h3>
+              <div class="input-group">
+                <input type="text" placeholder="MM" required />
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <h3 style="margin-top: 7px">&nbsp;</h3>
+              <div class="input-group">
+                <input type="text" placeholder="YYYY" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 7px">Joke</h3>
+              <div class="input-group input-group-icon">
+                <input
+                  type="text"
+                  placeholder="Create your own joke!"
+                  required
+                />
+                <div class="input-icon">
+                  <i class="bi bi-pencil-fill"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="justify-content: center; text-align: center">
+            <!-- Button in the middle bottom -->
+            <div class="col-lg-12">
+              <button
+                type="submit"
+                style="margin-top: 20px; width: 150px; height: 50px"
+              >
+                ADD
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- end create avatar-->
+      <!-- Logout Modal-->
+      <app-logoutmodel></app-logoutmodel>
+
+      <!-- Bootstrap core JavaScript-->
     </div>
   </div>
 </div>

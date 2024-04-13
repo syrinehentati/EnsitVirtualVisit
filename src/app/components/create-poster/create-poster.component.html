@@ -1,9 +1,7 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
   <!-- Sidebar -->
-
   <app-side-bar></app-side-bar>
-
   <!-- End of Sidebar -->
 
   <!-- Content Wrapper -->
@@ -13,173 +11,245 @@
       <!-- Topbar -->
       <app-sidebar-menubuttons></app-sidebar-menubuttons>
 
-      <div class="container">
-        <div class="card">
-          <div class="card-body">
-            <h2 style="margin-left: 400px; color: #2f0c81; font-size: 40px">
-              Create poster
-            </h2>
-            <form (ngSubmit)="submitposterForm()" #posterForm="ngForm">
-              <div class="form-group">
-                <label
-                  for="posterImage"
-                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
-                  >poster Image</label
-                >
-                <input
-                  type="file"
-                  id="posterImage"
-                  name="posterImage"
-                  accept="image/*"
-                  onchange="previewImage(event)"
-                />
-                <div class="image-preview">
-                  <img
-                    id="imagePreview"
-                    src="../../../assets/img/avatar.png"
-                    alt="Image Preview"
-                  />
-                </div>
-              </div>
-              <div class="form-group">
-                <label
-                  for="posterName"
-                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
-                  >Poster Name</label
-                >
+      <div
+        class="container form-container"
+        style="background-color: white; padding: 30px; width: 50%"
+      >
+        <form
+          style="width: 100%"
+          (ngSubmit)="submitposterForm(posterForm)"
+          #posterForm="ngForm"
+        >
+          <div class="row">
+            <div class="col-lg-12">
+              <h2>Create Poster</h2>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 65px">Poster Name</h3>
+              <div class="input-group input-group-icon">
                 <input
                   type="text"
-                  id="posterName"
-                  name="posterName"
-                  style="font-size: 19px"
+                  placeholder="Poster Name"
                   [(ngModel)]="posterData.posterName"
                   required
                 />
-              </div>
-              <div class="form-group">
-                <label
-                  for="posterrName"
-                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
-                  >Poster Subject</label
-                >
-                <input
-                  type="text"
-                  id="posterSubject"
-                  name="posterSubject"
-                  style="font-size: 19px"
-                  [(ngModel)]="posterData.posterSubject"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label
-                  for="posterDescription"
-                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
-                  >poster Description</label
-                >
-                <textarea
-                  id="posterDescription"
-                  name="posterDescription"
-                  style="font-size: 19px"
-                  rows="4"
-                  [(ngModel)]="posterData.posterDescription"
-                ></textarea>
-              </div>
-              <div class="form-group">
-                <label
-                  for="posterURL"
-                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
-                  >poster URL</label
-                >
-                <input
-                  type="text"
-                  id="posterURL"
-                  name="posterURL"
-                  style="font-size: 19px"
-                />
-              </div>
-
-              <div class="form-group">
-                <label
-                  for="posterLocalisation"
-                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
-                  >Poster Localisation</label
-                >
-                <select
-                  id="posterLocalisation"
-                  name="posterLocalisation"
-                  [(ngModel)]="posterData.posterLocalisation"
-                  class="form-control"
-                  style="font-size: 19px"
-                >
-                  <option value="yes">Windows1</option>
-                  <option value="no">Windows2</option>
-                  <!-- Add more options here if needed -->
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label
-                  for="posterPrice"
-                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
-                  >Poster Price</label
-                >
-                <input
-                  type="number"
-                  id="posterPrice"
-                  name="posterPrice"
-                  style="font-size: 19px"
-                  [(ngModel)]="posterData.posterPrice"
-                  required
-                /><label
-                  for="posterPrice"
-                  style="font-size: 19px; margin-top: 20px; margin-bottom: 10px"
-                  >dt</label
-                >
-              </div>
-
-              <div class="form-group">
-                <label
-                  for="posterExisting"
-                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
-                  >poster Existing</label
-                >
-                <div class="radio-buttons">
-                  <label class="radio-button-label">
-                    <input
-                      type="radio"
-                      [(ngModel)]="posterData.posterExisting"
-                      id="posterExistingyes"
-                      name="posterExistingyes"
-                      value="yes"
-                    />
-                    <span class="radio-button-text">Yes</span>
-                  </label>
-                  <label class="radio-button-label">
-                    <input
-                      type="radio"
-                      [(ngModel)]="posterData.posterExisting"
-                      id="posterExistingno"
-                      name="posterExistingno"
-                      value="no"
-                    />
-                    <span class="radio-button-text">No</span>
-                  </label>
+                <div class="input-icon">
+                  <i class="fas fa-file-image"></i>
                 </div>
               </div>
+            </div>
+          </div>
 
+          <div class="form-group">
+            <h3 for="posterSubject">Poster Subject</h3>
+            <textarea
+              id="posterSubject"
+              placeholder="Enter your poster subject"
+              name="posterSubject"
+              rows="2"
+              [(ngModel)]="posterData.posterSubject"
+            ></textarea>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 6px">Poster Description</h3>
+              <div class="input-group input-group-icon">
+                <textarea
+                  [(ngModel)]="posterData.posterDescription"
+                  placeholder="Description"
+                  rows="4"
+                  required
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label
+              for="posterImage"
+              style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
+              >Preview poster image</label
+            >
+            <input
+              type="file"
+              id="posterImage"
+              name="posterImage"
+              accept="image/*"
+              onchange="checkImageDimensions(event, 'posterDimensions'),previewImage(event)"
+            />
+            <span
+              id="posterDimensions"
+              style="margin-left: 10px; font-size: 16px"
+              >Preferred dimensions: 40px x 60px</span
+            >
+            <div class="image-preview">
+              <img
+                id="imagePreview"
+                src="../../../assets/img/avatar.png"
+                alt="Image Preview"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label
+              for="DetailedPosterImage"
+              style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
+              >Detailed Poster Image</label
+            >
+            <input
+              type="file"
+              id="detailedPosterImage"
+              name="detailedPosterImage"
+              accept="image/*"
+              onchange="checkImageDimensions(event, 'detailedPosterDimensions'),previewImage(event)"
+            />
+            <span
+              id="detailedPosterDimensions"
+              style="margin-left: 10px; font-size: 16px"
+              >Preferred dimensions: 40px x 60px</span
+            >
+            <div class="image-preview">
+              <img
+                id="detailedImagePreview"
+                style="max-width: 40%"
+                src="../../../assets/img/avatar.png"
+                alt="Image Preview"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <h3 for="DetailedPosterImage">Detailed Poster Image</h3>
+            <input
+              type="file"
+              id="detailedPosterImage"
+              name="detailedPosterImage"
+              accept="image/*"
+              onchange="checkImageDimensions(event, 'detailedPosterDimensions'),previewImage(event)"
+            />
+            <span
+              id="detailedPosterDimensions"
+              style="margin-left: 10px; font-size: 16px"
+              >Preferred dimensions: 40px x 60px</span
+            >
+            <div
+              class="image-preview"
+              style="
+                width: 200px;
+                height: 40px;
+                overflow: hidden;
+                margin-top: 10px;
+              "
+            >
+              <img
+                id="detailedImagePreview"
+                alt="Image Preview"
+                style="max-width: 40%"
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 7px">Poster URL</h3>
+              <div class="input-group input-group-icon">
+                <input
+                  type="text"
+                  placeholder="enter your poster URL"
+                  [(ngModel)]="posterData.posterURL"
+                  required
+                />
+                <div class="input-icon">
+                  <i class="fas fa-link"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <h3>poster Existing</h3>
+              <div class="input-group radio-container">
+                <input
+                  id="posterExistingyes"
+                  type="radio"
+                  name="posterExisting"
+                  value="yes"
+                  [(ngModel)]="posterData.posterExisting"
+                  required
+                />
+                <label for="posterExistingyes">Yes</label>
+                <input
+                  id="posterExistingNo"
+                  type="radio"
+                  name="posterExisting"
+                  [(ngModel)]="posterData.posterExisting"
+                  value="no"
+                  required
+                />
+                <label for="posterExistingNo">No</label>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <h3>Poster Type</h3>
+              <div class="input-group radio-container">
+                <input
+                  id="Type1"
+                  type="radio"
+                  name="Type1"
+                  value="Type1"
+                  [(ngModel)]="posterData.posterType"
+                  required
+                />
+                <label for="Type1">Type1</label>
+                <input
+                  id="Type2"
+                  type="radio"
+                  name="Type2"
+                  [(ngModel)]="posterData.posterType"
+                  value="Type2"
+                  required
+                />
+                <label for="Type2">Type2</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <h3 for="posterPrice" style="margin-right: 10px">Poster Price</h3>
+            <div style="display: flex; align-items: center">
+              <input
+                type="number"
+                id="posterPrice"
+                name="posterPrice"
+                style="font-size: 19px; margin-right: 7%"
+                [(ngModel)]="posterData.posterPrice"
+                required
+              />
+              <h6 for="posterPrice" style="font-size: 19px; margin-left: 5px">
+                dt
+              </h6>
+            </div>
+          </div>
+
+          <div class="row" style="justify-content: center; text-align: center">
+            <!-- Button in the middle bottom -->
+            <div class="col-lg-12">
               <button
                 type="submit"
-                class="btn btn-primary"
-                [disabled]="posterForm.invalid"
-                style="font-size: 23px; margin-left: 400px"
+                style="margin-top: 20px; width: 150px; height: 50px"
               >
-                Create Poster
+                ADD
               </button>
-            </form>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
+
       <!-- end create poster-->
       <!-- Logout Modal-->
       <app-logoutmodel></app-logoutmodel>

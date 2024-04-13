@@ -1,50 +1,59 @@
 <div
   class="card shadow mb-4"
-  style="font-size: 22px; width: 1700px; margin-left: 17px"
+  style="font-size: 1.2vw; margin-left: 5%; margin-right: 5%"
 >
-  <div style="align-items: center; margin-left: 700px; margin-top: 10px">
+  <div style="text-align: center; margin-top: 0.5vw">
     <button
       (click)="navigateToCreateplayer()"
       style="
-        background-color: #1d0cb3; /* Green */
+        background-color: #1d0cb3;
         border: none;
         color: white;
-        padding: 15px 32px;
+        padding: 0.8vw 2vw;
         text-align: center;
         text-decoration: none;
         display: inline-block;
-        font-size: 21px;
-        margin-top: 5px;
-        margin: auto; /* This centers the button horizontally */
+        font-size: 1vw;
+        margin-top: 0.5vw;
         cursor: pointer;
-        border-radius: 8px; /* Optional: adds rounded corners */
+        border-radius: 1vw;
         transition: background-color 0.3s;
+        font-family: Amasis MT Pro Medium;
       "
+      onmouseover="this.style.transform = 'scale(1.05)'"
+      onmouseout="this.style.transform = 'scale(1)'"
     >
       Add Player
     </button>
   </div>
-  <div class="card-body" style="margin: auto">
-    <div class="table-responsive">
-      <table
-        class="table table-bordered"
-        id="dataTable"
-        width="1200px"
-        cellspacing="0"
-      >
-        <thead>
-          <tr>
-            <th style="width: 250px">player Name</th>
-            <th style="width: 250px">Profession</th>
 
-            <th style="width: 150px">Action</th>
+  <div class="card-body d-flex justify-content-center">
+    <div class="table-responsive" style="font-size: 1.2vw">
+      <table class="table table-bordered table-striped" id="dataTable">
+        <thead style="text-align: center">
+          <tr>
+            <th style="font-family: Amasis MT Pro Medium; width: 20%">
+              Player Name
+            </th>
+            <th style="font-family: Amasis MT Pro Medium; width: 20%">Email</th>
+            <th style="font-family: Amasis MT Pro Medium; width: 20%">
+              Profession
+            </th>
+            <th style="font-family: Amasis MT Pro Medium; width: 20%">
+              Player Birthday
+            </th>
+            <th style="font-family: Amasis MT Pro Medium; width: 20%">
+              Action
+            </th>
           </tr>
         </thead>
         <tfoot></tfoot>
-        <tbody>
+        <tbody style="text-align: center">
           <tr *ngFor="let row of tableData">
             <td>{{ row.PlayerName }}</td>
+            <td>{{ row.Email }}</td>
             <td>{{ row.Profession }}</td>
+            <td>{{ row.Birthday }}</td>
             <td class="action-icons">
               <ng-container *ngFor="let action of row.Action">
                 <a
@@ -54,12 +63,22 @@
                   "
                   (click)="handleAction(action)"
                 >
-                  <img
-                    style="width: 40px"
-                    [src]="action.icon"
-                    alt="Action Icon"
+                  <span
                     class="action-icon"
-                  />
+                    [ngClass]="{
+                      'text-danger':
+                        action.icon === '../../../assets/img/delete.jpeg',
+                      'text-primary':
+                        action.icon === '../../../assets/img/view.jpg',
+                      'text-warning':
+                        action.icon === '../../../assets/img/edit.png'
+                    }"
+                  >
+                    <i
+                      class="bi bi-{{ action.iconClass }}"
+                      (click)="handleAction(action)"
+                    ></i>
+                  </span>
                 </a>
                 <a
                   *ngIf="
@@ -68,12 +87,22 @@
                   "
                   [href]="action.link"
                 >
-                  <img
-                    style="width: 40px"
-                    [src]="action.icon"
-                    alt="Action Icon"
+                  <span
                     class="action-icon"
-                  />
+                    [ngClass]="{
+                      'text-danger':
+                        action.icon === '../../../assets/img/delete.jpeg',
+                      'text-primary':
+                        action.icon === '../../../assets/img/view.jpg',
+                      'text-warning':
+                        action.icon === '../../../assets/img/edit.png'
+                    }"
+                  >
+                    <i
+                      class="bi bi-{{ action.iconClass }}"
+                      (click)="handleAction(action)"
+                    ></i>
+                  </span>
                 </a>
               </ng-container>
             </td>

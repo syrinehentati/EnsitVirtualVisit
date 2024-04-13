@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { Admin } from '../../Model/Admin';
+import { User } from '../../Model/User';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 
@@ -12,7 +12,7 @@ import { NgForm } from '@angular/forms';
 })
 export class RegisterComponent {
 
-  admin: Admin = {
+  User: User = {
     email: '',
     password: '',
     firstName: '',
@@ -32,15 +32,15 @@ export class RegisterComponent {
 
   register(form: NgForm) {
     
-    console.log(this.admin);
-    this.authService.getAdminsByMail(this.admin.email).subscribe(
-      (result: Admin) => {
+    console.log(this.User);
+    this.authService.getUsersByMail(this.User.email).subscribe(
+      (result: User) => {
         this.right = true;
       }, 
       (error: HttpErrorResponse) => {
-        this.authService.addAdmin(this.admin).subscribe(
-          (result: Admin) => {
-            sessionStorage.setItem('currentAdmin', JSON.stringify(this.admin));
+        this.authService.addUser(this.User).subscribe(
+          (result: User) => {
+            sessionStorage.setItem('currentUser', JSON.stringify(this.User));
             this.router.navigate(['dashboard']);
             window.location.reload();
           }, 

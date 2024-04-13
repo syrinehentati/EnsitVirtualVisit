@@ -1,7 +1,6 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
   <!-- Sidebar -->
-
   <app-side-bar></app-side-bar>
   <!-- End of Sidebar -->
 
@@ -12,103 +11,109 @@
       <!-- Topbar -->
       <app-sidebar-menubuttons></app-sidebar-menubuttons>
 
-      <!--overview  avatar-->
-      <div class="container">
-        <div class="card">
-          <div class="card-body">
-            <h2 style="margin-left: 400px; color: #2f0c81; font-size: 40px">
-              Avatar Details
-            </h2>
-            <form #avatarForm="ngForm">
-              <div class="form-group">
-                <label
-                  for="avatarImage"
-                  style="font-size: 27px; margin-top: 20px; margin-bottom: 10px"
-                  >Avatar Image</label
-                >
+      <div
+        class="container form-container"
+        style="background-color: white; padding: 30px; width: 50%"
+      >
+        <form style="width: 100%">
+          <div class="row">
+            <div class="col-lg-12">
+              <h2>Avatar Details</h2>
+            </div>
+          </div>
 
-                <img
-                  style="margin-left: 700px; width: 40px"
-                  id="imagePreview"
-                  src="../../../assets/img/avatar.png"
-                  alt="Image Preview"
-                />
-              </div>
-              <div class="form-group">
-                <label
-                  for="avatarName"
-                  style="font-size: 27px; margin-top: 20px; margin-bottom: 10px"
-                  >Avatar Name:</label
-                >
-                <p
-                  style="font-size: 22px; margin-top: 20px; margin-bottom: 10px"
-                >
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 65px">Avatar Name</h3>
+              <div class="input-group input-group-icon">
+                <p class="form-text smaller-text">
                   {{ avatarData.avatarName }}
                 </p>
               </div>
-              <div class="form-group">
-                <label
-                  for="avatarDescription"
-                  style="font-size: 27px; margin-top: 20px; margin-bottom: 10px"
-                  >Avatar Description:</label
-                >
-                <p
-                  style="font-size: 22px; margin-top: 20px; margin-bottom: 10px"
-                >
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 6px">Avatar Description</h3>
+              <div class="input-group input-group-icon">
+                <p class="form-text smaller-text">
                   {{ avatarData.avatarDescription }}
                 </p>
               </div>
-              <div class="form-group">
-                <label
-                  for="avatarURL"
-                  style="font-size: 27px; margin-top: 20px; margin-bottom: 10px"
-                  >Avatar URL:</label
-                >
-                <p>
-                  <a
-                    [href]="avatarData.avatarURL"
-                    style="
-                      font-size: 22px;
-                      margin-top: 20px;
-                      margin-bottom: 10px;
-                    "
-                    >{{ avatarData.avatarURL }}</a
-                  >
-                </p>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-12">
+                <h3 style="margin-top: 7px">Avatar URL</h3>
+                <div class="input-group input-group-icon">
+                  <p class="form-text smaller-text">
+                    <a [href]="avatarData.avatarURL">{{
+                      avatarData.avatarURL
+                    }}</a>
+                  </p>
+                </div>
               </div>
-              <div class="form-group">
-                <label
-                  for="avatarExisting"
-                  style="font-size: 25px; margin-top: 20px; margin-bottom: 10px"
-                  >Avatar Existing:</label
-                >
-                <p
-                  style="font-size: 22px; margin-top: 20px; margin-bottom: 10px"
-                >
-                  {{ avatarData.avatarExisting }}
-                </p>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6">
+                <h3>Avatar Existing</h3>
+                <div class="input-group radio-container">
+                  <p class="form-text smaller-text">
+                    {{ avatarData.avatarExisting }}
+                  </p>
+                </div>
               </div>
 
-              <div class="form-group">
-                <label
-                  for="avatarExisting"
-                  style="font-size: 25px; margin-top: 20px; margin-bottom: 10px"
-                  >Avatar is a Non Player Character:</label
-                >
-                <p
-                  style="font-size: 22px; margin-top: 22px; margin-bottom: 10px"
-                >
-                  {{ avatarData.avatarNPC }}
-                </p>
+              <div class="col-lg-6">
+                <h3>Avatar Gender</h3>
+                <div class="input-group radio-container">
+                  <p class="form-text smaller-text">
+                    {{ avatarData.avatarGender }}
+                  </p>
+                </div>
               </div>
-            </form>
+            </div>
+
+            <div class="row" *ngIf="avatarData.avatarNPC === 'no'">
+              <div class="col-lg-12">
+                <h3 style="margin-top: 7px">Player Email</h3>
+                <div class="input-group input-group-icon">
+                  <p class="form-text smaller-text">
+                    {{ playerData.playerEmail }}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" *ngIf="avatarData.avatarNPC === 'no'">
+              <div class="col-lg-4">
+                <h3 style="margin-top: 7px">Date of Birth</h3>
+                <div class="input-group">
+                  <p class="form-text smaller-text">
+                    {{ playerData.playerBirthday }}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" *ngIf="avatarData.avatarNPC === 'no'">
+              <div class="col-lg-12">
+                <h3 style="margin-top: 7px">Joke</h3>
+                <div class="input-group input-group-icon">
+                  <p class="form-text smaller-text">
+                    {{ playerData.playerJoke }}
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
 
-      <!-- end overview avatar-->
+      <!-- end create avatar-->
       <!-- Logout Modal-->
-
       <app-logoutmodel></app-logoutmodel>
 
       <!-- Bootstrap core JavaScript-->

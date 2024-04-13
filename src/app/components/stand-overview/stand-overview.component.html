@@ -1,7 +1,6 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
   <!-- Sidebar -->
-
   <app-side-bar></app-side-bar>
   <!-- End of Sidebar -->
 
@@ -12,116 +11,112 @@
       <!-- Topbar -->
       <app-sidebar-menubuttons></app-sidebar-menubuttons>
 
-      <!--overview  stand-->
-      <div class="container">
-        <div class="card">
-          <div class="card-body">
-            <h2 style="margin-left: 400px; color: #2f0c81; font-size: 40px">
-              Stand Details
-            </h2>
-            <form #standForm="ngForm">
-              <div class="form-group">
-                <label
-                  for="standImage"
-                  style="font-size: 27px; margin-top: 20px; margin-bottom: 10px"
-                  >Stand Image</label
-                >
+      <div
+        class="container form-container"
+        style="background-color: white; padding: 30px; width: 50%"
+      >
+        <form style="width: 100%">
+          <div class="row">
+            <div class="col-lg-12">
+              <h2>Stand Details</h2>
+            </div>
+          </div>
 
-                <img
-                  style="margin-left: 700px; width: 40px"
-                  id="imagePreview"
-                  src="../../../assets/img/avatar.png"
-                  alt="Image Preview"
-                />
-              </div>
-              <div class="form-group">
-                <label
-                  for="standName"
-                  style="font-size: 27px; margin-top: 20px; margin-bottom: 10px"
-                  >Stand Name:</label
-                >
-                <p
-                  style="font-size: 22px; margin-top: 20px; margin-bottom: 10px"
-                >
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 65px">Stand Name</h3>
+              <div class="input-group input-group-icon">
+                <p class="form-text smaller-text">
                   {{ standData.standName }}
                 </p>
               </div>
-
-              <div class="form-group">
-                <label
-                  for="standDescription"
-                  style="font-size: 27px; margin-top: 20px; margin-bottom: 10px"
-                  >Stand Description:</label
-                >
-                <p
-                  style="font-size: 22px; margin-top: 20px; margin-bottom: 10px"
-                >
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 65px">Stand Subject</h3>
+              <div class="input-group input-group-icon">
+                <p class="form-text smaller-text">
+                  {{ standData.standSubject }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 6px">stand Description</h3>
+              <div class="input-group input-group-icon">
+                <p class="form-text smaller-text">
                   {{ standData.standDescription }}
                 </p>
               </div>
-              <div class="form-group">
-                <label
-                  for="standURL"
-                  style="font-size: 27px; margin-top: 20px; margin-bottom: 10px"
-                  >Stand URL:</label
-                >
-                <p>
-                  <a
-                    [href]="standData.standURL"
-                    style="
-                      font-size: 22px;
-                      margin-top: 20px;
-                      margin-bottom: 10px;
-                    "
-                    >{{ standData.standURL }}</a
-                  >
-                </p>
-              </div>
-              <div class="form-group">
-                <label
-                  for="standLocalisation"
-                  style="font-size: 25px; margin-top: 20px; margin-bottom: 10px"
-                  >Stand Localisation:</label
-                >
-                <p
-                  style="font-size: 22px; margin-top: 22px; margin-bottom: 10px"
-                >
-                  {{ standData.standLocalisation }}
-                </p>
-              </div>
-              <div class="form-group">
-                <label
-                  for="standPrice"
-                  style="font-size: 27px; margin-top: 20px; margin-bottom: 10px"
-                  >Stand Price:</label
-                >
-                <p
-                  style="font-size: 22px; margin-top: 20px; margin-bottom: 10px"
-                >
-                  {{ standData.standPrice }}dt
-                </p>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-12">
+                <h3 style="margin-top: 6px">Stand Image</h3>
+                <div class="input-group input-group-icon">
+                  <div class="image-preview">
+                    <img
+                      id="imagePreview"
+                      [src]="standData.standImage"
+                      style="max-width: 40%"
+                      alt="Image Preview"
+                    />
+                  </div>
+                </div>
               </div>
 
-              <div class="form-group">
-                <label
-                  for="standExisting"
-                  style="font-size: 25px; margin-top: 20px; margin-bottom: 10px"
-                  >Stand Existing:</label
-                >
-                <p
-                  style="font-size: 22px; margin-top: 20px; margin-bottom: 10px"
-                >
-                  {{ standData.standExisting }}
-                </p>
+              <div class="row">
+                <div class="col-lg-12">
+                  <h3 style="margin-top: 7px">stand URL</h3>
+                  <div class="input-group input-group-icon">
+                    <p class="form-text smaller-text">
+                      <a [href]="standData.standURL">{{
+                        standData.standURL
+                      }}</a>
+                    </p>
+                  </div>
+                </div>
               </div>
-            </form>
+
+              <div class="row">
+                <div class="col-lg-6">
+                  <h3>Stand Existing</h3>
+                  <div class="input-group radio-container">
+                    <p class="form-text smaller-text">
+                      {{ standData.standExisting }}
+                    </p>
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                  <h3>Stand Type</h3>
+                  <div class="input-group radio-container">
+                    <p class="form-text smaller-text">
+                      {{ standData.standType }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-12">
+                  <h3 style="margin-top: 7px">Stand Price</h3>
+                  <div class="input-group input-group-icon">
+                    <p class="form-text smaller-text">
+                      {{ standData.standPrice }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
 
-      <!-- end overview stand-->
+      <!-- end create stand-->
       <!-- Logout Modal-->
-
       <app-logoutmodel></app-logoutmodel>
 
       <!-- Bootstrap core JavaScript-->

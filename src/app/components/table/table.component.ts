@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 declare var $: any;
-import { Router } from '@angular/router'; // Import Router from @angular/router
 
 @Component({
   selector: 'app-table',
@@ -12,41 +12,56 @@ export class TableComponent {
   tableData: any[] = [
     { 
       AvatarName: 'syrine',
+      
+      AvatarGender:'Female',
+    
       Existing: 'yes',
       NPC: 'yes',
       Action: [
-        { link: 'overviewavatar', icon: '../../../assets/img/view.jpg' },
-        { link: 'editavatar', icon: '../../../assets/img/edit.png' },
-        { modalId: '#deleteModal', icon: '../../../assets/img/delete.jpeg' },
+        { link: 'overviewavatar', icon: '../../../assets/img/view.jpg', iconClass: 'eye' },
+        { link: 'editavatar', icon: '../../../assets/img/edit.png', iconClass: 'pencil' },
+        { modalId: '#deleteModal', icon: '../../../assets/img/delete.jpeg', iconClass: 'trash' },
       ]
     },
     { 
       AvatarName: 'mahdi',
+      AvatarGender:'Male',
+      
       Existing: 'No',
       NPC: 'yes',
       Action: [
-        { link: 'overviewavatar', icon: '../../../assets/img/view.jpg' },
-        { link: 'editavatar', icon: '../../../assets/img/edit.png' },
-        { modalId: '#deleteModal', icon: '../../../assets/img/delete.jpeg' },
+        { link: 'overviewavatar', icon: '../../../assets/img/view.jpg', iconClass: 'eye' },
+        { link: 'editavatar', icon: '../../../assets/img/edit.png', iconClass: 'pencil' },
+        { modalId: '#deleteModal', icon: '../../../assets/img/delete.jpeg', iconClass: 'trash' },
       ]
     },
     { 
       AvatarName: 'fedi',
+      
+      AvatarGender:'Male',
       Existing: 'No',
       NPC: 'yes',
       Action: [
-        { link: 'overviewavatar', icon: '../../../assets/img/view.jpg' },
-        { link: 'editavatar', icon: '../../../assets/img/edit.png' },
-        { modalId: '#deleteModal', icon: '../../../assets/img/delete.jpeg' },
+        { link: 'overviewavatar', icon: '../../../assets/img/view.jpg', iconClass: 'eye' },
+        { link: 'editavatar', icon: '../../../assets/img/edit.png', iconClass: 'pencil' },
+        { modalId: '#deleteModal', icon: '../../../assets/img/delete.jpeg', iconClass: 'trash' },
       ]
     }
   ];
 
-  constructor(private router: Router) { } // Inject Router
+  constructor(private router: Router) { }
+
+  handleAction(action: any) {
+    if (action.modalId === '#deleteModal') { 
+      this.openLogoutModal(); 
+    }
+  }
+
+  openLogoutModal() {
+    ($('#deleteModal') as any).modal('show');
+  }
 
   navigateToCreateAvatar() {
     this.router.navigate(['createavatar']);
-  }
-
-  
+  }  
 }

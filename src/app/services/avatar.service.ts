@@ -7,6 +7,8 @@ import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class AvatarService {
 
   private apiBaseUrl = environment.apiBaseUrl;
@@ -15,6 +17,11 @@ export class AvatarService {
 
   public getAvatars(): Observable<Avatar[]> {
     return this.http.get<Avatar[]>(`${this.apiBaseUrl}/Avatar/all`);
+  }
+
+
+  public getAvatars2(): Observable<any> {
+    return this.http.get<any>(`${this.apiBaseUrl}/test.php`);
   }
 
   public getAvatarByURL(url: string): Observable<Avatar> {

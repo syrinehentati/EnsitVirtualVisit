@@ -43,7 +43,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ChooseAvatarComponent } from './components/choose-avatar/choose-avatar.component';
 import { AuthService } from './services/auth.service';
 import { AvatarService } from './services/avatar.service';
-import { DeleteComponent } from './delete/delete.component';
+import { DeleteComponent } from './components/delete/delete.component';
+import { AdminProfileComponent } from './components/admin-profile/admin-profile.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { DeleteComponent } from './delete/delete.component';
     TableAvatarComponent,
     TestgameheaderComponent,
     ChooseAvatarComponent,
-    DeleteComponent
+    DeleteComponent,
+    AdminProfileComponent
 
     
   ],

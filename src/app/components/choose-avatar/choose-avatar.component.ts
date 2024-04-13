@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 
 import { PlayerService } from '../../services/player.service';
 import { Player } from '../../Model/Player';
+import { Avatar } from '../../Model/Avatar';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-choose-avatar',
@@ -10,6 +12,6 @@ import { Player } from '../../Model/Player';
 })
 export class ChooseAvatarComponent {
   playerData!: Player;
-
-  submitplayerForm(){}
+  avatarData!:Avatar;
+  submitplayerForm(form:NgForm){}
 }

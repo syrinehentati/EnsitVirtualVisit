@@ -1,7 +1,6 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
   <!-- Sidebar -->
-
   <app-side-bar></app-side-bar>
   <!-- End of Sidebar -->
 
@@ -12,160 +11,183 @@
       <!-- Topbar -->
       <app-sidebar-menubuttons></app-sidebar-menubuttons>
 
-      <div class="container">
-        <div class="card">
-          <div class="card-body">
-            <h2 style="margin-left: 400px; color: #2f0c81; font-size: 40px">
-              Create Stand
-            </h2>
-            <form (ngSubmit)="submitstandForm()" #standForm="ngForm">
-              <div class="form-group">
-                <label
-                  for="standImage"
-                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
-                  >Stand Image</label
-                >
-                <input
-                  type="file"
-                  id="standImage"
-                  name="standImage"
-                  accept="image/*"
-                  onchange="previewImage(event)"
-                />
-                <div class="image-preview">
-                  <img
-                    id="imagePreview"
-                    src="../../../assets/img/avatar.png"
-                    alt="Image Preview"
-                  />
-                </div>
-              </div>
-              <div class="form-group">
-                <label
-                  for="standName"
-                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
-                  >Stand Name</label
-                >
+      <div
+        class="container form-container"
+        style="background-color: white; padding: 30px; width: 50%"
+      >
+        <form
+          style="width: 100%"
+          (ngSubmit)="submitstandForm(standForm)"
+          #standForm="ngForm"
+        >
+          <div class="row">
+            <div class="col-lg-12">
+              <h2>Create stand</h2>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 65px">Stand Name</h3>
+              <div class="input-group input-group-icon">
                 <input
                   type="text"
-                  id="standName"
-                  name="standName"
-                  style="font-size: 19px"
+                  placeholder="Stand Name"
                   [(ngModel)]="standData.standName"
                   required
                 />
-              </div>
-
-              <div class="form-group">
-                <label
-                  for="standDescription"
-                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
-                  >Stand Description</label
-                >
-                <textarea
-                  id="standDescription"
-                  name="standDescription"
-                  style="font-size: 19px"
-                  rows="4"
-                  [(ngModel)]="standData.standDescription"
-                ></textarea>
-              </div>
-              <div class="form-group">
-                <label
-                  for="standURL"
-                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
-                  >Stand URL</label
-                >
-                <input
-                  type="text"
-                  id="standURL"
-                  name="standURL"
-                  style="font-size: 19px"
-                />
-              </div>
-
-              <div class="form-group">
-                <label
-                  for="standLocalisation"
-                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
-                  >Stand Localisation</label
-                >
-                <select
-                  id="standLocalisation"
-                  name="standLocalisation"
-                  [(ngModel)]="standData.standLocalisation"
-                  class="form-control"
-                  style="font-size: 19px"
-                >
-                  <option value="next to the door">next to the door</option>
-                  <option value="desk 1">desk 1</option>
-                  <option value="desk 2">desk 2</option>
-                  <!-- Add more options here if needed -->
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label
-                  for="standPrice"
-                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
-                  >Stand Price</label
-                >
-                <input
-                  type="number"
-                  id="standPrice"
-                  name="standPrice"
-                  style="font-size: 19px"
-                  [(ngModel)]="standData.standPrice"
-                  required
-                /><label
-                  for="posterPrice"
-                  style="font-size: 19px; margin-top: 20px; margin-bottom: 10px"
-                  >dt</label
-                >
-              </div>
-
-              <div class="form-group">
-                <label
-                  for="standExisting"
-                  style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
-                  >Stand Existing</label
-                >
-                <div class="radio-buttons">
-                  <label class="radio-button-label">
-                    <input
-                      type="radio"
-                      [(ngModel)]="standData.standExisting"
-                      id="standExistingyes"
-                      name="standExistingyes"
-                      value="yes"
-                    />
-                    <span class="radio-button-text">Yes</span>
-                  </label>
-                  <label class="radio-button-label">
-                    <input
-                      type="radio"
-                      [(ngModel)]="standData.standExisting"
-                      id="standExistingno"
-                      name="standExistingno"
-                      value="no"
-                    />
-                    <span class="radio-button-text">No</span>
-                  </label>
+                <div class="input-icon">
+                  <i class="fas fa-file-image"></i>
                 </div>
               </div>
+            </div>
+          </div>
 
+          <div class="form-group">
+            <h3 for="standSubject">Stand Subject</h3>
+            <textarea
+              id="standSubject"
+              placeholder="Enter your stand subject"
+              name="standSubject"
+              rows="2"
+              [(ngModel)]="standData.standSubject"
+            ></textarea>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 6px">Stand Description</h3>
+              <div class="input-group input-group-icon">
+                <textarea
+                  [(ngModel)]="standData.standDescription"
+                  placeholder="Description"
+                  rows="4"
+                  required
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <h3 for="standImage">Stand image</h3>
+            <input
+              type="file"
+              id="standImage"
+              name="standImage"
+              accept="image/*"
+              onchange="checkImageDimensions(event, 'standDimensions'),previewImage(event)"
+            />
+            <span
+              id="standDimensions"
+              style="margin-left: 10px; font-size: 16px"
+              >Preferred dimensions: 40px x 60px</span
+            >
+            <div class="image-preview">
+              <img
+                id="imagePreview"
+                alt="Image Preview"
+                style="max-width: 40%"
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 7px">Stand URL</h3>
+              <div class="input-group input-group-icon">
+                <input
+                  type="text"
+                  placeholder="enter your stand URL"
+                  [(ngModel)]="standData.standURL"
+                  required
+                />
+                <div class="input-icon">
+                  <i class="fas fa-link"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <h3>Stand Existing</h3>
+              <div class="input-group radio-container">
+                <input
+                  id="standExistingyes"
+                  type="radio"
+                  name="standExisting"
+                  value="yes"
+                  [(ngModel)]="standData.standExisting"
+                  required
+                />
+                <label for="standExistingyes">Yes</label>
+                <input
+                  id="standExistingNo"
+                  type="radio"
+                  name="standExisting"
+                  [(ngModel)]="standData.standExisting"
+                  value="no"
+                  required
+                />
+                <label for="standExistingNo">No</label>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <h3>Stand Type</h3>
+              <div class="input-group radio-container">
+                <input
+                  id="Type1"
+                  type="radio"
+                  name="Type1"
+                  value="Type1"
+                  [(ngModel)]="standData.standType"
+                  required
+                />
+                <label for="Type1">Type1</label>
+                <input
+                  id="Type2"
+                  type="radio"
+                  name="Type2"
+                  [(ngModel)]="standData.standType"
+                  value="Type2"
+                  required
+                />
+                <label for="Type2">Type2</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <h3 for="standPrice" style="margin-right: 10px">Stand Price</h3>
+            <div style="display: flex; align-items: center">
+              <input
+                type="number"
+                id="standPrice"
+                name="standPrice"
+                style="font-size: 19px; margin-right: 7%"
+                [(ngModel)]="standData.standPrice"
+                required
+              />
+              <h6 for="standPrice" style="font-size: 19px; margin-left: 5px">
+                dt
+              </h6>
+            </div>
+          </div>
+
+          <div class="row" style="justify-content: center; text-align: center">
+            <!-- Button in the middle bottom -->
+            <div class="col-lg-12">
               <button
                 type="submit"
-                class="btn btn-primary"
-                [disabled]="standForm.invalid"
-                style="font-size: 23px; margin-left: 400px"
+                style="margin-top: 20px; width: 150px; height: 50px"
               >
-                Create Stand
+                ADD
               </button>
-            </form>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
+
       <!-- end create stand-->
       <!-- Logout Modal-->
       <app-logoutmodel></app-logoutmodel>
