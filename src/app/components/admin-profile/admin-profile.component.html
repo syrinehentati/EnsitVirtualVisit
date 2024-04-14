@@ -14,12 +14,7 @@
 
       <main id="main" class="main">
         <div class="pagetitle">
-          <h1
-            class="page-title"
-            style="color: rgb(107, 45, 179); padding-left: 4%"
-          >
-            Profile
-          </h1>
+          <h1 class="page-title" style="color: rgb(107, 45, 179)">Profile</h1>
         </div>
         <!-- End Page Title -->
 
@@ -37,9 +32,11 @@
                     style="width: 60%; height: 40%; object-fit: cover"
                   />
                   <h2 style="font-size: 1.7rem; margin-top: 10px">
-                    Syrine Hentati
+                    {{ UserData.FirstName }} {{ UserData.LastName }}
                   </h2>
-                  <h3 style="font-size: 1.2rem">Student</h3>
+                  <h3 style="font-size: 1.2rem">
+                    {{ playerData.playerProfession }}
+                  </h3>
                 </div>
               </div>
             </div>
@@ -92,39 +89,55 @@
                       <h3 class="card-title">Profile Details</h3>
                       <br />
                       <div class="row">
-                        <div class="col-lg-3 col-md-4 label">first Name</div>
-                        <div class="col-lg-9 col-md-8">Syrine</div>
+                        <div class="col-lg-3 col-md-4 label">First Name</div>
+                        <div class="col-lg-9 col-md-8">
+                          {{ UserData.FirstName }}
+                        </div>
                       </div>
 
                       <br />
                       <div class="row">
-                        <div class="col-lg-3 col-md-4 label">last Name</div>
-                        <div class="col-lg-9 col-md-8">Hentati</div>
+                        <div class="col-lg-3 col-md-4 label">Last Name</div>
+                        <div class="col-lg-9 col-md-8">
+                          {{ UserData.LastName }}
+                        </div>
                       </div>
                       <br />
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">Email</div>
                         <div class="col-lg-9 col-md-8">
-                          sirinehentati2084&#64;gmail.com
+                          {{ UserData.email }}
                         </div>
                       </div>
                       <br />
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">Profession</div>
-                        <div class="col-lg-9 col-md-8">Student</div>
+                        <div class="col-lg-9 col-md-8">
+                          {{ playerData.playerProfession }}
+                        </div>
                       </div>
                       <br />
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">Birthday</div>
-                        <div class="col-lg-9 col-md-8">2001-06-09</div>
+                        <div class="col-lg-9 col-md-8">
+                          {{ playerData.playerBirthday }}
+                        </div>
                       </div>
                       <br />
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">Avatar URL</div>
                         <div class="col-lg-9 col-md-8">
-                          https://readyplayerme
+                          {{ playerData.AvatarURL }}
                         </div>
                       </div>
+                      <br />
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Joke</div>
+                        <div class="col-lg-9 col-md-8">
+                          {{ playerData.Joke }}
+                        </div>
+                      </div>
+                      <br />
                     </div>
 
                     <!-- Profile Edit Tab -->
@@ -161,24 +174,26 @@
                               type="text"
                               class="form-control"
                               id="firstName"
-                              value="syrine"
+                              placeholder="{{ UserData.FirstName }}"
+                              [(ngModel)]="UserData.FirstName"
                             />
                           </div>
                         </div>
 
                         <div class="row mb-3">
                           <label
-                            for="lastName"
+                            for="LastName"
                             class="col-md-4 col-lg-3 col-form-label"
-                            >lastName</label
+                            >Last Name</label
                           >
                           <div class="col-md-8 col-lg-9">
                             <input
-                              name="lastName"
+                              name="LastName"
+                              type="text"
                               class="form-control"
-                              id="lastName"
-                              style="height: 100px"
-                              value="hentati"
+                              id="LastName"
+                              placeholder="{{ UserData.LastName }}"
+                              [(ngModel)]="UserData.LastName"
                             />
                           </div>
                         </div>
@@ -195,7 +210,8 @@
                               type="text"
                               class="form-control"
                               id="email"
-                              value="sirinehentati@gmail.com"
+                              placeholder="{{ UserData.email }}"
+                              [(ngModel)]="UserData.email"
                             />
                           </div>
                         </div>
@@ -212,7 +228,8 @@
                               type="text"
                               class="form-control"
                               id="AvatarURL"
-                              value="http://readyplayerme"
+                              placeholder="{{ playerData.AvatarURL }}"
+                              [(ngModel)]="playerData.AvatarURL"
                             />
                           </div>
                         </div>
@@ -229,7 +246,8 @@
                               type="date"
                               class="form-control"
                               id="Birthday"
-                              value="2001-06-09"
+                              placeholder="{{ playerData.playerBirthday }}"
+                              [(ngModel)]="playerData.playerBirthday"
                             />
                           </div>
                         </div>
@@ -238,7 +256,7 @@
                           <label
                             for="profession"
                             class="col-md-4 col-lg-3 col-form-label"
-                            >profession</label
+                            >Profession</label
                           >
                           <div class="col-md-8 col-lg-9">
                             <input
@@ -246,7 +264,26 @@
                               type="text"
                               class="form-control"
                               id="profession"
-                              value="Student"
+                              placeholder="{{ playerData.playerProfession }}"
+                              [(ngModel)]="playerData.playerProfession"
+                            />
+                          </div>
+                        </div>
+                        <br />
+                        <div class="row mb-3">
+                          <label
+                            for="Joke"
+                            class="col-md-4 col-lg-3 col-form-label"
+                            >Joke</label
+                          >
+                          <div class="col-md-8 col-lg-9">
+                            <input
+                              name="Joke"
+                              type="text"
+                              class="form-control"
+                              id="Joke"
+                              placeholder="{{ UserData.Joke }}"
+                              [(ngModel)]="UserData.Joke"
                             />
                           </div>
                         </div>
@@ -280,6 +317,7 @@
                               type="password"
                               class="form-control"
                               id="currentPassword"
+                              [(ngModel)]="UserData.password"
                             />
                           </div>
                         </div>
@@ -296,6 +334,7 @@
                               type="password"
                               class="form-control"
                               id="newPassword"
+                              [(ngModel)]="UserData.password"
                             />
                           </div>
                         </div>
@@ -312,6 +351,7 @@
                               type="password"
                               class="form-control"
                               id="renewPassword"
+                              [(ngModel)]="UserData.password"
                             />
                           </div>
                         </div>
