@@ -23,7 +23,7 @@
       onmouseover="this.style.transform = 'scale(1.05)'"
       onmouseout="this.style.transform = 'scale(1)'"
     >
-      Add Player
+      Add player
     </button>
   </div>
 
@@ -33,14 +33,14 @@
         <thead style="text-align: center">
           <tr>
             <th style="font-family: Amasis MT Pro Medium; width: 20%">
-              Player Name
+              player Name
             </th>
             <th style="font-family: Amasis MT Pro Medium; width: 20%">Email</th>
             <th style="font-family: Amasis MT Pro Medium; width: 20%">
               Profession
             </th>
             <th style="font-family: Amasis MT Pro Medium; width: 20%">
-              Player Birthday
+              player Birthday
             </th>
             <th style="font-family: Amasis MT Pro Medium; width: 20%">
               Action
@@ -50,61 +50,25 @@
         <tfoot></tfoot>
         <tbody style="text-align: center">
           <tr *ngFor="let row of tableData">
-            <td>{{ row.PlayerName }}</td>
-            <td>{{ row.Email }}</td>
-            <td>{{ row.Profession }}</td>
-            <td>{{ row.Birthday }}</td>
+            <td>{{ row.nom }}</td>
+            <td>{{ row.email }}</td>
+            <td>{{ row.profession }}</td>
+            <td>{{ row.dateNaissance }}</td>
             <td class="action-icons">
-              <ng-container *ngFor="let action of row.Action">
-                <a
-                  *ngIf="
-                    action.link !== 'editplayer' &&
-                    action.link !== 'overviewplayer'
-                  "
-                  (click)="handleAction(action)"
-                >
-                  <span
-                    class="action-icon"
-                    [ngClass]="{
-                      'text-danger':
-                        action.icon === '../../../assets/img/delete.jpeg',
-                      'text-primary':
-                        action.icon === '../../../assets/img/view.jpg',
-                      'text-warning':
-                        action.icon === '../../../assets/img/edit.png'
-                    }"
-                  >
-                    <i
-                      class="bi bi-{{ action.iconClass }}"
-                      (click)="handleAction(action)"
-                    ></i>
-                  </span>
-                </a>
-                <a
-                  *ngIf="
-                    action.link === 'editplayer' ||
-                    action.link === 'overviewplayer'
-                  "
-                  [href]="action.link"
-                >
-                  <span
-                    class="action-icon"
-                    [ngClass]="{
-                      'text-danger':
-                        action.icon === '../../../assets/img/delete.jpeg',
-                      'text-primary':
-                        action.icon === '../../../assets/img/view.jpg',
-                      'text-warning':
-                        action.icon === '../../../assets/img/edit.png'
-                    }"
-                  >
-                    <i
-                      class="bi bi-{{ action.iconClass }}"
-                      (click)="handleAction(action)"
-                    ></i>
-                  </span>
-                </a>
-              </ng-container>
+              <span (click)="consultplayer(row.email)">
+                <i class="fas fa-eye action-icon eye" size="large"></i>
+              </span>
+
+              <span (click)="navigateToEditplayer(row.email)">
+                <i
+                  class="fas fa-pencil-alt action-icon pencil"
+                  size="large"
+                ></i>
+              </span>
+
+              <span (click)="openDeleteModal(row.email)">
+                <i class="fas fa-trash action-icon trash" size="large"></i>
+              </span>
             </td>
           </tr>
         </tbody>
@@ -113,7 +77,58 @@
   </div>
 </div>
 
-<app-delete></app-delete>
+<!--delete model -->
+
+<div
+  class="modal fade"
+  id="deleteModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          class="close"
+          type="button"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div
+        class="modal-body"
+        style="font-size: 26px"
+        *ngIf="playerData !== undefined"
+      >
+        Select "Delete" below if you are sure you want to delete the player
+        {{ playerData.nom }}
+      </div>
+      <div class="modal-footer">
+        <button
+          class="btn btn-secondary"
+          type="button"
+          data-dismiss="modal"
+          style="font-size: 24px"
+        >
+          Cancel
+        </button>
+
+        <button
+          class="btn btn-secondary"
+          type="button"
+          (click)="deleteplayer()"
+          style="font-size: 24px; background-color: #1d0cb3"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script src="../../../vendor/jquery/jquery.min.js"></script>
 <script src="../../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

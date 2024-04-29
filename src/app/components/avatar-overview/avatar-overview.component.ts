@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Avatar } from '../../Model/Avatar';
+import { ActivatedRoute } from '@angular/router';
 
+import { Avatar } from '../../Model/Avatar';
 import { AvatarService } from '../../services/avatar.service';
 
 
@@ -12,49 +13,36 @@ import { AvatarService } from '../../services/avatar.service';
 })
 export class AvatarOverviewComponent implements OnInit {
 
-  avatarData: Avatar = {
-    avatarName: 'keranis',
-    avatarGender:'Male',
-    avatarDescription: 'This is a description about keranis',
-    avatarURL: 'http://readyplayerme',
-    avatarExisting: 'yes',
-    avatarNPC:'no'
-  };
-  playerData: any = {
-    playerName: 'keranis',
-    playerJoke:'Why was the JavaScript developer sad? Because he didn t know how to  null his feelings!',
-    playerEmail: 'sirinehentati@gmail.com',
-    playerProfession: 'Student',
-    playerBirthday: '2001-06-09',
-    AvatarURL:'https://redayplayerme'
-  };
+  avatarData: Avatar | undefined;
+
+  url: string | undefined;
+
   
 
  
 
-  constructor(private avatarService: AvatarService) { } 
+  constructor(private avatarService: AvatarService,private route: ActivatedRoute) { } 
 
   ngOnInit(): void {
-    
-    this.avatarService.getAvatars2().subscribe(avatar2=> {
-      console.log(avatar2);
-    })
-    //this.fetchAvatarData();
-  }
-
-  fetchAvatarData(): void {
-    
-    this.avatarService.getAvatars().subscribe(avatars => {
+  this.route.params.subscribe(params => {
+    this.url = params['url'];
+    if (this.url) {
+      this.avatarService.getAvatarByURL(this.url).subscribe(
+        (result) => {
+          this.avatarData = result;
+        },
+        (error) => {
+          console.error('Error fetching avatar data:', error);
+          
+        }
+      );
+    } else {
+      console.error('URL parameter is undefined or null.');
       
-      if (avatars && avatars.length > 0) {
-        this.avatarData = avatars[0];
-      }
-    }, error => {
-      console.error('Error fetching avatars:', error);
-    });
-  }
+    }
+  });
 }
-function avatar2(avatar2: any) {
-  throw new Error('Function not implemented.');
+ 
 }
+
 

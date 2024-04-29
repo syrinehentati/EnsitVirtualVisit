@@ -32,12 +32,16 @@
               <div class="input-group input-group-icon">
                 <input
                   type="text"
-                  placeholder="{{ avatarData.avatarName }}"
+                  [ngClass]="{ 'has-content': avatarData.avatarName }"
+                  name="avatarName"
                   [(ngModel)]="avatarData.avatarName"
+                  class="form-control custom-user-input avatar-name"
                   required
                 />
-                <div class="input-icon">
-                  <i class="fas fa-user"></i>
+                <div class="input-group-append">
+                  <span class="input-group-text custom-user-icon"
+                    ><i class="fas fa-user user"></i
+                  ></span>
                 </div>
               </div>
             </div>
@@ -48,8 +52,10 @@
               <h3 style="margin-top: 6px">Avatar Description</h3>
               <div class="input-group input-group-icon">
                 <textarea
-                  placeholder="{{ avatarData.avatarDescription }}"
-                  [(ngModel)]="avatarData.avatarDescription"
+                  class="form-control custom-user-input avatar-description"
+                  [value]="avatarData.description"
+                  [(ngModel)]="avatarData.description"
+                  name="description"
                   rows="4"
                   required
                 ></textarea>
@@ -63,12 +69,16 @@
               <div class="input-group input-group-icon">
                 <input
                   type="text"
-                  placeholder="{{ avatarData.avatarURL }}"
-                  [(ngModel)]="avatarData.avatarURL"
+                  [ngClass]="{ 'has-content': avatarData.url }"
+                  [(ngModel)]="avatarData.url"
+                  name="url"
+                  class="form-control custom-link-input avatar-url"
                   required
                 />
-                <div class="input-icon">
-                  <i class="fas fa-link"></i>
+                <div class="input-group-append">
+                  <span class="input-group-text custom-link-icon"
+                    ><i class="fas fa-link link"></i
+                  ></span>
                 </div>
               </div>
             </div>
@@ -79,23 +89,23 @@
               <h3>Avatar Existing</h3>
               <div class="input-group radio-container">
                 <input
-                  id="avatarExistingyes"
+                  id="existanttrue"
                   type="radio"
-                  name="avatarExisting"
-                  value="yes"
-                  [(ngModel)]="avatarData.avatarExisting"
+                  name="existant"
+                  [value]="1"
+                  [(ngModel)]="avatarData.existant"
                   required
                 />
-                <label for="avatarExistingyes">Yes</label>
+                <label for="existanttrue">true</label>
                 <input
-                  id="avatarExistingNo"
+                  id="existantNo"
                   type="radio"
-                  name="avatarExisting"
-                  [(ngModel)]="avatarData.avatarExisting"
-                  value="no"
+                  name="existant"
+                  [value]="0"
+                  [(ngModel)]="avatarData.existant"
                   required
                 />
-                <label for="avatarExistingNo">No</label>
+                <label for="existantNo">false</label>
               </div>
             </div>
 
@@ -105,18 +115,18 @@
                 <input
                   id="gender-male"
                   type="radio"
-                  name="avatarGender"
-                  [value]="avatarData.avatarGender"
-                  [(ngModel)]="avatarData.avatarGender"
+                  name="M"
+                  [value]="'M'"
+                  [(ngModel)]="avatarData.sexe"
                   required
                 />
                 <label for="gender-male">Male</label>
                 <input
                   id="gender-female"
                   type="radio"
-                  name="avatarGender"
-                  [value]="avatarData.avatarGender"
-                  [(ngModel)]="avatarData.avatarGender"
+                  name="F"
+                  [value]="'F'"
+                  [(ngModel)]="avatarData.sexe"
                   required
                 />
 
@@ -125,100 +135,22 @@
             </div>
           </div>
 
-          <div class="row">
+          <div class="row" *ngIf="avatarData.mail !== ''">
             <div class="col-lg-12">
-              <h3 style="margin-top: 5%">Avatar Non Player Character</h3>
-              <div class="input-group radio-container">
-                <input
-                  id="avatarNPCyes"
-                  type="radio"
-                  [value]="avatarData.avatarNPC"
-                  [(ngModel)]="avatarData.avatarNPC"
-                  name="avatarNPC"
-                  required
-                />
-                <label for="avatarNPCyes">
-                  <span>Yes</span>
-                </label>
-                <input
-                  id="avatarNPCno"
-                  type="radio"
-                  [value]="avatarData.avatarNPC"
-                  [(ngModel)]="avatarData.avatarNPC"
-                  name="avatarNPC"
-                  required
-                />
-
-                <label for="avatarNPCno">
-                  <span>No</span>
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <div class="row" *ngIf="avatarData.avatarNPC === 'no'">
-            <div class="col-lg-12">
-              <h3 style="margin-top: 7px">Player Email</h3>
+              <h3 style="margin-top: 7px">Email</h3>
               <div class="input-group input-group-icon">
                 <input
                   type="email"
-                  placeholder="{{ playerData.playerEmail }}"
+                  [(ngModel)]="avatarData.mail"
+                  name="mail"
+                  [ngClass]="{ 'has-content': avatarData.mail }"
+                  class="mail form-control custom-email-input"
                   required
                 />
-                <div class="input-icon">
-                  <i class="fas fa-envelope"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row" *ngIf="avatarData.avatarNPC === 'no'">
-            <div class="col-lg-4">
-              <h3 style="margin-top: 7px">Date of Birth</h3>
-              <div class="input-group">
-                <input
-                  type="text"
-                  placeholder="{{ playerData.playerBirthday | date : 'dd' }}"
-                  name="day"
-                  required
-                />
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <h3 style="margin-top: 7px">&nbsp;</h3>
-              <div class="input-group">
-                <input
-                  type="text"
-                  placeholder="{{ playerData.playerBirthday | date : 'MM' }}"
-                  name="month"
-                  required
-                />
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <h3 style="margin-top: 7px">&nbsp;</h3>
-              <div class="input-group">
-                <input
-                  type="text"
-                  placeholder="{{ playerData.playerBirthday | date : 'yyyy' }}"
-                  name="year"
-                  required
-                />
-              </div>
-            </div>
-          </div>
-
-          <div class="row" *ngIf="avatarData.avatarNPC === 'no'">
-            <div class="col-lg-12">
-              <h3 style="margin-top: 7px">Joke</h3>
-              <div class="input-group input-group-icon">
-                <input
-                  type="text"
-                  placeholder="{{ playerData.playerJoke }}"
-                  required
-                />
-                <div class="input-icon">
-                  <i class="bi bi-pencil-fill"></i>
+                <div class="input-group-append">
+                  <span class="input-group-text custom-email-icon"
+                    ><i class="fas fa-envelope envelope"></i
+                  ></span>
                 </div>
               </div>
             </div>

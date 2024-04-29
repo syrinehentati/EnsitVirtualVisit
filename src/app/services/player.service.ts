@@ -1,35 +1,35 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Player } from '../Model/Player';
+import { player } from '../Model/Player';
 import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PlayerService {
+export class playerService {
 
   private apiBaseUrl = environment.apiBaseUrl;
 
   constructor(private http: HttpClient) { }
 
-  public getPlayers(): Observable<Player[]> {
-    return this.http.get<Player[]>(`${this.apiBaseUrl}/players`);
+  public getplayers(): Observable<player[]> {
+    return this.http.get<player[]>(`${this.apiBaseUrl}/JoueurCRUD.php`);
   }
 
-  public getPlayerByEmail(Email: string): Observable<Player> {
-    return this.http.get<Player>(`${this.apiBaseUrl}/players/${Email}`);
+  public getplayerByEmail(id: string): Observable<player> {
+    return this.http.get<player>(`${this.apiBaseUrl}/JoueurCRUD.php?id=${id}`);
   }
 
-  public addPlayer(player: Player): Observable<Player> {
-    return this.http.post<Player>(`${this.apiBaseUrl}/players`, player);
+  public addplayer(player: player): Observable<player> {
+    return this.http.post<player>(`${this.apiBaseUrl}/JoueurCRUD.php`, player);
   }
 
-  public updatePlayer(player: Player): Observable<Player> {
-    return this.http.put<Player>(`${this.apiBaseUrl}/players/${player.playerEmail}`, player);
+  public updateplayer(id: string,player: player): Observable<player> {
+    return this.http.put<player>(`${this.apiBaseUrl}/JoueurCRUD.php?id=${id}`, player);
   }
 
-  public deletePlayer(Email: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiBaseUrl}/players/${Email}`);
+  public deleteplayer(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiBaseUrl}/players/${id}`);
   }
 }

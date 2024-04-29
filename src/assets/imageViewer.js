@@ -8,3 +8,14 @@ function previewImage(event) {
   var preview = document.querySelector(".image-preview");
   preview.style.display = "block";
 }
+
+function previewImagedetailed(event) {
+  var reader = new FileReader();
+  reader.onload = function () {
+    var output = document.getElementById("imageDetailedImage");
+    output.src = reader.result;
+  };
+  reader.readAsDataURL(event.target.files[0]);
+  var preview = document.querySelector(".image-DetailedImage");
+  preview.style.display = "block";
+}

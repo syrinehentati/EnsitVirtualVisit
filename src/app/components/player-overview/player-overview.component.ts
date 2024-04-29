@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { player } from '../../Model/Player';
+import { playerService } from '../../services/player.service';
 
 @Component({
   selector: 'app-player-overview',
@@ -7,13 +11,39 @@ import { Component } from '@angular/core';
 })
 export class PlayerOverviewComponent {
 
-  playerData: any = {
-    playerName: 'keranis',
-    playerEmail: 'sirinehentati@gmail.com',
-    playerProfession: 'Student',
-    playerBirthday: '2001-06-09',
-    AvatarURL:'https://redayplayerme',
-    playerJoke:'Why don t skeletons fight each other? They don t have the guts!'
-  };
+  
 
+  playerData: player | undefined;
+
+  email: string | undefined;
+
+  
+
+ 
+
+  constructor(private playerService: playerService,private route: ActivatedRoute) { } 
+
+  ngOnInit(): void {
+  this.route.params.subscribe(params => {
+    this.email = params['email'];
+    if (this.email) {
+      this.playerService.getplayerByEmail(this.email).subscribe(
+        (result) => {
+          this.playerData = result;
+          console.log(this.playerData);
+        },
+        (error) => {
+          console.error('Error fetching player data:', error);
+          
+        }
+      );
+    } else {
+      console.error('email parameter is undefined or null.');
+      
+    }
+  });
 }
+ 
+}
+
+

@@ -27,7 +27,7 @@
         <div class="col-lg-12">
           <h3 style="margin-top: 65px">Poster Subject</h3>
           <div class="input-group input-group-icon">
-            <p class="form-text smaller-text">{{ posterData.posterSubject }}</p>
+            <p class="form-text smaller-text">{{ posterData.sujet }}</p>
           </div>
         </div>
       </div>
@@ -37,7 +37,7 @@
           <h3 style="margin-top: 6px">Poster Description</h3>
           <div class="input-group input-group-icon">
             <p class="form-text smaller-text">
-              {{ posterData.posterDescription }}
+              {{ posterData.description }}
             </p>
           </div>
         </div>
@@ -50,7 +50,7 @@
             <div class="image-preview">
               <img
                 id="imagePreview"
-                [src]="posterData.posterPreviewImage"
+                [src]="posterData.image"
                 alt="Image Preview"
                 style="max-width: 40%"
               />
@@ -66,7 +66,7 @@
             <div class="image-preview">
               <img
                 id="imagePreview"
-                [src]="posterData.posterDetailedImage"
+                [src]="posterData.couverture"
                 alt="Image Preview"
                 style="max-width: 40%"
               />
@@ -80,7 +80,7 @@
           <h3 style="margin-top: 7px">Poster URL</h3>
           <div class="input-group input-group-icon">
             <p class="form-text smaller-text">
-              <a [href]="posterData.posterURL">{{ posterData.posterURL }}</a>
+              <a [href]="posterData.lien">{{ posterData.lien }}</a>
             </p>
           </div>
         </div>
@@ -91,7 +91,7 @@
           <h3>Poster Existing</h3>
           <div class="input-group radio-container">
             <p class="form-text smaller-text">
-              {{ posterData.posterExisting }}
+              {{ posterData.existant }}
             </p>
           </div>
         </div>
@@ -99,7 +99,9 @@
         <div class="col-lg-6">
           <h3>Poster Type</h3>
           <div class="input-group radio-container">
-            <p class="form-text smaller-text">{{ posterData.posterType }}</p>
+            <p class="form-text smaller-text">
+              {{ posterData.localisationAffiche }}
+            </p>
           </div>
         </div>
       </div>
@@ -108,7 +110,7 @@
         <div class="col-lg-12">
           <h3 style="margin-top: 7px">poster Price</h3>
           <div class="input-group input-group-icon">
-            <p class="form-text smaller-text">{{ posterData.posterPrice }}</p>
+            <p class="form-text smaller-text">{{ posterData.prix }}</p>
           </div>
         </div>
       </div>

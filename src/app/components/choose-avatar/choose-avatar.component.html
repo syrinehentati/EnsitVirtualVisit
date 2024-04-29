@@ -48,7 +48,7 @@
                 <input
                   type="text"
                   placeholder="Avatar URL"
-                  [(ngModel)]="avatarData.avatarURL"
+                  [(ngModel)]="avatarData.url"
                   required
                 />
                 <div class="input-icon">
@@ -67,7 +67,7 @@
                   type="radio"
                   name="gender"
                   value="male"
-                  [(ngModel)]="avatarData.avatarGender"
+                  [(ngModel)]="avatarData.sexe"
                   required
                 />
                 <label for="gender-male">Male</label>
@@ -75,7 +75,7 @@
                   id="gender-female"
                   type="radio"
                   name="gender"
-                  [(ngModel)]="avatarData.avatarGender"
+                  [(ngModel)]="avatarData.sexe"
                   value="female"
                   required
                 />

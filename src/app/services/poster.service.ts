@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class PosterStandService {
+export class PosterService {
 
   private apiBaseUrl = environment.apiBaseUrl;
 
@@ -15,23 +15,23 @@ export class PosterStandService {
 
 
   public getPosters(): Observable<Poster[]> {
-    return this.http.get<Poster[]>(`${this.apiBaseUrl}/posters`);
+    return this.http.get<Poster[]>(`${this.apiBaseUrl}/AffichesCRUD.php`);
   }
 
-  public getPosterByURL(URL: string): Observable<Poster> {
-    return this.http.get<Poster>(`${this.apiBaseUrl}/posters/${URL}`);
+  public getPosterByid(id: Number): Observable<Poster> {
+    return this.http.get<Poster>(`${this.apiBaseUrl}/AffichesCRUD.php/?id=${id}`);
   }
 
   public addPoster(poster: Poster): Observable<Poster> {
-    return this.http.post<Poster>(`${this.apiBaseUrl}/posters`, poster);
+    return this.http.post<Poster>(`${this.apiBaseUrl}/AffichesCRUD.php`, poster);
   }
 
   public updatePoster(poster: Poster): Observable<Poster> {
-    return this.http.put<Poster>(`${this.apiBaseUrl}/posters/${poster. posterURL}`, poster);
+    return this.http.put<Poster>(`${this.apiBaseUrl}/AffichesCRUD.php/${poster.lien}`, poster);
   }
 
-  public deletePoster(URL: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiBaseUrl}/posters/${URL}`);
+  public deletePoster(id: Number): Observable<void> {
+    return this.http.delete<void>(`${this.apiBaseUrl}/AffichesCRUD.php/${id}`);
   }
 
 }

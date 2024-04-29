@@ -16,27 +16,25 @@ export class AvatarService {
   constructor(private http: HttpClient) { }
 
   public getAvatars(): Observable<Avatar[]> {
-    return this.http.get<Avatar[]>(`${this.apiBaseUrl}/Avatar/all`);
+    return this.http.get<Avatar[]>(`${this.apiBaseUrl}/AvatarCRUD.php`);
   }
 
 
-  public getAvatars2(): Observable<any> {
-    return this.http.get<any>(`${this.apiBaseUrl}/test.php`);
-  }
+  
 
   public getAvatarByURL(url: string): Observable<Avatar> {
-    return this.http.get<Avatar>(`${this.apiBaseUrl}/Avatar/find/${url}`);
+    return this.http.get<Avatar>(`${this.apiBaseUrl}/AvatarCRUD.php?id=${url}`);
   }
 
   public addAvatar(avatar: Avatar): Observable<Avatar> {
-    return this.http.post<Avatar>(`${this.apiBaseUrl}/Avatar/add`, avatar);
+    return this.http.post<Avatar>(`${this.apiBaseUrl}/AvatarCRUD.php`, avatar);
   }
 
-  public updateAvatar(avatar: Avatar): Observable<Avatar> {
-    return this.http.put<Avatar>(`${this.apiBaseUrl}/Avatar/update`, avatar);
+  public updateAvatar(url: string,avatar: Avatar): Observable<Avatar> {
+    return this.http.put<Avatar>(`${this.apiBaseUrl}/AvatarCRUD.php?id=${url}`, avatar);
   }
 
   public deleteAvatar(url: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiBaseUrl}/Avatar/delete/${url}`);
+    return this.http.delete<void>(`${this.apiBaseUrl}/AvatarCRUD.php?id=${url}`);
   }
 }

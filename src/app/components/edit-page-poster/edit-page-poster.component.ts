@@ -11,12 +11,12 @@ export class EditPagePosterComponent {
     posterName: 'IEEXtreme 17.0',
     posterImagePreview:'../../../assets/img/poster.png',
     posterImageDetailed:'../../../assets/img/poster.png',
-    posterSubject:'Hackathon of IEEE',
-    posterDescription: 'This is a description about Hackathon of IEEE ',
-    posterURL: 'ww.facaebook.com/ieestreme17.0',
-    posterType:'Type2',
-    posterPrice:'12',
-    posterExisting: 'Yes'
+    sujet:'Hackathon of IEEE',
+    description: 'This is a description about Hackathon of IEEE ',
+    lien: 'ww.facaebook.com/ieestreme17.0',
+    localisationAffiche:'Type2',
+    prix:'12',
+    existant: 'Yes'
    
   };
   submitposterForm(form:NgForm){}

@@ -8,9 +8,39 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-button:hover {
-  background-color: #433cce; /* Change background color on hover */
+.pencil {
+  color: #edc02c;
 }
+
+.eye {
+  color: #0e97af;
+}
+
+.trash {
+  color: #eb2a19;
+}
+.action-icon {
+  font-size: 2vw; /* Make icons bigger */
+
+  transition: color 0.3s; /* Add transition for color change */
+}
+
+.action-icon:hover {
+  filter: brightness(1.5); /* Increases brightness on hover */
+}
+
+.action-icons a:hover {
+  filter: brightness(1.5) saturate(100%) hue-rotate(0deg) contrast(100%);
+}
+
+.action-icons a:hover {
+  filter: brightness(1.5) saturate(100%) hue-rotate(240deg) contrast(100%);
+}
+
+.action-icons a:hover {
+  filter: brightness(1.5) saturate(100%) hue-rotate(60deg) contrast(100%);
+}
+
 .action-icon {
   font-size: 2vw; /* Make icons bigger */
 

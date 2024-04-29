@@ -1,9 +1,8 @@
-export interface Avatar {
-    avatarName: string;
-    avatarGender: string;
-    avatarDescription:  string;
-    avatarURL: string;
-    avatarExisting: string;
-    avatarNPC: string;
-    
-  };
+export interface Avatar{
+  url:string;
+  avatarName:string;
+  description:string;
+  existant:boolean;
+  sexe:string;
+  mail:string;
+}

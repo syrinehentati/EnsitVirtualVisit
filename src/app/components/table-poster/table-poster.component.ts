@@ -2,70 +2,102 @@ import { Component } from '@angular/core';
 
 declare var $: any;
 import { Router } from '@angular/router'; 
-
+import { Poster } from '../../Model/Poster';
+import { PosterService } from '../../services/poster.service';
 @Component({
   selector: 'app-table-poster',
   templateUrl: './table-poster.component.html',
   styleUrl: './table-poster.component.scss'
 })
 export class TablePosterComponent {
-  tableData: any[] = [
-    { 
-      Title: 'IEEEXTREME 17.0',
-      
-      Subject:'this is a subject about the poster IEEEXTREME 17.0',
-      Type:'Type1',
-      Existing: 'yes',
-      Price: '0',
-      Action: [
-        { link: 'overviewposter', icon: '../../../assets/img/view.jpg' ,iconClass: 'eye' },
-        { link: 'editposter', icon: '../../../assets/img/edit.png' ,iconClass: 'pencil' },
-        { modalId: '#deleteModal', icon: '../../../assets/img/delete.jpeg' ,iconClass: 'trash'},
-      ]
-    },
-    { 
-      Title: 'GeeksHack3.0',
-      
-      Subject:'this is a subject about the poster GeeksHack3.0',
-      Type:'Type2',
-      Existing: 'yes',
-      Price: '10',
-      Action: [
-        { link: 'overviewposter', icon: '../../../assets/img/view.jpg',iconClass: 'eye' },
-        { link: 'editposter', icon: '../../../assets/img/edit.png' ,iconClass: 'pencil'},
-        { modalId: '#deleteModal', icon: '../../../assets/img/delete.jpeg' ,iconClass: 'trash'},
-      ]
-    },
-    { 
-      Title: 'Game On',
-      Subject:'this is a subject about the poster Game On',
-      Type:'Type1',
-      Existing: 'yes',
-      Price: '325',
-      Action: [
-        { link: 'overviewposter', icon: '../../../assets/img/view.jpg' ,iconClass: 'eye'},
-        { link: 'editposter', icon: '../../../assets/img/edit.png',iconClass: 'pencil' },
-        { modalId: '#deleteModal', icon: '../../../assets/img/delete.jpeg' ,iconClass: 'trash'},
-      ]
-    }
+  tableData: Poster[] = [
+   
   ];
 
-  constructor(private router: Router) { } 
+  constructor(private router: Router,private postersService: PosterService) { } 
 
-  handleAction(action: any) {
-    if (action.modalId === '#deleteModal') { 
-      this.openLogoutModal(); 
+
+  posterData: Poster | undefined = {
+    idAffiche:0,
+  titre: '',
+  sujet: '',
+  description: '',
+  image:'',
+  couverture:'',
+  localisationAffiche: 0,
+  prix: 0,
+  existant: false,
+  lien: '',
+  };
+  idposter!: Number;
+
+ 
+
+  ngOnInit(): void {
+    this.postersService.getPosters().subscribe(
+      (result: Poster[]) => {
+        this.tableData = result;
+      }
+    );
+  }
+
+ 
+ openDeleteModal(id1:Number){
+    if(id1){
+      this.idposter=id1;
+      this.postersService.getPosterByid(this.idposter).subscribe(
+        (result: Poster | undefined) => {
+          this.posterData= result;
+          console.log(this.idposter);
+        }
+      );
+    
+    ($('#deleteModal') as any).modal('show');}
+    else{
+      console.error("undefined url ");
     }
+
+  }
+  
+  deleteposter(): void {/*
+    
+    if (this.posterData) {
+      this.postersService.deletePoster(this.posterData.idAffiche).subscribe(
+        () => {
+          
+          console.log('poster deleted successfully');
+         
+          ($('#deleteModal') as any).modal('hide');
+        },
+        (error: any) => {
+          console.error('Error deleting poster:', error);
+        }
+      );
+    } else {
+      console.error("poster data undefined");
+    }*/
   }
 
-  openLogoutModal() {
-    ($('#deleteModal') as any).modal('show');
-  }
   navigateToCreateposter() {
     this.router.navigate(['createposter']);
   }
+  
+  navigateToEditposter(id: Number) {
+    this.router.navigate(['editposter',  id ]);
+  }
+
+  consultposter(id: Number):void{
+
+    this.router.navigate(['overviewposter', id]); 
+  }
 
   
-}
+ 
 
+  
+
+ 
+ 
+  
+}
 

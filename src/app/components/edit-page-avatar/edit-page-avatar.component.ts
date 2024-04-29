@@ -4,39 +4,64 @@ import { NgForm} from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Avatar } from '../../Model/Avatar';
 import { AvatarService } from '../../services/avatar.service';
+import { ActivatedRoute } from '@angular/router';
+import { OnInit } from '@angular/core';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-edit-page-avatar',
   templateUrl: './edit-page-avatar.component.html',
   styleUrl: './edit-page-avatar.component.scss'
 })
-export class EditPageAvatarComponent {
-  avatarData: Avatar = {
-    avatarName: 'keranis',
-    avatarGender:'Female',
-    avatarDescription: 'This is a description about keranis',
-    avatarURL: 'http://readyplayerme',
-    avatarExisting: 'yes',
-    avatarNPC:'no'
-  };
+export class EditPageAvatarComponent implements OnInit {
+  avatarData!: Avatar;
   
-  
-  playerData: any = {
-    playerName: 'keranis',
-    playerEmail: 'sirinehentati@gmail.com',
-    playerProfession: 'Student',
-    playerBirthday: '2001-06-09',
-    AvatarURL:'https://redayplayerme',
-    playerJoke:'Why don t skeletons fight each other? They don t have the guts!'
-  };
-  avatar!: Avatar;
+  url!:string;
 
 
-  constructor(private avatarService: AvatarService) { }
+  constructor(private avatarService: AvatarService,private route:ActivatedRoute) { }
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.url = params['url'];
+      if (this.url){
+        this.avatarService.getAvatarByURL(this.url).subscribe(
+          (result)=>{ this.avatarData = result;
+          },
+          (error) => {
+            console.error('error fetching avatar datat',error);
+          }
+        );
 
-  submitavatarForm(Form:NgForm) {
-    this.avatarService.updateAvatar(this.avatarData);
+      } else {
+        console.error('URL parameter is undefined or null ');
+      }
+    });
   }
+  submitavatarForm(form: NgForm) {
+    const avatar: Avatar = {
+      avatarName: form.value.avatarName,
+      sexe: form.value.sexe,
+      description : form.value.description,
+      url: form.value.url,
+      existant: form.value.existant,
+      mail: form.value.mail,
+
+    };
+
+  
+
+    this.avatarService.updateAvatar(this.url, this.avatarData).subscribe(
+      (result)=>{
+        console.log(this.avatarData);
+      },(error)=>{
+        console.log(error);
+      }
+    );
+    
+  }
+
+
+ 
   previewImage(event: any) {
     const reader = new FileReader();
     reader.onload = () => {

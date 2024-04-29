@@ -33,11 +33,15 @@
                 <input
                   type="text"
                   placeholder="Avatar Name"
+                  name="avatarName"
                   [(ngModel)]="avatarData.avatarName"
+                  class="form-control custom-user-input avatar-name"
                   required
                 />
-                <div class="input-icon">
-                  <i class="fas fa-user"></i>
+                <div class="input-group-append">
+                  <span class="input-group-text custom-user-icon"
+                    ><i class="fas fa-user user"></i
+                  ></span>
                 </div>
               </div>
             </div>
@@ -48,8 +52,9 @@
               <h3 style="margin-top: 6px">Avatar Description</h3>
               <div class="input-group input-group-icon">
                 <textarea
-                  [(ngModel)]="avatarData.avatarDescription"
+                  [(ngModel)]="avatarData.description"
                   placeholder="Description"
+                  name="description"
                   rows="4"
                   required
                 ></textarea>
@@ -64,11 +69,15 @@
                 <input
                   type="text"
                   placeholder="Avatar URL"
-                  [(ngModel)]="avatarData.avatarURL"
+                  [(ngModel)]="avatarData.url"
+                  name="url"
+                  class="form-control custom-link-input avatar-url"
                   required
                 />
-                <div class="input-icon">
-                  <i class="fas fa-link"></i>
+                <div class="input-group-append">
+                  <span class="input-group-text custom-link-icon"
+                    ><i class="fas fa-link link"></i
+                  ></span>
                 </div>
               </div>
             </div>
@@ -79,23 +88,23 @@
               <h3>Avatar Existing</h3>
               <div class="input-group radio-container">
                 <input
-                  id="avatarExistingyes"
+                  id="existanttrue"
                   type="radio"
-                  name="avatarExisting"
-                  value="yes"
-                  [(ngModel)]="avatarData.avatarExisting"
+                  name="existant"
+                  value="true"
+                  [(ngModel)]="avatarData.existant"
                   required
                 />
-                <label for="avatarExistingyes">Yes</label>
+                <label for="existanttrue">true</label>
                 <input
-                  id="avatarExistingNo"
+                  id="existanfalse"
                   type="radio"
-                  name="avatarExisting"
-                  [(ngModel)]="avatarData.avatarExisting"
-                  value="no"
+                  name="existant"
+                  [(ngModel)]="avatarData.existant"
+                  value="false"
                   required
                 />
-                <label for="avatarExistingNo">No</label>
+                <label for="existanfalse">false</label>
               </div>
             </div>
 
@@ -105,9 +114,9 @@
                 <input
                   id="gender-male"
                   type="radio"
-                  name="gender"
+                  name="sexe"
                   value="male"
-                  [(ngModel)]="avatarData.avatarGender"
+                  [(ngModel)]="avatarData.sexe"
                   required
                 />
                 <label for="gender-male">Male</label>
@@ -115,93 +124,33 @@
                   id="gender-female"
                   type="radio"
                   name="gender"
-                  [(ngModel)]="avatarData.avatarGender"
+                  [(ngModel)]="avatarData.sexe"
                   value="female"
                   required
                 />
                 <label for="gender-female">Female</label>
               </div>
             </div>
-          </div>
 
-          <div class="row">
-            <div class="col-lg-12">
-              <h3 style="margin-top: 5%">Avatar Non Player Character</h3>
-              <div class="input-group radio-container">
-                <input
-                  id="avatarNPCyes"
-                  type="radio"
-                  [(ngModel)]="avatarData.avatarNPC"
-                  name="avatarNPC"
-                  value="yes"
-                  required
-                />
-                <label for="avatarNPCyes">
-                  <span>Yes</span>
-                </label>
-                <input
-                  id="avatarNPCno"
-                  [(ngModel)]="avatarData.avatarNPC"
-                  type="radio"
-                  name="avatarNPC"
-                  value="no"
-                  required
-                />
-                <label for="avatarNPCno">
-                  <span>No</span>
-                </label>
-              </div>
-            </div>
-          </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <h3 style="margin-top: 6px">Mail</h3>
+                <div class="input-group">
+                  <!-- Mail -->
+                  <input
+                    type="email"
+                    class="mail form-control custom-email-input"
+                    placeholder="Mail"
+                    [(ngModel)]="avatarData.mail"
+                    name="mail"
+                    required
+                  />
 
-          <div class="row" *ngIf="avatarData.avatarNPC === 'no'">
-            <div class="col-lg-12">
-              <h3 style="margin-top: 7px">Player Email</h3>
-              <div class="input-group input-group-icon">
-                <input
-                  type="email"
-                  placeholder="Insert your Email Address here"
-                  required
-                />
-                <div class="input-icon">
-                  <i class="fas fa-envelope"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row" *ngIf="avatarData.avatarNPC === 'no'">
-            <div class="col-lg-4">
-              <h3 style="margin-top: 7px">Date of Birth</h3>
-              <div class="input-group">
-                <input type="text" placeholder="DD" required />
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <h3 style="margin-top: 7px">&nbsp;</h3>
-              <div class="input-group">
-                <input type="text" placeholder="MM" required />
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <h3 style="margin-top: 7px">&nbsp;</h3>
-              <div class="input-group">
-                <input type="text" placeholder="YYYY" required />
-              </div>
-            </div>
-          </div>
-
-          <div class="row" *ngIf="avatarData.avatarNPC === 'no'">
-            <div class="col-lg-12">
-              <h3 style="margin-top: 7px">Joke</h3>
-              <div class="input-group input-group-icon">
-                <input
-                  type="text"
-                  placeholder="Create your own joke!"
-                  required
-                />
-                <div class="input-icon">
-                  <i class="bi bi-pencil-fill"></i>
+                  <div class="input-group-append">
+                    <span class="input-group-text custom-email-icon"
+                      ><i class="fas fa-envelope envelope"></i
+                    ></span>
+                  </div>
                 </div>
               </div>
             </div>

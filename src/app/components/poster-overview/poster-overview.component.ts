@@ -9,14 +9,14 @@ export class PosterOverviewComponent {
 
   posterData: any = {
     posterName: 'IEEXtreme 17.0',
-    posterSubject:'Hackathon of IEEE',
-    posterDetailedImage:'../../../assets/img/poster.png',
-    posterPreviewImage:'../../../assets/img/poster.png',
-    posterDescription: 'This is a description about Hackathon of IEEE ',
-    posterURL: 'ww.facaebook.com/ieestreme17.0',
-    posterType:'Type1',
-    posterPrice:'12',
-    posterExisting: 'yes'
+    sujet:'Hackathon of IEEE',
+    couverture:'../../../assets/img/poster.png',
+    image:'../../../assets/img/poster.png',
+    description: 'This is a description about Hackathon of IEEE ',
+    lien: 'ww.facaebook.com/ieestreme17.0',
+    localisationAffiche:'Type1',
+    prix:'12',
+    existant: 'yes'
    
   };
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-import { PlayerService } from '../../services/player.service';
-import { Player } from '../../Model/Player';
+import { playerService } from '../../services/player.service';
+import { player } from '../../Model/Player';
 import { Avatar } from '../../Model/Avatar';
 import { NgForm } from '@angular/forms';
 
@@ -11,7 +11,7 @@ import { NgForm } from '@angular/forms';
   styleUrl: './choose-avatar.component.scss'
 })
 export class ChooseAvatarComponent {
-  playerData!: Player;
+  playerData!: player;
   avatarData!:Avatar;
   submitplayerForm(form:NgForm){}
 }

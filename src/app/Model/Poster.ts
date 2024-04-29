@@ -1,11 +1,12 @@
 export interface Poster {
-  posterTitle: string;
-  posterSubject: string;
-  posterDescription: string;
-  posterPreviewImage:string;
-  posterDetailedImage:string;
-  posterURL: string;
-  posterType: string;
-  posterPrice: number;
-  posterExisting: string;
+  idAffiche:number;
+  titre: string;
+  sujet: string;
+  description: string;
+  image:string;
+  couverture:string;
+  localisationAffiche: number;
+  prix: number;
+  existant: Boolean;
+  lien: string;
 }

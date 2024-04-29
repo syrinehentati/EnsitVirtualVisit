@@ -1,9 +1,13 @@
-export interface Player{
-        playerName: string;
-        playerEmail:  string;
-        playerProfession: string;
-        playerBirthday: Date;
-        AvatarURL: string;
-        AvatarName: string;
-        playerJoke:string
-      };
+export interface player{
+  
+  
+  nom: string;
+  email:  string;
+  profession: string;
+  dateNaissance?: Date;
+  
+  pass:string;
+};
+
+
+

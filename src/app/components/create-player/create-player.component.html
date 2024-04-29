@@ -22,53 +22,45 @@
         >
           <div class="row">
             <div class="col-lg-12">
-              <h2>Add Player</h2>
+              <h2>Create player</h2>
             </div>
           </div>
 
           <div class="row">
             <div class="col-lg-12">
-              <h3 style="margin-top: 65px">Player Name</h3>
+              <h3 style="margin-top: 65px">player Name</h3>
               <div class="input-group input-group-icon">
                 <input
                   type="text"
-                  placeholder="Player Name"
-                  [(ngModel)]="playerData.playerName"
+                  name="nom"
+                  [(ngModel)]="playerData.nom"
+                  class="form-control custom-user-input user"
                   required
                 />
-                <div class="input-icon">
-                  <i class="fas fa-user"></i>
+                <div class="input-group-append">
+                  <span class="input-group-text custom-user-icon"
+                    ><i class="fas fa-user user"></i
+                  ></span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-12">
-            <h3 style="margin-top: 7px">Player Email</h3>
-            <div class="input-group input-group-icon">
-              <input
-                type="email"
-                placeholder="Insert your Email Address here"
-                required
-              />
-              <div class="input-icon">
-                <i class="fas fa-envelope"></i>
-              </div>
-            </div>
-          </div>
-
           <div class="row">
             <div class="col-lg-12">
-              <h3 style="margin-top: 7px">Avatar URL</h3>
+              <h3 style="margin-top: 6px">player Email</h3>
               <div class="input-group input-group-icon">
                 <input
-                  type="text"
-                  placeholder="Avatar URL"
-                  [(ngModel)]="playerData.AvatarURL"
+                  type="email"
+                  class="mail form-control custom-email-input"
+                  [(ngModel)]="playerData.email"
+                  name="email"
                   required
                 />
-                <div class="input-icon">
-                  <i class="fas fa-link"></i>
+                <div class="input-group-append">
+                  <span class="input-group-text custom-email-icon"
+                    ><i class="fas fa-envelope envelope"></i
+                  ></span>
                 </div>
               </div>
             </div>
@@ -76,17 +68,36 @@
 
           <div class="row">
             <div class="col-lg-6">
-              <h3>Player Profession</h3>
+              <h3>player Profession</h3>
               <div class="select-wrapper">
                 <select
-                  id="playerProfession"
-                  name="playerProfession"
-                  [(ngModel)]="playerData.playerProfession"
+                  id="profession"
+                  name="profession"
+                  [(ngModel)]="playerData.profession"
                   style="font-size: 19px"
                 >
-                  <option value="Student">Student</option>
-                  <option value="Teacher">Professor</option>
-                  <option value="Other">Other</option>
+                  <option
+                    [selected]="playerData.profession === 'Student'"
+                    value="Student"
+                    name="Student"
+                  >
+                    Student
+                  </option>
+                  <option
+                    [selected]="playerData.profession === 'Teacher'"
+                    value="Teacher"
+                    name="Teacher"
+                  >
+                    Teacher
+                  </option>
+                  <option
+                    [selected]="playerData.profession === 'Other'"
+                    value="Other"
+                    name="Other"
+                  >
+                    Other
+                  </option>
+
                   <!-- Add more options here if needed -->
                 </select>
               </div>
@@ -94,36 +105,34 @@
             <div class="col-lg-6">
               <h3>Date of Birth</h3>
               <div class="row">
-                <div class="col-lg-4">
-                  <div class="input-group">
-                    <input type="text" placeholder="DD" required />
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="input-group">
-                    <input type="text" placeholder="MM" required />
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="input-group">
-                    <input type="text" placeholder="YYYY" required />
-                  </div>
+                <div class="input-group">
+                  <input
+                    type="date"
+                    name="dateNaissance"
+                    [(ngModel)]="playerData.dateNaissance"
+                    required
+                    class="mail form-control"
+                  />
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="row">
-            <div class="col-lg-12">
-              <h3 style="margin-top: 7px">Joke</h3>
-              <div class="input-group input-group-icon">
-                <input
-                  type="text"
-                  placeholder="Create your own joke!"
-                  required
-                />
-                <div class="input-icon">
-                  <i class="bi bi-pencil-fill"></i>
+            <div class="row">
+              <div class="col-lg-12">
+                <h3 style="margin-top: 65px">Player Password</h3>
+                <div class="input-group input-group-icon">
+                  <input
+                    type="text"
+                    name="pass"
+                    [(ngModel)]="playerData.pass"
+                    class="form-control custom-key-input key"
+                    required
+                  />
+                  <div class="input-group-append">
+                    <span class="input-group-text custom-key-icon"
+                      ><i class="fas fa-key key"></i
+                    ></span>
+                  </div>
                 </div>
               </div>
             </div>

@@ -44,13 +44,13 @@
           </div>
 
           <div class="form-group">
-            <h3 for="posterSubject">Poster Subject</h3>
+            <h3 for="sujet">Poster Subject</h3>
             <textarea
-              id="posterSubject"
-              placeholder="{{ posterData.posterSubject }}"
-              name="posterSubject"
+              id="sujet"
+              placeholder="{{ posterData.sujet }}"
+              name="sujet"
               rows="2"
-              [(ngModel)]="posterData.posterSubject"
+              [(ngModel)]="posterData.sujet"
             ></textarea>
           </div>
 
@@ -59,8 +59,8 @@
               <h3 style="margin-top: 6px">Poster Description</h3>
               <div class="input-group input-group-icon">
                 <textarea
-                  [(ngModel)]="posterData.posterDescription"
-                  placeholder="{{ posterData.posterDescription }}"
+                  [(ngModel)]="posterData.description"
+                  placeholder="{{ posterData.description }}"
                   rows="4"
                   required
                 ></textarea>
@@ -131,8 +131,8 @@
               <div class="input-group input-group-icon">
                 <input
                   type="text"
-                  placeholder="{{ posterData.posterURL }}"
-                  [(ngModel)]="posterData.posterURL"
+                  placeholder="{{ posterData.lien }}"
+                  [(ngModel)]="posterData.lien"
                   required
                 />
                 <div class="input-icon">
@@ -146,23 +146,23 @@
               <h3>Poster Existing</h3>
               <div class="input-group radio-container">
                 <input
-                  id="posterExistingyes"
+                  id="existantyes"
                   type="radio"
-                  name="posterExisting"
+                  name="existant"
                   [value]="'Yes'"
-                  [(ngModel)]="posterData.posterExisting"
+                  [(ngModel)]="posterData.existant"
                   required
                 />
-                <label for="posterExistingyes">Yes</label>
+                <label for="existantyes">Yes</label>
                 <input
-                  id="posterExistingNo"
+                  id="existantNo"
                   type="radio"
-                  name="posterExisting"
+                  name="existant"
                   [value]="'No'"
-                  [(ngModel)]="posterData.posterExisting"
+                  [(ngModel)]="posterData.existant"
                   required
                 />
-                <label for="posterExistingNo">No</label>
+                <label for="existantNo">No</label>
               </div>
             </div>
 
@@ -172,18 +172,18 @@
                 <input
                   id="Type1"
                   type="radio"
-                  name="posterType"
+                  name="localisationAffiche"
                   [value]="'Type1'"
-                  [(ngModel)]="posterData.posterType"
+                  [(ngModel)]="posterData.localisationAffiche"
                   required
                 />
                 <label for="Type1">Type1</label>
                 <input
                   id="Type2"
                   type="radio"
-                  name="posterType"
+                  name="localisationAffiche"
                   [value]="'Type2'"
-                  [(ngModel)]="posterData.posterType"
+                  [(ngModel)]="posterData.localisationAffiche"
                   required
                 />
                 <label for="Type2">Type2</label>
@@ -192,20 +192,18 @@
           </div>
 
           <div class="form-group">
-            <h3 for="posterPrice" style="margin-right: 10px">Poster Price</h3>
+            <h3 for="prix" style="margin-right: 10px">Poster Price</h3>
             <div style="display: flex; align-items: center">
               <input
                 type="number"
-                id="posterPrice"
-                name="posterPrice"
-                placeholder="{{ posterData.posterPrice }}"
+                id="prix"
+                name="prix"
+                placeholder="{{ posterData.prix }}"
                 style="font-size: 19px; margin-right: 7%"
-                [(ngModel)]="posterData.posterPrice"
+                [(ngModel)]="posterData.prix"
                 required
               />
-              <h6 for="posterPrice" style="font-size: 19px; margin-left: 5px">
-                dt
-              </h6>
+              <h6 for="prix" style="font-size: 19px; margin-left: 5px">dt</h6>
             </div>
           </div>
 

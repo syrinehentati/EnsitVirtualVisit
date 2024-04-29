@@ -458,3 +458,20 @@ h2 {
 input[type="file"]:focus + .image-preview {
   display: block;
 }
+.image-preview {
+  display: none;
+}
+
+.image-DetailedImage img {
+  max-width: 100%;
+  max-height: 200px;
+  display: block;
+  margin-top: 10px;
+}
+
+input[type="file"]:focus + .image-DetailedImage {
+  display: block;
+}
+.image-DetailedImage {
+  display: none;
+}
