@@ -86,7 +86,7 @@
               id="posterImage"
               name="posterImage"
               accept="image/*"
-              [(ngModel)]="posterData.couverture"
+              [(ngModel)]="posterData.image"
               (change)="onImageChange($event)"
               onchange="checkImageDimensions(event, 'posterDimensions'),previewImage(event)"
             />
@@ -96,11 +96,7 @@
               >Preferred dimensions: 40px x 60px</span
             >
             <div class="image-preview">
-              <img
-                id="imagePreview"
-                alt="Image Preview"
-                
-              />
+              <img id="imagePreview" alt="Image Preview" />
             </div>
           </div>
 
@@ -116,7 +112,7 @@
               id="posterdetailedImage"
               name="posterdetailedImage"
               accept="image/*"
-              [(ngModel)]="posterData.image"
+              [(ngModel)]="posterData.couverture"
               (change)="onDetailedImageChange($event)"
               onchange="checkImageDimensions(event, 'posterDimensions'),previewImagedetailed(event)"
             />
@@ -224,7 +220,7 @@
                 type="submit"
                 style="margin-top: 20px; width: 150px; height: 50px"
               >
-                ADD
+                Edit
               </button>
             </div>
           </div>

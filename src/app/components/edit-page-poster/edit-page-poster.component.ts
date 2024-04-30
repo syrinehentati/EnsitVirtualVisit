@@ -34,7 +34,6 @@ export class EditPagePosterComponent implements OnInit { // Added OnInit
 
 
   ngOnInit(): void {
-    const fullPath: string = '../../../assets/images/';
 
     this.route.params.subscribe(params => {
       this.idAffiche = params['id'] || 0;
@@ -42,8 +41,7 @@ export class EditPagePosterComponent implements OnInit { // Added OnInit
         this.posterService.getPosterByid(this.idAffiche).subscribe(
           (result) => {
             this.posterData = result;
-            this.posterimg = fullPath + this.posterData.image;
-            this.posterDetailedimg = fullPath + this.posterData.couverture;
+            console.log("../../../../backend/affiches/ " +  this.posterData.image);
           },
           (error) => {
             console.error('Error fetching for a poster');

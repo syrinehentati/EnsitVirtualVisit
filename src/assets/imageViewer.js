@@ -19,8 +19,17 @@ function previewImagedetailed(event) {
   var preview = document.querySelector(".image-DetailedImage");
   preview.style.display = "block";
 }
-// Fonction pour charger une image par défaut
-/
+window.onload = function () {
+  var imageUrl = "../../../../backend/affiches/" + "{{ posterData.image }}";
+  "../../../../backend/affiches/" + "{{ posterData.couverture }}";
 
-// Appel de la fonction pour charger l'image par défaut lors du chargement de la page
-window.onload = loadDefaultImage;
+  var output = document.getElementById("imagePreview");
+  output.src = imageUrl;
+  var preview = document.querySelector(".image-preview");
+  preview.style.display = "block";
+
+  var detailedOutput = document.getElementById("imageDetailedImage");
+  detailedOutput.src = detailedImageUrl;
+  var detailedPreview = document.querySelector(".image-DetailedImage");
+  detailedPreview.style.display = "block";
+};
