@@ -4,72 +4,62 @@ include 'db_connection.php';
 class AffichesCRUD {
     private $db;
 
-   
+    public function __construct() {
+        $db_conx = new DB_Connection();
+        $this->db = $db_conx->get_connection();
+    }
 
-        private $allowedImagePath;
-    
-        public function __construct() {
-            $db_conx = new DB_Connection();
-            $this->db = $db_conx->get_connection();
-            // Define the allowed path for images
-            $this->allowedImagePath = 'C:\Users\syrine\OneDrive\Bureau\2eme anne GI\pfatest\toangular\EnsitVirtualVisit\src\assets\images';
-        }
-    
-        public function createAffiche($affiche) {
-            // Define the destination folder for images
-            $destinationFolder = './affiches/';
-    
-            // Extract filename from the provided image path
-            $filename = basename($affiche->image);
-            $imageFullPath = $this->allowedImagePath . DIRECTORY_SEPARATOR . $filename;
-    
-            // Extract filename from the provided couverture path
-            $filenamecouverture = basename($affiche->couverture);
-            $couvertureFullPath = $this->allowedImagePath . DIRECTORY_SEPARATOR . $filenamecouverture;
-    
-            // Check if the image and couverture are from the allowed path and if they exist
-            if (strpos($imageFullPath, $this->allowedImagePath) === 0 && file_exists($imageFullPath) &&
-                strpos($couvertureFullPath, $this->allowedImagePath) === 0 && file_exists($couvertureFullPath)) {
-                // Read image data
-                $imageData = file_get_contents($imageFullPath);
-                $couvertureData = file_get_contents($couvertureFullPath);
-    
-                // Prepare destination file paths
-                $destinationImage = $destinationFolder . $filename;
-                $destinationCouverture = $destinationFolder . $filenamecouverture;
-    
-                // Save images to the destination folder
-                if (($imageData !== false && file_put_contents($destinationImage, $imageData) !== false) &&
-                    ($couvertureData !== false && file_put_contents($destinationCouverture, $couvertureData) !== false)) {
-                    // Images copied successfully
-                    echo "Images copied successfully to $destinationImage and $destinationCouverture";
-                } else {
-                    // Failed to copy images
-                    echo "Failed to copy images to $destinationImage and $destinationCouverture";
-                    return false;
-                }
+    // Create operation
+    public function createAffiche($affiche) {
+        $sql = "INSERT INTO affiches (titre, sujet, description, localisationAffiche, image, couverture, prix, existant, lien) VALUES (:titre, :sujet, :description, :localisationAffiche, :image, :couverture, :prix, :existant, :lien)";
+        $stmt = $this->db->prepare($sql);
+
+        $imageUrl = $affiche->image ?? null;
+        $filename = basename($imageUrl);
+        $destinationFolder = './affiches/';
+        $destinationFile = $destinationFolder . $filename;
+        $imageData = file_get_contents($imageUrl);
+
+        if ($imageData !== false) {
+            $result = file_put_contents($destinationFile, $imageData);
+            if ($result !== false) {
+                echo "Image copied successfully to $destinationFile";
             } else {
-                // Image paths are not allowed or images don't exist
-                echo "Image paths are not allowed or images don't exist";
-                return false;
+                echo "Failed to copy image to $destinationFile";
             }
-    
-            // Continue with the rest of your code for inserting into database
-            $sql = "INSERT INTO affiches (titre, sujet, description, localisationAffiche, image, couverture, prix, existant, lien) VALUES (:titre, :sujet, :description, :localisationAffiche, :image, :couverture, :prix, :existant, :lien)";
-            $stmt = $this->db->prepare($sql);
-    
-            return $stmt->execute([
-                ':titre' => $affiche->titre,
-                ':sujet' => $affiche->sujet,
-                ':description' => $affiche->description,
-                ':localisationAffiche' => $affiche->localisationAffiche,
-                ':image' => $filename,
-                ':couverture' => $filenamecouverture,
-                ':prix' => $affiche->prix,
-                ':existant' => $affiche->existant,
-                ':lien' => $affiche->lien
-            ]);
+        } else {
+            echo "Failed to retrieve image data from $imageUrl";
         }
+
+        // Retrieve and process couverture image
+        $couvertureUrl = $affiche->couverture ?? null;
+        $couvertureFilename = basename($couvertureUrl);
+        $destinationCouvertureFile = $destinationFolder . $couvertureFilename;
+        $couvertureData = file_get_contents($couvertureFilename);
+
+        if ($couvertureData !== false) {
+            $couvertureResult = file_put_contents($destinationCouvertureFile, $couvertureData);
+            if ($couvertureResult !== false) {
+                echo "Image couverture copied successfully to $destinationCouvertureFile";
+            } else {
+                echo "Failed to copy image couverture to $destinationCouvertureFile";
+            }
+        } else {
+            echo "Failed to retrieve image couverture data from $couvertureUrl";
+        }
+
+        return $stmt->execute([
+            ':titre' => $affiche->titre,
+            ':sujet' => $affiche->sujet,
+            ':description' => $affiche->description,
+            ':localisationAffiche' => $affiche->localisationAffiche,
+            ':image' => $filename,
+            ':couverture' => $couvertureFilename,
+            ':prix' => $affiche->prix,
+            ':existant' => $affiche->existant,
+            ':lien' => $affiche->lien
+        ]);
+    }
     // Read operation
     public function getAffiche($id) {
         $sql = "SELECT * FROM affiches WHERE idAffiche = :id";

@@ -7,16 +7,16 @@ import { PosterService } from '../../services/poster.service';
 @Component({
   selector: 'app-edit-page-poster',
   templateUrl: './edit-page-poster.component.html',
-  styleUrls: ['./edit-page-poster.component.scss'] // Corrected attribute name
+  styleUrls: ['./edit-page-poster.component.scss']
 })
-export class EditPagePosterComponent implements OnInit { // Added OnInit
+export class EditPagePosterComponent implements OnInit {
 
   posterData: Poster = {
     titre: '',
     sujet: '',
     description: '',
-    image: '',
-    couverture: '',
+    image: null, // Allow null values for image
+    couverture: null, // Allow null values for couverture
     localisationAffiche: 1,
     prix: 0,
     existant: false,
@@ -24,17 +24,13 @@ export class EditPagePosterComponent implements OnInit { // Added OnInit
     idAffiche: 1
   };
 
-  posterImage: string = ''; // Initialize properties
-  detailedImage: string = '';
-  posterimg: string = '';
-  posterDetailedimg: string = '';
-  idAffiche: number = 0; // Initialize idAffiche
+  posterImage: File | null = null;
+  detailedImage: File | null = null;
+  idAffiche: number = 0;
 
   constructor(private posterService: PosterService, private route: ActivatedRoute) {}
 
-
   ngOnInit(): void {
-
     this.route.params.subscribe(params => {
       this.idAffiche = params['id'] || 0;
       if (this.idAffiche) {
@@ -53,18 +49,24 @@ export class EditPagePosterComponent implements OnInit { // Added OnInit
     });
   }
 
-
   onImageChange(event: any) {
-    // No need to assign values here
-    console.log(this.posterData.image);
+    const fileList: FileList = event.target.files;
+    if (fileList.length > 0) {
+      const file: File = fileList[0];
+      this.posterImage = file;
+      console.log(this.posterImage);
+    }
   }
 
   onDetailedImageChange(event: any) {
-    // No need to assign values here
-    console.log(this.posterData.couverture);
+    const fileList: FileList = event.target.files;
+    if (fileList.length > 0) {
+      const file: File = fileList[0];
+      this.detailedImage = file;
+      console.log(this.detailedImage);
+    }
   }
 
-  // Method to submit the form
   submitposterForm(form: NgForm) {
     const poster: Poster = {
       titre: form.value.titre,
@@ -76,7 +78,7 @@ export class EditPagePosterComponent implements OnInit { // Added OnInit
       prix: form.value.prix,
       existant: form.value.existant,
       lien: form.value.lien,
-      idAffiche: this.idAffiche 
+      idAffiche: this.idAffiche
     };
 
     this.posterService.updateposter(this.idAffiche, poster).subscribe(

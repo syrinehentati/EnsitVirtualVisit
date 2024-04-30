@@ -3,8 +3,8 @@ export interface Poster {
   titre: string;
   sujet: string;
   description: string;
-  image:string;
-  couverture:string;
+  image:File|null;
+  couverture:File|null;
   localisationAffiche: number;
   prix: number;
   existant: Boolean;
