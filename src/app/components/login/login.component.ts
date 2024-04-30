@@ -1,56 +1,70 @@
-import { Component , OnInit} from '@angular/core';
-import{Router} from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import {User} from '../../Model/User';
-
-import { HttpErrorResponse } from '@angular/common/http';
-import {NgForm} from '@angular/forms';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { player } from '../../Model/Player';
+import { playerService } from '../../services/player.service';
+import { AvatarService } from '../../services/avatar.service';
+import { AdministrateurService } from '../../administrateur.service';
+import { administrateur } from '../../Model/administrateur';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-
-
-  User: User = {
+  playerData: player = {
+    nom: '',
     email: '',
-    password: '',
-    firstName: '',
-    lastName: ''
-}
-correcte = true;
-IncorrectPass = false;
+    profession: '',
+    dateNaissance: new Date(),
+    pass: ''
+  };
+  incorrect: boolean = false;
 
+  constructor(
+    private playerService: playerService,
+    private avatarService: AvatarService,
+    private router: Router,
+    private administrateurService: AdministrateurService
+  ) {}
 
+  onSubmit(form: NgForm) {
+    this.playerService.getplayerByEmail(this.playerData.email).subscribe(player => {
+      if (player && player.pass === this.playerData.pass) {
+        this.avatarService.getAvatarByEmail(this.playerData.email).subscribe(avatar => {
+          if (avatar && avatar.url) {
+            localStorage.setItem('url', avatar.url);
+          }
+          console.log("success");
+          console.log(localStorage.getItem('url'));
 
-constructor(
-            public authService: AuthService,
-            private router: Router) {
-}
+          // User is a player, redirect to test game
+          this.router.navigate(['/testgame']);
 
-ngOnInit(): void {
-}
-
-
-onSubmit(form: NgForm) {
-    this.authService.getUsersByMail(this.User.email).subscribe(
-        (result: User) => {
-            if (this.User.password === result.password) {
-                
-                sessionStorage.setItem('currentUser', JSON.stringify(result));
-                this.router.navigate(['dashboard']);
-                window.location.reload();
-            } else {
-                this.IncorrectPass = true;
-                this.correcte = true;
-            }
-
-        }, (error: HttpErrorResponse) => {
-            this.correcte = false;
-            this.IncorrectPass = false;
-        }
-    );
-}
+        }, error => {
+          console.error(error);
+          this.incorrect = true;
+        });
+      } else {  
+        // Check if the user is an admin
+        this.administrateurService.getadministrateurByEmail(this.playerData.email).subscribe((admin: administrateur) => {
+          if (admin) {
+            console.log("helllllllllllllllllllllllllll")
+            // User is an admin, redirect to main page avatar
+            this.router.navigate(['/mainpageavatar']);
+          } else {
+            // Neither player nor admin, set incorrect to true
+            this.incorrect = true;
+          }
+        }, error => {
+          console.error(error);
+          this.incorrect = true;
+        });
+      }
+    }, error => {
+      console.error(error);
+      this.incorrect = true;
+    });
+  }
 }

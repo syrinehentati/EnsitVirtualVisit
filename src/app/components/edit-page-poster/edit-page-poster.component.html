@@ -19,6 +19,7 @@
           style="width: 100%"
           (ngSubmit)="submitposterForm(posterForm)"
           #posterForm="ngForm"
+          enctype="multipart/form-data"
         >
           <div class="row">
             <div class="col-lg-12">
@@ -28,16 +29,20 @@
 
           <div class="row">
             <div class="col-lg-12">
-              <h3 style="margin-top: 65px">Poster Name</h3>
+              <h3 style="margin-top: 65px">Poster Title</h3>
               <div class="input-group input-group-icon">
                 <input
                   type="text"
-                  placeholder="{{ posterData.posterName }}"
-                  [(ngModel)]="posterData.posterName"
+                  name="titre"
+                  [placeholder]="posterData.titre"
+                  [(ngModel)]="posterData.titre"
+                  class="form-control custom-user-input avatar-name"
                   required
                 />
-                <div class="input-icon">
-                  <i class="fas fa-file-image"></i>
+                <div class="input-group-append">
+                  <span class="input-group-text custom-user-icon">
+                    <i class="fas fa-file-image user"></i>
+                  </span>
                 </div>
               </div>
             </div>
@@ -47,7 +52,7 @@
             <h3 for="sujet">Poster Subject</h3>
             <textarea
               id="sujet"
-              placeholder="{{ posterData.sujet }}"
+              [value]="posterData.sujet"
               name="sujet"
               rows="2"
               [(ngModel)]="posterData.sujet"
@@ -60,13 +65,15 @@
               <div class="input-group input-group-icon">
                 <textarea
                   [(ngModel)]="posterData.description"
-                  placeholder="{{ posterData.description }}"
+                  [placeholder]="posterData.description"
                   rows="4"
+                  name="description"
                   required
                 ></textarea>
               </div>
             </div>
           </div>
+
           <div class="form-group">
             <h3
               for="posterImage"
@@ -79,6 +86,8 @@
               id="posterImage"
               name="posterImage"
               accept="image/*"
+              [(ngModel)]="posterData.couverture"
+              (change)="onImageChange($event)"
               onchange="checkImageDimensions(event, 'posterDimensions'),previewImage(event)"
             />
             <span
@@ -89,39 +98,35 @@
             <div class="image-preview">
               <img
                 id="imagePreview"
-                [src]="posterData.posterImagePreview"
-                style="max-width: 40%"
                 alt="Image Preview"
+                
               />
             </div>
           </div>
 
           <div class="form-group">
             <h3
-              for="DetailedPosterImage"
+              for="posterdetailedImage"
               style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
             >
-              Detailed Poster Image
+              Detailed Poster image
             </h3>
             <input
               type="file"
-              id="detailedPosterImage"
-              name="detailedPosterImage"
+              id="posterdetailedImage"
+              name="posterdetailedImage"
               accept="image/*"
-              onchange="checkImageDimensions(event, 'detailedPosterDimensions'),previewImage(event)"
+              [(ngModel)]="posterData.image"
+              (change)="onDetailedImageChange($event)"
+              onchange="checkImageDimensions(event, 'posterDimensions'),previewImagedetailed(event)"
             />
             <span
-              id="detailedPosterDimensions"
+              id="posterDimensions"
               style="margin-left: 10px; font-size: 16px"
               >Preferred dimensions: 40px x 60px</span
             >
-            <div class="image-preview">
-              <img
-                id="detailedImagePreview"
-                style="max-width: 40%"
-                [src]="posterData.posterImageDetailed"
-                alt="Image Preview"
-              />
+            <div class="image-DetailedImage">
+              <img id="imageDetailedImage" alt="Image DetailedImage" />
             </div>
           </div>
 
@@ -130,39 +135,44 @@
               <h3 style="margin-top: 7px">Poster URL</h3>
               <div class="input-group input-group-icon">
                 <input
+                  name="lien"
                   type="text"
-                  placeholder="{{ posterData.lien }}"
+                  [placeholder]="posterData.lien"
                   [(ngModel)]="posterData.lien"
+                  class="form-control custom-user-input avatar-name"
                   required
                 />
-                <div class="input-icon">
-                  <i class="fas fa-link"></i>
+                <div class="input-group-append">
+                  <span class="input-group-text custom-user-icon">
+                    <i class="fas fa-link user"></i>
+                  </span>
                 </div>
               </div>
             </div>
           </div>
+
           <div class="row">
             <div class="col-lg-6">
               <h3>Poster Existing</h3>
               <div class="input-group radio-container">
                 <input
-                  id="existantyes"
+                  id="existant"
                   type="radio"
-                  name="existant"
-                  [value]="'Yes'"
+                  name="1"
+                  [value]="1"
                   [(ngModel)]="posterData.existant"
                   required
                 />
-                <label for="existantyes">Yes</label>
+                <label for="existant">Yes</label>
                 <input
-                  id="existantNo"
+                  id="existant"
                   type="radio"
-                  name="existant"
-                  [value]="'No'"
+                  name="0"
+                  [value]="0"
                   [(ngModel)]="posterData.existant"
                   required
                 />
-                <label for="existantNo">No</label>
+                <label for="existant">No</label>
               </div>
             </div>
 
@@ -170,23 +180,23 @@
               <h3>Poster Type</h3>
               <div class="input-group radio-container">
                 <input
-                  id="Type1"
+                  id="type1"
                   type="radio"
-                  name="localisationAffiche"
-                  [value]="'Type1'"
+                  name="1"
+                  [value]="1"
                   [(ngModel)]="posterData.localisationAffiche"
                   required
                 />
-                <label for="Type1">Type1</label>
+                <label for="type1">Type1</label>
                 <input
-                  id="Type2"
+                  id="type2"
                   type="radio"
-                  name="localisationAffiche"
-                  [value]="'Type2'"
+                  name="2"
+                  [value]="2"
                   [(ngModel)]="posterData.localisationAffiche"
                   required
                 />
-                <label for="Type2">Type2</label>
+                <label for="type2">Type2</label>
               </div>
             </div>
           </div>
@@ -198,8 +208,8 @@
                 type="number"
                 id="prix"
                 name="prix"
-                placeholder="{{ posterData.prix }}"
                 style="font-size: 19px; margin-right: 7%"
+                [placeholder]="posterData.prix"
                 [(ngModel)]="posterData.prix"
                 required
               />
@@ -214,7 +224,7 @@
                 type="submit"
                 style="margin-top: 20px; width: 150px; height: 50px"
               >
-                Edit
+                ADD
               </button>
             </div>
           </div>

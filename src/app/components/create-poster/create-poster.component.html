@@ -33,15 +33,16 @@
               <div class="input-group input-group-icon">
                 <input
                   type="text"
+                  name="titre"
                   placeholder="Poster Title"
                   [(ngModel)]="posterData.titre"
                   class="form-control custom-user-input avatar-name"
                   required
                 />
                 <div class="input-group-append">
-                  <span class="input-group-text custom-user-icon"
-                    ><i class="fas fa-file-image user"></i
-                  ></span>
+                  <span class="input-group-text custom-user-icon">
+                    <i class="fas fa-file-image user"></i>
+                  </span>
                 </div>
               </div>
             </div>
@@ -66,6 +67,7 @@
                   [(ngModel)]="posterData.description"
                   placeholder="Description"
                   rows="4"
+                  name="description"
                   required
                 ></textarea>
               </div>
@@ -85,7 +87,8 @@
               name="posterImage"
               accept="image/*"
               [(ngModel)]="posterData.image"
-              onchange="checkImageDimensions(event, 'posterDimensions'),previewImage(event),onImageChange($event)"
+              (change)="onImageChange($event)"
+              onchange="checkImageDimensions(event, 'posterDimensions'),previewImage(event)"
             />
             <span
               id="posterDimensions"
@@ -110,7 +113,8 @@
               name="posterdetailedImage"
               accept="image/*"
               [(ngModel)]="posterData.couverture"
-              onchange="checkImageDimensions(event, 'posterDimensions'),previewImagedetailed(event),onDetailedImageChange($event)"
+              (change)="onDetailedImageChange($event)"
+              onchange="checkImageDimensions(event, 'posterDimensions'),previewImagedetailed(event)"
             />
             <span
               id="posterDimensions"
@@ -122,13 +126,12 @@
             </div>
           </div>
 
-          <!-- Separate section for Detailed Poster Image -->
-
           <div class="row">
             <div class="col-lg-12">
               <h3 style="margin-top: 7px">Poster URL</h3>
               <div class="input-group input-group-icon">
                 <input
+                  name="lien"
                   type="text"
                   placeholder="enter your poster URL"
                   [(ngModel)]="posterData.lien"
@@ -136,9 +139,9 @@
                   required
                 />
                 <div class="input-group-append">
-                  <span class="input-group-text custom-user-icon"
-                    ><i class="fas fa-link user"></i
-                  ></span>
+                  <span class="input-group-text custom-user-icon">
+                    <i class="fas fa-link user"></i>
+                  </span>
                 </div>
               </div>
             </div>
@@ -146,7 +149,7 @@
 
           <div class="row">
             <div class="col-lg-6">
-              <h3>poster Existing</h3>
+              <h3>Poster Existing</h3>
               <div class="input-group radio-container">
                 <input
                   id="existantyes"
@@ -161,8 +164,8 @@
                   id="existantNo"
                   type="radio"
                   name="existant"
-                  [(ngModel)]="posterData.existant"
                   value="no"
+                  [(ngModel)]="posterData.existant"
                   required
                 />
                 <label for="existantNo">No</label>
@@ -175,8 +178,8 @@
                 <input
                   id="Type1"
                   type="radio"
-                  name="Type1"
-                  value="Type1"
+                  name="localisationAffiche"
+                  value="1"
                   [(ngModel)]="posterData.localisationAffiche"
                   required
                 />
@@ -184,8 +187,8 @@
                 <input
                   id="Type2"
                   type="radio"
-                  name="Type2"
-                  value="Type2"
+                  name="localisationAffiche"
+                  value="2"
                   [(ngModel)]="posterData.localisationAffiche"
                   required
                 />

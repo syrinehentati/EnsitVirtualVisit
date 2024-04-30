@@ -19,3 +19,8 @@ function previewImagedetailed(event) {
   var preview = document.querySelector(".image-DetailedImage");
   preview.style.display = "block";
 }
+// Fonction pour charger une image par défaut
+/
+
+// Appel de la fonction pour charger l'image par défaut lors du chargement de la page
+window.onload = loadDefaultImage;

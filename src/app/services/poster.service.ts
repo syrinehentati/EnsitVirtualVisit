@@ -26,8 +26,8 @@ export class PosterService {
     return this.http.post<Poster>(`${this.apiBaseUrl}/AffichesCRUD.php`, poster);
   }
 
-  public updatePoster(poster: Poster): Observable<Poster> {
-    return this.http.put<Poster>(`${this.apiBaseUrl}/AffichesCRUD.php/${poster.lien}`, poster);
+  public updateposter(id: Number,poster:Poster): Observable<Poster> {
+    return this.http.put<Poster>(`${this.apiBaseUrl}/AffichesCRUD.php?id=${id}`, poster);
   }
 
   public deletePoster(id: Number): Observable<void> {

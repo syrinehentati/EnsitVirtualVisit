@@ -30,6 +30,6 @@ export class playerService {
   }
 
   public deleteplayer(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiBaseUrl}/players/${id}`);
+    return this.http.delete<void>(`${this.apiBaseUrl}/JoueurCRUD.php?id=${id}`);
   }
 }

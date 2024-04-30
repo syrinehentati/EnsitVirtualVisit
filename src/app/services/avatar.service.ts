@@ -26,6 +26,9 @@ export class AvatarService {
     return this.http.get<Avatar>(`${this.apiBaseUrl}/AvatarCRUD.php?id=${url}`);
   }
 
+  public getAvatarByEmail(mail: string): Observable<Avatar> {
+    return this.http.get<Avatar>(`${this.apiBaseUrl}/AvatarCRUD.php?email=${mail}`);
+  }
   public addAvatar(avatar: Avatar): Observable<Avatar> {
     return this.http.post<Avatar>(`${this.apiBaseUrl}/AvatarCRUD.php`, avatar);
   }

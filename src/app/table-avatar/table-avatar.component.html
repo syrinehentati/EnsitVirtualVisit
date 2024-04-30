@@ -1,17 +1,70 @@
-<!-- index.html -->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Image Upload</title>
-  </head>
-  <body>
-    <!-- app.component.html -->
-    <input
-      type="file"
-      class="file-upload"
-      onchange="console.log(event.target.files)"
-    />
-  </body>
-</html>
+<div class="body">
+  <div class="form-container">
+    <div class="text-center">
+      <h1 class="h4 mb-4">Welcome Back!</h1>
+    </div>
+    <form #form="ngForm" (submit)="onSubmit(form)">
+      <div class="form-group">
+        <label for="exampleInputEmail">Email:</label>
+        <input
+          type="email"
+          class="form-control form-control-user"
+          id="exampleInputEmail"
+          aria-describedby="emailHelp"
+          placeholder="Enter Email Address..."
+          [(ngModel)]="playerData.email"
+          name="email"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword">Password:</label>
+        <input
+          type="password"
+          class="form-control form-control-user"
+          id="exampleInputPassword"
+          [(ngModel)]="playerData.pass"
+          name="password"
+        />
+      </div>
+      <div class="form-group">
+        <div class="custom-control custom-checkbox small">
+          <input
+            type="checkbox"
+            class="custom-control-input"
+            id="customCheck"
+          />
+        </div>
+      </div>
+      <button type="submit" class="button-container" >
+        Login
+      </button>
+      <div class="text-center">
+        <p
+          class="small text-center"
+          *ngIf="incorrect"
+          style="color: rgb(216, 14, 14); font-size: 0.8em"
+        >
+          Email ou Mot de passe incorrect!
+        </p>
+      </div>
+      <hr />
+      <div class="text-center">
+        <a
+          class="small"
+          routerLink="/forgetpassword"
+          style="font-size: 0.8em; color: rgb(48, 9, 138)"
+          >Forgot Password?</a
+        >
+      </div>
+      <div class="text-center">
+        <a
+          class="small"
+          routerLink="/register"
+          style="font-size: 0.8em; color: rgb(48, 9, 138)"
+          >Create an Account!</a
+        >
+      </div>
+    
+    </form>
+  </div>
+</div>

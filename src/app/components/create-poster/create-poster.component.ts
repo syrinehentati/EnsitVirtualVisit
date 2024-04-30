@@ -26,21 +26,29 @@ export class CreatePosterComponent {
   };
 
 
-  posterImage: string | ArrayBuffer | null = null;
-  detailedImage: string | ArrayBuffer | null = null;
+  posterImage!: string ;
+  detailedImage!: string ;
 
   constructor(private posterService: PosterService, private router: Router) {}
 
   onImageChange(event: any) {
-    this.posterImage = event.target.files[0];
-    console.log(this.posterImage);
+    const fileList: FileList = event.target.files;
+    if (fileList.length > 0) {
+      const file: File = fileList[0];
+      this.posterImage = file.name; // Store the file name in posterImage
+      console.log(this.posterImage);
+    }
   }
-
   
   onDetailedImageChange(event: any) {
-    this.detailedImage = event.target.files[0];
-    console.log(this.detailedImage);
+    const fileList: FileList = event.target.files;
+    if (fileList.length > 0) {
+      const file: File = fileList[0];
+      this.detailedImage = file.name; // Store the file name in detailedImage
+      console.log(this.detailedImage);
+    }
   }
+  
 
   
   // Method to submit the form
@@ -49,8 +57,8 @@ export class CreatePosterComponent {
       titre: form.value.titre,
       sujet: form.value.sujet,
       description: form.value.description,
-      image: this.posterImage ? this.posterImage.toString() : '',
-      couverture: this.detailedImage ? this.detailedImage.toString() : '',
+      image: this.posterImage ,
+      couverture: this.detailedImage ,
       localisationAffiche: form.value.localisationAffiche,
       prix: form.value.prix,
       existant: form.value.existant,
