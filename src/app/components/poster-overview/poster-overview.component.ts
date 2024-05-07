@@ -1,4 +1,8 @@
+
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Poster } from '../../Model/Poster';
+import { PosterService } from '../../services/poster.service';
 
 @Component({
   selector: 'app-poster-overview',
@@ -7,17 +11,33 @@ import { Component } from '@angular/core';
 })
 export class PosterOverviewComponent {
 
-  posterData: any = {
-    posterName: 'IEEXtreme 17.0',
-    sujet:'Hackathon of IEEE',
-    couverture:'../../../assets/img/poster.png',
-    image:'../../../assets/img/poster.png',
-    description: 'This is a description about Hackathon of IEEE ',
-    lien: 'ww.facaebook.com/ieestreme17.0',
-    localisationAffiche:'Type1',
-    prix:'12',
-    existant: 'yes'
-   
-  };
+  posterData: Poster |undefined;
+  idaffiche: Number|undefined;
 
-}
+  constructor(private posterservice:PosterService,private route :ActivatedRoute){
+  }
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.idaffiche = params['id'];
+      if (this.idaffiche) {
+        this.posterservice.getPosterByid(this.idaffiche).subscribe(
+          (result) => {
+            this.posterData = result;
+            console.log(this.posterData);
+          },
+          (error) => {
+            console.error('Error fetching poster data:', error);
+            
+          }
+        );
+      } else {
+        console.error('idaffiches parameter is undefined or null.');
+        
+      }
+    });
+  }
+   
+  }
+  
+  
+  

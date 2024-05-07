@@ -31,7 +31,7 @@ export class PosterService {
   }
 
   public deletePoster(id: Number): Observable<void> {
-    return this.http.delete<void>(`${this.apiBaseUrl}/AffichesCRUD.php/${id}`);
+    return this.http.delete<void>(`${this.apiBaseUrl}/AffichesCRUD.php?id=${id}`);
   }
 
 }

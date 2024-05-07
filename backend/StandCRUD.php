@@ -3,14 +3,49 @@ include 'db_connection.php';
 
 class StandCRUD {
     private $db;
+    private $allowedImagePath;
 
     public function __construct() {
-            $db_conx = new DB_Connection();
-            $this->db = $db_conx->get_connection();
-        }
+        $db_conx = new DB_Connection();
+        $this->db = $db_conx->get_connection();
+        // Define the allowed path for images
+        $this->allowedImagePath = 'C:\Users\syrine\OneDrive\Bureau\2eme anne GI\pfatest\backup\EnsitVirtualVisit\src\assets\images';
+    }
 
     // Create operation
     public function createStand($stand) {
+        // Define the destination folder for images
+        $destinationFolder = './stands/';
+
+        // Extract filename from the provided image path and remove spaces
+        $filename = basename($stand->image);
+        $filename = str_replace(' ', '', $filename);
+        $imageFullPath = $this->allowedImagePath . DIRECTORY_SEPARATOR . $filename;
+
+        // Check if the image is from the allowed path and if it exists
+        if (strpos($imageFullPath, $this->allowedImagePath) === 0 && file_exists($imageFullPath)) {
+            // Read image data
+            $imageData = file_get_contents($imageFullPath);
+
+            // Prepare destination file path
+            $destinationImage = $destinationFolder . $filename;
+
+            // Save image to the destination folder
+            if ($imageData !== false && file_put_contents($destinationImage, $imageData) !== false) {
+                // Image copied successfully
+                echo "Image copied successfully to $destinationImage";
+            } else {
+                // Failed to copy image
+                echo "Failed to copy image to $destinationImage";
+                return false;
+            }
+        } else {
+            // Image path is not allowed or image doesn't exist
+            echo "Image path is not allowed or image doesn't exist";
+            return false;
+        }
+
+        // Continue with the rest of your code for inserting into the database
         $sql = "INSERT INTO Stand (standType, nom, sujet, description, image, prix, existant, lien) VALUES (:standType, :nom, :sujet, :description, :image, :prix, :existant, :lien)";
         $stmt = $this->db->prepare($sql);
         return $stmt->execute([
@@ -18,7 +53,7 @@ class StandCRUD {
             ':nom' => $stand->nom,
             ':sujet' => $stand->sujet,
             ':description' => $stand->description,
-            ':image' => $stand->image,
+            ':image' => $filename,
             ':prix' => $stand->prix,
             ':existant' => $stand->existant,
             ':lien' => $stand->lien
@@ -68,7 +103,12 @@ class StandCRUD {
 // Handle HTTP requests
 $requestMethod = $_SERVER["REQUEST_METHOD"];
 $id = $_GET['id'] ?? null;
-
+if ($requestMethod === 'OPTIONS') {
+    // Respond with appropriate headers
+    header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+    header("Access-Control-Allow-Headers: Content-Type");
+    exit; // Terminate script execution
+}
 $standCRUD = new StandCRUD();
 
 switch ($requestMethod) {

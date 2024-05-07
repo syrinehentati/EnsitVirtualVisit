@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Stand } from '../../Model/Stand';
+import { StandService } from '../../services/stand.service';
 
 @Component({
   selector: 'app-edit-page-stand',
@@ -7,65 +10,78 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./edit-page-stand.component.scss']
 })
 export class EditPageStandComponent {
-  standData: any = {
-    standName: 'geeks',
-    standImage:'../../../assets/img/poster.png',
-    standSubject:'this is a subject for a stand of geeks',
-    standDescription: 'This is a description for a stand of geeks ',
-    standURL: 'ww.facebook.com/geeks',
-    standType:'Type1',
-    standPrice:'12',
-    standExisting: 'yes'
+  
+  standData: Stand = {
+    nom: '',
+    sujet: '',
+    description: '',
+    image: '',
+    standType: 1,
+    prix: 0,
+    existant: false,
+    lien: '',
+    idStand: 1
   };
 
-  submitstandForm(form: NgForm) {}
-
-  onImageSelected(event: any) {
-    const file: File = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.standData.standImage = e.target.result;
-        this.checkImageDimensions(event, 'standDimensions');
-      };
-      reader.readAsDataURL(file);
-    }
-  }
-
+  standImage: string = ''; // Initialize properties
+  detailedImage: string = '';
   
-  previewImage(event: any) {
-    const reader = new FileReader();
-    reader.onload = () => {
-      const preview = document.getElementById('imagePreview') as HTMLImageElement;
-      preview.src = reader.result as string;
-    };
-    reader.readAsDataURL(event.target.files[0]);
-    this.standData.standURL = event.target.files[0]; 
+  idStand: number = 0; // Initialize idAffiche
+ 
+
+  constructor(private standService: StandService, private route: ActivatedRoute) {}
+
+
+  ngOnInit(): void {
+
+    this.route.params.subscribe(params => {
+      this.idStand = params['id'] || 0;
+      if (this.idStand) {
+        this.standService.getStandById(this.idStand).subscribe(
+          (result) => {
+            this.standData = result;
+            this.standImage=result.image;
+            console.log("../../../../backend/affiches/ " +  result.image);
+          },
+          (error) => {
+            console.error('Error fetching for a stand');
+          }
+        );
+      } else {
+        console.error('idStand not found');
+      }
+    });
   }
 
-  checkImageDimensions(event: any, dimensionSpanId: string) {
-    const fileInput = event.target;
-    const files = fileInput.files;
-    if (files.length > 0) {
-      const img = new Image();
-      img.src = URL.createObjectURL(files[0]);
-      img.onload = () => {
-        const width = img.width;
-        const height = img.height;
-        const preferredWidth = 40;
-        const preferredHeight = 60;
-        const widthDifference = Math.abs(width - preferredWidth);
-        const heightDifference = Math.abs(height - preferredHeight);
-        const threshold = 20; // Difference less than or equal to this will not trigger red color
-        const dimensionSpan = document.getElementById(dimensionSpanId) as HTMLElement; // Cast to HTMLElement
-        if (widthDifference > threshold || heightDifference > threshold) {
-          fileInput.style.border = "1px solid red"; // Apply red border to input field
-          dimensionSpan.style.color = "red"; // Apply red color to dimension text
-        } else {
-          fileInput.style.border = ""; // Remove red border
-          dimensionSpan.style.color = ""; 
-        }
-      };
-    }
+
+  onImageChange(event: any) {
+    // No need to assign values here
+    console.log(this.standData.image);
+  }
+
+ 
+
+  // Method to submit the form
+  submitstandForm(form: NgForm) {
+    const stand: Stand = {
+      nom: form.value.nom,
+      sujet: form.value.sujet,
+      description: form.value.description,
+      image: this.standImage,
+      standType: form.value.standType,
+      prix: form.value.prix,
+      existant: form.value.existant,
+      lien: form.value.lien,
+      idStand: this.idStand 
+    };
+
+    this.standService.updateStand(this.idStand, stand).subscribe(
+      (result) => {
+        console.log(result);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

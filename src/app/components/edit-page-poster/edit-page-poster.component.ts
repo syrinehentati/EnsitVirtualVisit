@@ -26,8 +26,7 @@ export class EditPagePosterComponent implements OnInit { // Added OnInit
 
   posterImage: string = ''; // Initialize properties
   detailedImage: string = '';
-  posterimg: string = '';
-  posterDetailedimg: string = '';
+  
   idAffiche: number = 0; // Initialize idAffiche
 
   constructor(private posterService: PosterService, private route: ActivatedRoute) {}
@@ -41,7 +40,9 @@ export class EditPagePosterComponent implements OnInit { // Added OnInit
         this.posterService.getPosterByid(this.idAffiche).subscribe(
           (result) => {
             this.posterData = result;
-            console.log("../../../../backend/affiches/ " +  this.posterData.image);
+            this.detailedImage=result.couverture;
+            this.posterImage=result.image;
+            console.log("../../../../backend/affiches/ " +  result.image);
           },
           (error) => {
             console.error('Error fetching for a poster');

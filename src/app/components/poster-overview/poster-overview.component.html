@@ -1,121 +1,137 @@
-<app-side-bar></app-side-bar>
+<!-- Page Wrapper -->
+<div id="wrapper">
+  <!-- Sidebar -->
+  <app-side-bar></app-side-bar>
+  <!-- End of Sidebar -->
 
-<div id="content-wrapper" class="d-flex flex-column">
-  <app-sidebar-menubuttons></app-sidebar-menubuttons>
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+      <!-- Topbar -->
+      <app-sidebar-menubuttons></app-sidebar-menubuttons>
 
-  <div
-    class="container form-container"
-    style="background-color: white; padding: 30px; width: 50%"
-  >
-    <form style="width: 100%">
-      <div class="row">
-        <div class="col-lg-12">
-          <h2>Poster Details</h2>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-12">
-          <h3 style="margin-top: 65px">Poster Name</h3>
-          <div class="input-group input-group-icon">
-            <p class="form-text smaller-text">{{ posterData.posterName }}</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-12">
-          <h3 style="margin-top: 65px">Poster Subject</h3>
-          <div class="input-group input-group-icon">
-            <p class="form-text smaller-text">{{ posterData.sujet }}</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-12">
-          <h3 style="margin-top: 6px">Poster Description</h3>
-          <div class="input-group input-group-icon">
-            <p class="form-text smaller-text">
-              {{ posterData.description }}
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-12">
-          <h3 style="margin-top: 6px">Poster Preview Image</h3>
-          <div class="input-group input-group-icon">
-            <div class="image-preview">
-              <img
-                id="imagePreview"
-                [src]="posterData.image"
-                alt="Image Preview"
-                style="max-width: 40%"
-              />
+      <div
+        class="container form-container"
+        style="background-color: white; padding: 30px; width: 50%"
+      >
+        <form style="width: 100%" *ngIf="posterData">
+          <div class="row">
+            <div class="col-lg-12">
+              <h2>Poster Details</h2>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-lg-12">
-          <h3 style="margin-top: 6px">Poster Detailed Image</h3>
-          <div class="input-group input-group-icon">
-            <div class="image-preview">
-              <img
-                id="imagePreview"
-                [src]="posterData.couverture"
-                alt="Image Preview"
-                style="max-width: 40%"
-              />
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 65px">Poster Name</h3>
+              <div class="input-group input-group-icon">
+                <p class="form-text smaller-text">{{ posterData.titre }}</p>
+              </div>
             </div>
           </div>
-        </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 65px">Poster Subject</h3>
+              <div class="input-group input-group-icon">
+                <p class="form-text smaller-text">{{ posterData.sujet }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 6px">Poster Description</h3>
+              <div class="input-group input-group-icon">
+                <p class="form-text smaller-text">
+                  {{ posterData.description }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 6px">Poster Preview Image</h3>
+              <div class="input-group input-group-icon">
+                <div class="image-preview">
+                  <img
+                    id="image"
+                    name="image"
+                    [src]="'../../../assets/images/' + posterData.image"
+                    alt="Image"
+                    style="width: 300px"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 6px">Poster Detailed Image</h3>
+              <div class="input-group input-group-icon">
+                <div class="image-preview">
+                  <img
+                    id="image"
+                    name="image"
+                    [src]="'../../../assets/images/' + posterData.couverture"
+                    alt="Image"
+                    style="width: 300px"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 7px">Poster URL</h3>
+              <div class="input-group input-group-icon">
+                <p class="form-text smaller-text">
+                  {{ posterData.lien }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <h3>Poster Existing</h3>
+              <div class="input-group radio-container">
+                <p class="form-text smaller-text">
+                  {{ posterData.existant }}
+                </p>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <h3>Poster Type</h3>
+              <div class="input-group radio-container">
+                <p class="form-text smaller-text">
+                  {{ posterData.localisationAffiche }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 style="margin-top: 7px">poster Price</h3>
+              <div class="input-group input-group-icon">
+                <p class="form-text smaller-text">{{ posterData.prix }}</p>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
 
-      <div class="row">
-        <div class="col-lg-12">
-          <h3 style="margin-top: 7px">Poster URL</h3>
-          <div class="input-group input-group-icon">
-            <p class="form-text smaller-text">
-              <a [href]="posterData.lien">{{ posterData.lien }}</a>
-            </p>
-          </div>
-        </div>
-      </div>
+      <!-- end create player-->
+      <!-- Logout Modal-->
+      <app-logoutmodel></app-logoutmodel>
 
-      <div class="row">
-        <div class="col-lg-6">
-          <h3>Poster Existing</h3>
-          <div class="input-group radio-container">
-            <p class="form-text smaller-text">
-              {{ posterData.existant }}
-            </p>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <h3>Poster Type</h3>
-          <div class="input-group radio-container">
-            <p class="form-text smaller-text">
-              {{ posterData.localisationAffiche }}
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-12">
-          <h3 style="margin-top: 7px">poster Price</h3>
-          <div class="input-group input-group-icon">
-            <p class="form-text smaller-text">{{ posterData.prix }}</p>
-          </div>
-        </div>
-      </div>
-    </form>
+      <!-- Bootstrap core JavaScript-->
+    </div>
   </div>
-
-  <app-logoutmodel></app-logoutmodel>
 </div>

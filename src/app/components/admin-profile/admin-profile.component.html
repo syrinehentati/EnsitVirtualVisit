@@ -32,10 +32,10 @@
                     style="width: 60%; height: 40%; object-fit: cover"
                   />
                   <h2 style="font-size: 1.7rem; margin-top: 10px">
-                    {{ UserData.FirstName }} {{ UserData.LastName }}
+                   
                   </h2>
                   <h3 style="font-size: 1.2rem">
-                    {{ playerData.playerProfession }}
+                    
                   </h3>
                 </div>
               </div>
@@ -88,20 +88,7 @@
                       <br />
                       <h3 class="card-title">Profile Details</h3>
                       <br />
-                      <div class="row">
-                        <div class="col-lg-3 col-md-4 label">First Name</div>
-                        <div class="col-lg-9 col-md-8">
-                          {{ UserData.FirstName }}
-                        </div>
-                      </div>
 
-                      <br />
-                      <div class="row">
-                        <div class="col-lg-3 col-md-4 label">Last Name</div>
-                        <div class="col-lg-9 col-md-8">
-                          {{ UserData.LastName }}
-                        </div>
-                      </div>
                       <br />
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">Email</div>
@@ -109,35 +96,6 @@
                           {{ UserData.email }}
                         </div>
                       </div>
-                      <br />
-                      <div class="row">
-                        <div class="col-lg-3 col-md-4 label">Profession</div>
-                        <div class="col-lg-9 col-md-8">
-                          {{ playerData.playerProfession }}
-                        </div>
-                      </div>
-                      <br />
-                      <div class="row">
-                        <div class="col-lg-3 col-md-4 label">Birthday</div>
-                        <div class="col-lg-9 col-md-8">
-                          {{ playerData.playerBirthday }}
-                        </div>
-                      </div>
-                      <br />
-                      <div class="row">
-                        <div class="col-lg-3 col-md-4 label">Avatar URL</div>
-                        <div class="col-lg-9 col-md-8">
-                          {{ playerData.AvatarURL }}
-                        </div>
-                      </div>
-                      <br />
-                      <div class="row">
-                        <div class="col-lg-3 col-md-4 label">Joke</div>
-                        <div class="col-lg-9 col-md-8">
-                          {{ playerData.Joke }}
-                        </div>
-                      </div>
-                      <br />
                     </div>
 
                     <!-- Profile Edit Tab -->
@@ -162,42 +120,8 @@
                           </div>
                         </div>
 
-                        <div class="row mb-3">
-                          <label
-                            for="firstName"
-                            class="col-md-4 col-lg-3 col-form-label"
-                            >First Name</label
-                          >
-                          <div class="col-md-8 col-lg-9">
-                            <input
-                              name="firstName"
-                              type="text"
-                              class="form-control"
-                              id="firstName"
-                              placeholder="{{ UserData.FirstName }}"
-                              [(ngModel)]="UserData.FirstName"
-                            />
-                          </div>
-                        </div>
-
-                        <div class="row mb-3">
-                          <label
-                            for="LastName"
-                            class="col-md-4 col-lg-3 col-form-label"
-                            >Last Name</label
-                          >
-                          <div class="col-md-8 col-lg-9">
-                            <input
-                              name="LastName"
-                              type="text"
-                              class="form-control"
-                              id="LastName"
-                              placeholder="{{ UserData.LastName }}"
-                              [(ngModel)]="UserData.LastName"
-                            />
-                          </div>
-                        </div>
-
+                       
+                          
                         <div class="row mb-3">
                           <label
                             for="email"
@@ -215,79 +139,6 @@
                             />
                           </div>
                         </div>
-
-                        <div class="row mb-3">
-                          <label
-                            for="AvatarURL"
-                            class="col-md-4 col-lg-3 col-form-label"
-                            >AvatarURL</label
-                          >
-                          <div class="col-md-8 col-lg-9">
-                            <input
-                              name="AvatarURL"
-                              type="text"
-                              class="form-control"
-                              id="AvatarURL"
-                              placeholder="{{ playerData.AvatarURL }}"
-                              [(ngModel)]="playerData.AvatarURL"
-                            />
-                          </div>
-                        </div>
-
-                        <div class="row mb-3">
-                          <label
-                            for="Birthday"
-                            class="col-md-4 col-lg-3 col-form-label"
-                            >Birthday</label
-                          >
-                          <div class="col-md-8 col-lg-9">
-                            <input
-                              name="Birthday"
-                              type="date"
-                              class="form-control"
-                              id="Birthday"
-                              placeholder="{{ playerData.playerBirthday }}"
-                              [(ngModel)]="playerData.playerBirthday"
-                            />
-                          </div>
-                        </div>
-
-                        <div class="row mb-3">
-                          <label
-                            for="profession"
-                            class="col-md-4 col-lg-3 col-form-label"
-                            >Profession</label
-                          >
-                          <div class="col-md-8 col-lg-9">
-                            <input
-                              name="profession"
-                              type="text"
-                              class="form-control"
-                              id="profession"
-                              placeholder="{{ playerData.playerProfession }}"
-                              [(ngModel)]="playerData.playerProfession"
-                            />
-                          </div>
-                        </div>
-                        <br />
-                        <div class="row mb-3">
-                          <label
-                            for="Joke"
-                            class="col-md-4 col-lg-3 col-form-label"
-                            >Joke</label
-                          >
-                          <div class="col-md-8 col-lg-9">
-                            <input
-                              name="Joke"
-                              type="text"
-                              class="form-control"
-                              id="Joke"
-                              placeholder="{{ UserData.Joke }}"
-                              [(ngModel)]="UserData.Joke"
-                            />
-                          </div>
-                        </div>
-
                         <div class="text-center">
                           <button type="submit" class="btn btn-primary">
                             Save Changes

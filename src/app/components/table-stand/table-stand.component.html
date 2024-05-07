@@ -55,62 +55,28 @@
         <tfoot></tfoot>
         <tbody style="text-align: center">
           <tr *ngFor="let row of tableData">
-            <td>{{ row.Title }}</td>
-            <td>{{ row.Subject }}</td>
-            <td>{{ row.Type }}</td>
-            <td>{{ row.Existing }}</td>
-            <td>{{ row.Price }}dt</td>
-            <td class="action-icons">
-              <ng-container *ngFor="let action of row.Action">
-                <a
-                  *ngIf="
-                    action.link !== 'editstand' &&
-                    action.link !== 'overviewstand'
-                  "
-                  (click)="handleAction(action)"
-                >
-                  <span
-                    class="action-icon"
-                    [ngClass]="{
-                      'text-danger':
-                        action.icon === '../../../assets/img/delete.jpeg',
-                      'text-primary':
-                        action.icon === '../../../assets/img/view.jpg',
-                      'text-warning':
-                        action.icon === '../../../assets/img/edit.png'
-                    }"
-                  >
-                    <i
-                      class="bi bi-{{ action.iconClass }}"
-                      (click)="handleAction(action)"
-                    ></i>
-                  </span>
-                </a>
-                <a
-                  *ngIf="
-                    action.link === 'editstand' ||
-                    action.link === 'overviewstand'
-                  "
-                  [href]="action.link"
-                >
-                  <span
-                    class="action-icon"
-                    [ngClass]="{
-                      'text-danger':
-                        action.icon === '../../../assets/img/delete.jpeg',
-                      'text-primary':
-                        action.icon === '../../../assets/img/view.jpg',
-                      'text-warning':
-                        action.icon === '../../../assets/img/edit.png'
-                    }"
-                  >
-                    <i
-                      class="bi bi-{{ action.iconClass }}"
-                      (click)="handleAction(action)"
-                    ></i>
-                  </span>
-                </a>
-              </ng-container>
+            <td>{{ row.nom }}</td>
+            <td>{{ row.sujet }}</td>
+            <td>{{ row.standType }}</td>
+            <td *ngIf="row.existant == true">True</td>
+            <td *ngIf="row.existant == false">False</td>
+            <td>{{ row.prix }}dt</td>
+
+            <td class="action-icons" style="width: 120px">
+              <span (click)="consultstand(row.idStand)">
+                <i class="fas fa-eye action-icon eye" size="large"></i>
+              </span>
+
+              <span (click)="navigateToEditstand(row.idStand)">
+                <i
+                  class="fas fa-pencil-alt action-icon pencil"
+                  size="large"
+                ></i>
+              </span>
+
+              <span (click)="openDeleteModal(row.idStand)">
+                <i class="fas fa-trash action-icon trash" size="large"></i>
+              </span>
             </td>
           </tr>
         </tbody>
@@ -118,20 +84,64 @@
     </div>
   </div>
 </div>
-<app-delete></app-delete>
+
+<!--delete model -->
+
+<div
+  class="modal fade"
+  id="deleteModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document" *ngIf="standData !== undefined">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          class="close"
+          type="button"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body" style="font-size: 26px">
+        Select "Delete" below if you are sure you want to delete the Stand
+        {{ standData.nom }}
+      </div>
+      <div class="modal-footer">
+        <button
+          class="btn btn-secondary"
+          type="button"
+          data-dismiss="modal"
+          style="font-size: 24px"
+        >
+          Cancel
+        </button>
+
+        <button
+          class="btn btn-secondary"
+          type="button"
+          (click)="deletestand()"
+          style="font-size: 24px; background-color: #1d0cb3"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script src="../../../vendor/jquery/jquery.min.js"></script>
 <script src="../../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 <!-- Core plugin JavaScript-->
 <script src="../../../vendor/jquery-easing/jquery.easing.min.js"></script>
-
 <!-- Custom scripts for all pages-->
 <script src="../../../sb-admin-2.min.js"></script>
-
 <!-- Page level plugins -->
 <script src="../../../vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="../../../vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
 <!-- Page level custom scripts -->
 <script src="../../../datatables-demo.js"></script>

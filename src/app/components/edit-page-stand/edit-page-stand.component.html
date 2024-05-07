@@ -19,6 +19,8 @@
           style="width: 100%"
           (ngSubmit)="submitstandForm(standForm)"
           #standForm="ngForm"
+          enctype="multipart/form-data"
+          *ngIf="standData"
         >
           <div class="row">
             <div class="col-lg-12">
@@ -28,40 +30,45 @@
 
           <div class="row">
             <div class="col-lg-12">
-              <h3 style="margin-top: 65px">Stand Name</h3>
+              <h3 style="margin-top: 65px">stand Title</h3>
               <div class="input-group input-group-icon">
                 <input
                   type="text"
-                  placeholder="{{ standData.standName }}"
-                  [(ngModel)]="standData.standName"
+                  name="nom"
+                  [placeholder]="standData.nom"
+                  [(ngModel)]="standData.nom"
+                  class="form-control custom-user-input stand-name"
                   required
                 />
-                <div class="input-icon">
-                  <i class="fas fa-file-image"></i>
+                <div class="input-group-append">
+                  <span class="input-group-text custom-user-icon">
+                    <i class="fas fa-file-image user"></i>
+                  </span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="form-group input-group-icon">
-            <h3 for="standSubject">Stand Subject</h3>
+          <div class="form-group">
+            <h3 for="sujet">stand Subject</h3>
             <textarea
-              id="standSubject"
-              placeholder="{{ standData.standSubject }}"
-              name="standSubject"
+              id="sujet"
+              [value]="standData.sujet"
+              name="sujet"
               rows="2"
-              [(ngModel)]="standData.standSubject"
+              [(ngModel)]="standData.sujet"
             ></textarea>
           </div>
 
           <div class="row">
             <div class="col-lg-12">
-              <h3 style="margin-top: 6px">Stand Description</h3>
+              <h3 style="margin-top: 6px">stand Description</h3>
               <div class="input-group input-group-icon">
                 <textarea
-                  [(ngModel)]="standData.standDescription"
-                  placeholder="{{ standData.standDescription }}"
+                  [(ngModel)]="standData.description"
+                  [placeholder]="standData.description"
                   rows="4"
+                  name="description"
                   required
                 ></textarea>
               </div>
@@ -69,46 +76,45 @@
           </div>
 
           <div class="form-group">
-            <h3 for="standImage">Stand image</h3>
-            <input
-              type="file"
-              id="standImage"
-              name="standImage"
-              accept="image/*"
-              (change)="
-                onImageSelected($event);
-                checkImageDimensions($event, 'standDimensions');
-                previewImage($event)
-              "
-            />
-
+            <h3
+              for="standImage"
+              style="font-size: 23px; margin-top: 20px; margin-bottom: 10px"
+            >
+              Preview stand image
+            </h3>
+            <input type="file" id="standImage" name="standImage" />
             <span
               id="standDimensions"
               style="margin-left: 10px; font-size: 16px"
               >Preferred dimensions: 40px x 60px</span
             >
-            <div class="image-preview">
+            <div class="image">
               <img
-                id="imagePreview"
-                [src]="standData.standImage"
-                style="max-width: 40%"
-                alt="Image Preview"
+                id="image"
+                name="image"
+                [src]="'../../../assets/images/' + standData.image"
+                alt="Image"
+                style="width: 300px"
               />
             </div>
           </div>
 
           <div class="row">
             <div class="col-lg-12">
-              <h3 style="margin-top: 7px">Stand URL</h3>
+              <h3 style="margin-top: 7px">stand URL</h3>
               <div class="input-group input-group-icon">
                 <input
+                  name="lien"
                   type="text"
-                  placeholder="{{ standData.standURL }}"
-                  [(ngModel)]="standData.standURL"
+                  [placeholder]="standData.lien"
+                  [(ngModel)]="standData.lien"
+                  class="form-control custom-user-input stand-name"
                   required
                 />
-                <div class="input-icon">
-                  <i class="fas fa-link"></i>
+                <div class="input-group-append">
+                  <span class="input-group-text custom-user-icon">
+                    <i class="fas fa-link user"></i>
+                  </span>
                 </div>
               </div>
             </div>
@@ -116,70 +122,67 @@
 
           <div class="row">
             <div class="col-lg-6">
-              <h3>Stand Existing</h3>
+              <h3>stand Existing</h3>
               <div class="input-group radio-container">
                 <input
-                  id="standExistingyes"
+                  id="existanttrue"
                   type="radio"
-                  name="standExisting"
-                  [value]="'yes'"
-                  [(ngModel)]="standData.standExisting"
+                  name="existant"
+                  [value]="1"
+                  [(ngModel)]="standData.existant"
                   required
                 />
-                <label for="standExistingyes">Yes</label>
+                <label for="existanttrue">true</label>
                 <input
-                  id="standExistingNo"
+                  id="existantNo"
                   type="radio"
-                  name="standExisting"
-                  [value]="'no'"
-                  [(ngModel)]="standData.standExisting"
+                  name="existant"
+                  [value]="0"
+                  [(ngModel)]="standData.existant"
                   required
                 />
-                <label for="standExistingNo">No</label>
+                <label for="existantNo">false</label>
               </div>
             </div>
 
-            <!-- Radio buttons for Stand Type -->
             <div class="col-lg-6">
-              <h3>Stand Type</h3>
+              <h3>stand Type</h3>
               <div class="input-group radio-container">
                 <input
-                  id="Type1"
+                  id="type1"
                   type="radio"
                   name="standType"
-                  [value]="'Type1'"
+                  [value]="1"
                   [(ngModel)]="standData.standType"
                   required
                 />
-                <label for="Type1">Type1</label>
+                <label for="type1">Type1</label>
                 <input
-                  id="Type2"
+                  id="type2"
                   type="radio"
                   name="standType"
-                  [value]="'Type2'"
+                  [value]="2"
                   [(ngModel)]="standData.standType"
                   required
                 />
-                <label for="Type2">Type2</label>
+                <label for="type2">Type2</label>
               </div>
             </div>
           </div>
 
           <div class="form-group">
-            <h3 for="standPrice" style="margin-right: 10px">Stand Price</h3>
+            <h3 for="prix" style="margin-right: 10px">stand Price</h3>
             <div style="display: flex; align-items: center">
               <input
                 type="number"
-                id="standPrice"
-                name="standPrice"
+                id="prix"
+                name="prix"
                 style="font-size: 19px; margin-right: 7%"
-                placeholder="{{ standData.standPrice }}"
-                [(ngModel)]="standData.standPrice"
+                [placeholder]="standData.prix"
+                [(ngModel)]="standData.prix"
                 required
               />
-              <h6 for="standPrice" style="font-size: 19px; margin-left: 5px">
-                dt
-              </h6>
+              <h6 for="prix" style="font-size: 19px; margin-left: 5px">dt</h6>
             </div>
           </div>
 

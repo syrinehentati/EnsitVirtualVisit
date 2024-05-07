@@ -87,7 +87,8 @@
   aria-labelledby="exampleModalLabel"
   aria-hidden="true"
 >
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog" role="document" 
+  *ngIf="playerData !== undefined">
     <div class="modal-content">
       <div class="modal-header">
         <button
@@ -102,7 +103,6 @@
       <div
         class="modal-body"
         style="font-size: 26px"
-        *ngIf="playerData !== undefined"
       >
         Select "Delete" below if you are sure you want to delete the player
         {{ playerData.nom }}

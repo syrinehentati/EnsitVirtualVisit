@@ -46,7 +46,7 @@ export class TablePosterComponent {
     if(id1){
       this.idposter=id1;
       this.postersService.getPosterByid(this.idposter).subscribe(
-        (result: Poster | undefined) => {
+        (result) => {
           this.posterData= result;
           console.log(this.idposter);
         }
@@ -59,7 +59,7 @@ export class TablePosterComponent {
 
   }
   
-  deleteposter(): void {/*
+  deleteposter(): void {
     
     if (this.posterData) {
       this.postersService.deletePoster(this.posterData.idAffiche).subscribe(
@@ -75,7 +75,7 @@ export class TablePosterComponent {
       );
     } else {
       console.error("poster data undefined");
-    }*/
+    }
   }
 
   navigateToCreateposter() {

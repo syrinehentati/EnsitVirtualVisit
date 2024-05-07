@@ -37,7 +37,7 @@ export class TablePlayerComponent {
   }
 
  
- openDeleteModal(email1:string){/*
+ openDeleteModal(email1:string){
     if(email1){
       this.playerEmail=email1;
       this.playersService.getplayerByEmail(this.playerEmail).subscribe(
@@ -51,10 +51,10 @@ export class TablePlayerComponent {
     else{
       console.error("undefined email ");
     }
-*/
+
   }
   
-  deleteplayer(): void {/*
+  deleteplayer(): void {
     if (this.playerData) {
       this.playersService.deleteplayer(this.playerData.email).subscribe(
         () => {
@@ -69,7 +69,7 @@ export class TablePlayerComponent {
       );
     } else {
       console.error("player data undefined");
-    }*/
+    }
   }
 
   navigateToCreateplayer() {

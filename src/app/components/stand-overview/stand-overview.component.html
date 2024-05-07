@@ -15,7 +15,7 @@
         class="container form-container"
         style="background-color: white; padding: 30px; width: 50%"
       >
-        <form style="width: 100%">
+        <form style="width: 100%" *ngIf="standData">
           <div class="row">
             <div class="col-lg-12">
               <h2>Stand Details</h2>
@@ -27,17 +27,17 @@
               <h3 style="margin-top: 65px">Stand Name</h3>
               <div class="input-group input-group-icon">
                 <p class="form-text smaller-text">
-                  {{ standData.standName }}
+                  {{ standData.nom }}
                 </p>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-lg-12">
-              <h3 style="margin-top: 65px">Stand Subject</h3>
+              <h3>Stand Subject</h3>
               <div class="input-group input-group-icon">
                 <p class="form-text smaller-text">
-                  {{ standData.standSubject }}
+                  {{ standData.sujet }}
                 </p>
               </div>
             </div>
@@ -47,7 +47,7 @@
               <h3 style="margin-top: 6px">stand Description</h3>
               <div class="input-group input-group-icon">
                 <p class="form-text smaller-text">
-                  {{ standData.standDescription }}
+                  {{ standData.description }}
                 </p>
               </div>
             </div>
@@ -59,7 +59,7 @@
                   <div class="image-preview">
                     <img
                       id="imagePreview"
-                      [src]="standData.standImage"
+                      [src]="'../../../assets/images/' + standData.image"
                       style="max-width: 40%"
                       alt="Image Preview"
                     />
@@ -72,9 +72,7 @@
                   <h3 style="margin-top: 7px">stand URL</h3>
                   <div class="input-group input-group-icon">
                     <p class="form-text smaller-text">
-                      <a [href]="standData.standURL">{{
-                        standData.standURL
-                      }}</a>
+                      <a [href]="standData.lien">{{ standData.lien }}</a>
                     </p>
                   </div>
                 </div>
@@ -85,7 +83,7 @@
                   <h3>Stand Existing</h3>
                   <div class="input-group radio-container">
                     <p class="form-text smaller-text">
-                      {{ standData.standExisting }}
+                      {{ standData.existant }}
                     </p>
                   </div>
                 </div>
@@ -105,7 +103,7 @@
                   <h3 style="margin-top: 7px">Stand Price</h3>
                   <div class="input-group input-group-icon">
                     <p class="form-text smaller-text">
-                      {{ standData.standPrice }}
+                      {{ standData.prix }}
                     </p>
                   </div>
                 </div>

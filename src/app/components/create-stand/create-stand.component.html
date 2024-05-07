@@ -19,6 +19,7 @@
           style="width: 100%"
           (ngSubmit)="submitstandForm(standForm)"
           #standForm="ngForm"
+          enctype="multipart/form-data"
         >
           <div class="row">
             <div class="col-lg-12">
@@ -33,24 +34,28 @@
                 <input
                   type="text"
                   placeholder="Stand Name"
-                  [(ngModel)]="standData.standName"
+                  name="nom"
+                  [(ngModel)]="standData.nom"
+                  class="form-control custom-user-input avatar-name"
                   required
                 />
-                <div class="input-icon">
-                  <i class="fas fa-file-image"></i>
+                <div class="input-group-append">
+                  <span class="input-group-text custom-user-icon">
+                    <i class="fas fa-file-image user"></i>
+                  </span>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="form-group">
-            <h3 for="standSubject">Stand Subject</h3>
+            <h3 for="sujet">Stand Subject</h3>
             <textarea
-              id="standSubject"
+              id="sujet"
               placeholder="Enter your stand subject"
-              name="standSubject"
+              name="sujet"
               rows="2"
-              [(ngModel)]="standData.standSubject"
+              [(ngModel)]="standData.sujet"
             ></textarea>
           </div>
 
@@ -59,21 +64,24 @@
               <h3 style="margin-top: 6px">Stand Description</h3>
               <div class="input-group input-group-icon">
                 <textarea
-                  [(ngModel)]="standData.standDescription"
+                  [(ngModel)]="standData.description"
                   placeholder="Description"
                   rows="4"
+                  name="description"
                   required
                 ></textarea>
               </div>
             </div>
           </div>
           <div class="form-group">
-            <h3 for="standImage">Stand image</h3>
+            <h3 for="standimage">Stand image</h3>
             <input
               type="file"
               id="standImage"
-              name="standImage"
+              name="image"
               accept="image/*"
+              [(ngModel)]="standData.image"
+              (change)="onImageChange($event)"
               onchange="checkImageDimensions(event, 'standDimensions'),previewImage(event)"
             />
             <span
@@ -96,12 +104,16 @@
               <div class="input-group input-group-icon">
                 <input
                   type="text"
+                  name="lien"
                   placeholder="enter your stand URL"
-                  [(ngModel)]="standData.standURL"
+                  [(ngModel)]="standData.lien"
+                  class="form-control custom-user-input avatar-name"
                   required
                 />
-                <div class="input-icon">
-                  <i class="fas fa-link"></i>
+                <div class="input-group-append">
+                  <span class="input-group-text custom-user-icon">
+                    <i class="fas fa-link user"></i>
+                  </span>
                 </div>
               </div>
             </div>
@@ -114,17 +126,17 @@
                 <input
                   id="standExistingyes"
                   type="radio"
-                  name="standExisting"
+                  name="existant"
                   value="yes"
-                  [(ngModel)]="standData.standExisting"
+                  [(ngModel)]="standData.existant"
                   required
                 />
                 <label for="standExistingyes">Yes</label>
                 <input
                   id="standExistingNo"
                   type="radio"
-                  name="standExisting"
-                  [(ngModel)]="standData.standExisting"
+                  name="existant"
+                  [(ngModel)]="standData.existant"
                   value="no"
                   required
                 />
@@ -138,8 +150,8 @@
                 <input
                   id="Type1"
                   type="radio"
-                  name="Type1"
-                  value="Type1"
+                  name="standType"
+                  value="1"
                   [(ngModel)]="standData.standType"
                   required
                 />
@@ -147,9 +159,9 @@
                 <input
                   id="Type2"
                   type="radio"
-                  name="Type2"
+                  name="standType"
                   [(ngModel)]="standData.standType"
-                  value="Type2"
+                  value="2"
                   required
                 />
                 <label for="Type2">Type2</label>
@@ -158,19 +170,17 @@
           </div>
 
           <div class="form-group">
-            <h3 for="standPrice" style="margin-right: 10px">Stand Price</h3>
+            <h3 for="prix" style="margin-right: 10px">Stand Price</h3>
             <div style="display: flex; align-items: center">
               <input
                 type="number"
-                id="standPrice"
-                name="standPrice"
+                id="prix"
+                name="prix"
                 style="font-size: 19px; margin-right: 7%"
-                [(ngModel)]="standData.standPrice"
+                [(ngModel)]="standData.prix"
                 required
               />
-              <h6 for="standPrice" style="font-size: 19px; margin-left: 5px">
-                dt
-              </h6>
+              <h6 for="prix" style="font-size: 19px; margin-left: 5px">dt</h6>
             </div>
           </div>
 

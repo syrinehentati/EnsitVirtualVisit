@@ -20,6 +20,7 @@
           (ngSubmit)="submitposterForm(posterForm)"
           #posterForm="ngForm"
           enctype="multipart/form-data"
+          *ngIf="posterData"
         >
           <div class="row">
             <div class="col-lg-12">
@@ -36,7 +37,7 @@
                   name="titre"
                   [placeholder]="posterData.titre"
                   [(ngModel)]="posterData.titre"
-                  class="form-control custom-user-input avatar-name"
+                  class="form-control custom-user-input poster-name"
                   required
                 />
                 <div class="input-group-append">
@@ -81,22 +82,20 @@
             >
               Preview poster image
             </h3>
-            <input
-              type="file"
-              id="posterImage"
-              name="posterImage"
-              accept="image/*"
-              [(ngModel)]="posterData.image"
-              (change)="onImageChange($event)"
-              onchange="checkImageDimensions(event, 'posterDimensions'),previewImage(event)"
-            />
+            <input type="file" id="posterImage" name="posterImage" />
             <span
               id="posterDimensions"
               style="margin-left: 10px; font-size: 16px"
               >Preferred dimensions: 40px x 60px</span
             >
-            <div class="image-preview">
-              <img id="imagePreview" alt="Image Preview" />
+            <div class="image">
+              <img
+                id="image"
+                name="image"
+                [src]="'../../../assets/images/' + posterData.image"
+                alt="Image"
+                style="width: 300px"
+              />
             </div>
           </div>
 
@@ -111,18 +110,20 @@
               type="file"
               id="posterdetailedImage"
               name="posterdetailedImage"
-              accept="image/*"
-              [(ngModel)]="posterData.couverture"
-              (change)="onDetailedImageChange($event)"
-              onchange="checkImageDimensions(event, 'posterDimensions'),previewImagedetailed(event)"
             />
             <span
               id="posterDimensions"
               style="margin-left: 10px; font-size: 16px"
               >Preferred dimensions: 40px x 60px</span
             >
-            <div class="image-DetailedImage">
-              <img id="imageDetailedImage" alt="Image DetailedImage" />
+            <div class="image">
+              <img
+                id="image"
+                name="image"
+                [src]="'../../../assets/images/' + posterData.couverture"
+                alt="Image"
+                style="width: 300px"
+              />
             </div>
           </div>
 
@@ -135,7 +136,7 @@
                   type="text"
                   [placeholder]="posterData.lien"
                   [(ngModel)]="posterData.lien"
-                  class="form-control custom-user-input avatar-name"
+                  class="form-control custom-user-input poster-name"
                   required
                 />
                 <div class="input-group-append">
@@ -149,26 +150,26 @@
 
           <div class="row">
             <div class="col-lg-6">
-              <h3>Poster Existing</h3>
+              <h3>poster Existing</h3>
               <div class="input-group radio-container">
                 <input
-                  id="existant"
+                  id="existanttrue"
                   type="radio"
-                  name="1"
+                  name="existant"
                   [value]="1"
                   [(ngModel)]="posterData.existant"
                   required
                 />
-                <label for="existant">Yes</label>
+                <label for="existanttrue">true</label>
                 <input
-                  id="existant"
+                  id="existantNo"
                   type="radio"
-                  name="0"
+                  name="existant"
                   [value]="0"
                   [(ngModel)]="posterData.existant"
                   required
                 />
-                <label for="existant">No</label>
+                <label for="existantNo">false</label>
               </div>
             </div>
 
@@ -178,7 +179,7 @@
                 <input
                   id="type1"
                   type="radio"
-                  name="1"
+                  name="localisationAffiche"
                   [value]="1"
                   [(ngModel)]="posterData.localisationAffiche"
                   required
@@ -187,7 +188,7 @@
                 <input
                   id="type2"
                   type="radio"
-                  name="2"
+                  name="localisationAffiche"
                   [value]="2"
                   [(ngModel)]="posterData.localisationAffiche"
                   required

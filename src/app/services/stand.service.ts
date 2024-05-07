@@ -3,11 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Stand } from '../Model/Stand';
 import { environment } from '../../environments/environment';
+import { NumberValueAccessor } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PosterStandService {
+export class StandService {
 
   private apiBaseUrl = environment.apiBaseUrl;
 
@@ -15,22 +16,22 @@ export class PosterStandService {
 
   
   public getStands(): Observable<Stand[]> {
-    return this.http.get<Stand[]>(`${this.apiBaseUrl}/stands`);
+    return this.http.get<Stand[]>(`${this.apiBaseUrl}/StandCRUD.php`);
   }
 
-  public getStandById( URL: string): Observable<Stand> {
-    return this.http.get<Stand>(`${this.apiBaseUrl}/stands/${URL}`);
+  public getStandById( id:Number): Observable<Stand> {
+    return this.http.get<Stand>(`${this.apiBaseUrl}/StandCRUD.php?id=${id}`);
   }
 
   public addStand(stand: Stand): Observable<Stand> {
-    return this.http.post<Stand>(`${this.apiBaseUrl}/stands`, stand);
+    return this.http.post<Stand>(`${this.apiBaseUrl}/StandCRUD.php`, stand);
   }
 
-  public updateStand(stand: Stand): Observable<Stand> {
-    return this.http.put<Stand>(`${this.apiBaseUrl}/stands/${stand.standURL}`, stand);
+  public updateStand(id:Number,stand: Stand): Observable<Stand> {
+    return this.http.put<Stand>(`${this.apiBaseUrl}/StandCRUD.php?id=${id}`, stand);
   }
 
-  public deleteStand(URL: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiBaseUrl}/stands/${URL}`);
+  public deleteStand(id:Number): Observable<void> {
+    return this.http.delete<void>(`${this.apiBaseUrl}/StandCRUD.php?id=${id}`);
   }
 }
